@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen>
+    <tabs>
+        <tab
+            icon="@drawable/ic_tab_recommendation"
+            id="@+id/tab_tuijian"
+            title="推荐" />
+        <tab
+            icon="@drawable/ic_tab_original_works"
+            id="@+id/tab_yuanchuang"
+            title="原创" />
+        <tab
+            icon="@drawable/ic_tab_store"
+            id="@+id/tab_shudian"
+            title="书店" />
+        <tab
+            icon="@drawable/ic_tab_mine"
+            id="@+id/tab_wode"
+            title="我的" />
+        <tab
+            icon="@drawable/ic_tab_local"
+            id="@+id/tab_bendi"
+            title="本地" />
+    </tabs>
+</PreferenceScreen>
