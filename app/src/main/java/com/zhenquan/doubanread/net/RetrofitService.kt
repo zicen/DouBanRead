@@ -4,6 +4,7 @@ import com.zhenquan.doubanread.moudle.BookDetail
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
+import rx.Observable
 import java.util.*
 
 /**
@@ -12,5 +13,5 @@ import java.util.*
 interface RetrofitService {
 
     @GET("book/search")
-    fun getSearchBook(@Query("q") name: String, @Query("tag") tag: String, @Query("start") start: Int, @Query("count") count: Int): Call<BookDetail>
+    fun getSearchBook(@Query("q") name: String, @Query("tag") tag: String, @Query("start") start: Int, @Query("count") count: Int): Observable<BookDetail>
 }

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
+import rx.subscriptions.CompositeSubscription
 
 
 /**
@@ -12,11 +13,13 @@ import org.jetbrains.anko.toast
  * Description:所有activity的基类
  */
 abstract class BaseActivity: AppCompatActivity(),AnkoLogger {
+     val requestComposite by lazy { CompositeSubscription() }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getLayoutId())
         initListener()
         initData()
+
     }
 
     /**
@@ -31,6 +34,13 @@ abstract class BaseActivity: AppCompatActivity(),AnkoLogger {
      */
     open protected fun initListener() {
 
+    }
+
+    override fun onStop() {
+        super.onStop()
+        requestComposite.let {
+            it.unsubscribe()
+        }
     }
 
     /**

@@ -27,4 +27,9 @@
         android:text="点击请求接口"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn2"
+        android:text="点击请求接口2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

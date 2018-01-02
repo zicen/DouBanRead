@@ -8,16 +8,25 @@ import android.view.ViewGroup
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.runOnUiThread
 import org.jetbrains.anko.toast
+import rx.subscriptions.CompositeSubscription
 
 
 /**
  * ClassName:BaseFragment
  * Description:所有fragment的基类
  */
-abstract class BaseFragment : Fragment() ,AnkoLogger{
+abstract class BaseFragment : Fragment(), AnkoLogger {
+     val requestComposite by lazy { CompositeSubscription() }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         init()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        requestComposite.let {
+            it.unsubscribe()
+        }
     }
 
     /**
@@ -57,7 +66,7 @@ abstract class BaseFragment : Fragment() ,AnkoLogger{
 
     }
 
-    fun myToast(msg:String){
+    fun myToast(msg: String) {
         context.runOnUiThread { toast(msg) }
     }
 }
