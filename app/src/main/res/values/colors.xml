@@ -4,4 +4,10 @@
     <color name="colorPrimary">#3D4446</color>
     <color name="colorPrimaryDark">#3D4446</color>
     <color name="colorAccent">#FF4081</color>
+
+
+
+    <color name="bottom_nvg_text_selected">#42BD56</color>
+    <color name="bottom_nvg_text_unselected">#9F9F9F</color>
+    <color name="global_white_bg">#fafafa</color>
 </resources>
