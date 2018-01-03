@@ -10,4 +10,5 @@
     <color name="bottom_nvg_text_selected">#3E4347</color>
     <color name="bottom_nvg_text_unselected">#9F9F9F</color>
     <color name="global_white_bg">#fafafa</color>
+    <color name="white">#ffffff</color>
 </resources>
