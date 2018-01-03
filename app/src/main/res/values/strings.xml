@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">DouBanRead</string>
+    <string name="page_home">首页</string>
+    <string name="page_subject">书影音</string>
+    <string name="page_status">广播</string>
+    <string name="page_group">小组</string>
+    <string name="page_profile">我的</string>
 </resources>

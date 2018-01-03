@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import org.jetbrains.anko.AnkoLogger
+import com.zhenquan.doubanread.base.function.UiFunction
 import org.jetbrains.anko.runOnUiThread
 import org.jetbrains.anko.toast
 import rx.subscriptions.CompositeSubscription
@@ -15,8 +15,10 @@ import rx.subscriptions.CompositeSubscription
  * ClassName:BaseFragment
  * Description:所有fragment的基类
  */
-abstract class BaseFragment : Fragment(), AnkoLogger {
-     val requestComposite by lazy { CompositeSubscription() }
+abstract class BaseFragment : Fragment(), UiFunction {
+    val requestComposite by lazy { CompositeSubscription() }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         init()
@@ -37,13 +39,12 @@ abstract class BaseFragment : Fragment(), AnkoLogger {
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return initView()
+        val rootView = inflater?.inflate(getLayoutId(), container, false)
+        //todo 这里统一处理页面状态
+        initView(rootView)
+        return rootView
     }
 
-    /**
-     * 获取布局view
-     */
-    abstract fun initView(): View?
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -51,6 +52,7 @@ abstract class BaseFragment : Fragment(), AnkoLogger {
         initData()
 
     }
+
 
     /**
      * 数据的初始化
@@ -69,4 +71,6 @@ abstract class BaseFragment : Fragment(), AnkoLogger {
     fun myToast(msg: String) {
         context.runOnUiThread { toast(msg) }
     }
+
+
 }
