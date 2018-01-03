@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">DouBanRead</string>
     <string name="page_recommendation">推荐</string>
-    <string name="page_original_work">原创</string>
     <string name="page_store">书店</string>
     <string name="page_mine">我的</string>
     <string name="page_local">本地</string>
+    <string name="page_classfiy_work">分类</string>
 </resources>

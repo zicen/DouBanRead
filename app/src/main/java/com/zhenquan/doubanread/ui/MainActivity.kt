@@ -9,9 +9,8 @@ import com.zhenquan.doubanread.base.BaseActivity
 import com.zhenquan.doubanread.base.BaseFragment
 import com.zhenquan.doubanread.ui.local.LocalFragment
 import com.zhenquan.doubanread.ui.mine.MineFragment
-import com.zhenquan.doubanread.ui.original.OriginalWorkFragment
+import com.zhenquan.doubanread.ui.classfiy.ClassfiyFragment
 import com.zhenquan.doubanread.ui.recommendation.RecommendationFragment
-import com.zhenquan.doubanread.ui.store.StoreFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -35,8 +34,7 @@ class MainActivity : BaseActivity() {
      */
     private val mainFragments: ArrayList<Fragment>
             = arrayListOf(RecommendationFragment()
-            , OriginalWorkFragment()
-            , StoreFragment()
+            , ClassfiyFragment()
             , MineFragment()
             , LocalFragment())
 
@@ -46,16 +44,14 @@ class MainActivity : BaseActivity() {
     private fun initAllPage() {
         //推荐
         val recommendationTab = MyTabEntity(getString(R.string.page_recommendation), R.mipmap.ic_tab_recommendation_active, R.mipmap.ic_tab_recommendation_normal)
-        //原创
-        val originalWorkTab = MyTabEntity(getString(R.string.page_original_work), R.mipmap.ic_tab_original_works_active, R.mipmap.ic_tab_original_works_normal)
-        //书店
-        val statusTab = MyTabEntity(getString(R.string.page_store), R.mipmap.ic_tab_store_active, R.mipmap.ic_tab_store_normal)
+        //分类
+        val originalWorkTab = MyTabEntity(getString(R.string.page_classfiy_work), R.mipmap.ic_tab_original_works_active, R.mipmap.ic_tab_original_works_normal)
         //我的
         val mineTab = MyTabEntity(getString(R.string.page_mine), R.mipmap.ic_tab_mine_active, R.mipmap.ic_tab_mine_normal)
         //本地
         val localTab = MyTabEntity(getString(R.string.page_local), R.mipmap.ic_tab_local_active, R.mipmap.ic_tab_local_normal)
 
-        ctl_bottom_nvg.setTabData(arrayListOf(recommendationTab, originalWorkTab, statusTab, mineTab, localTab)
+        ctl_bottom_nvg.setTabData(arrayListOf(recommendationTab, originalWorkTab,  mineTab, localTab)
                 , this@MainActivity
                 , R.id.fl_main_content
                 , mainFragments)
