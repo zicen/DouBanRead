@@ -2,13 +2,15 @@
 <resources>
     <!--<color name="colorPrimary">#A5A5A5</color>-->
     <color name="colorPrimary">#3D4446</color>
+    <color name="colorPrimary2">#663D4446</color>
     <color name="colorPrimaryDark">#3D4446</color>
     <color name="colorAccent">#FF4081</color>
-
 
 
     <color name="bottom_nvg_text_selected">#3E4347</color>
     <color name="bottom_nvg_text_unselected">#9F9F9F</color>
     <color name="global_white_bg">#fafafa</color>
     <color name="white">#ffffff</color>
+    <color name="half_white">#88f0f0f0</color>
+    <color name="global_minor">#52a384</color>
 </resources>

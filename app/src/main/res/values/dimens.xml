@@ -4,4 +4,6 @@
     <dimen name="bottom_nvg_height">56dp</dimen>
     <dimen name="bottom_nvg_text_size">10sp</dimen>
     <dimen name="bottom_nvg_icon_margin">2dp</dimen>
+    <dimen name="drawer_view_width">280dp</dimen>
+    <dimen name="action_menu_margin">5dp</dimen>
 </resources>

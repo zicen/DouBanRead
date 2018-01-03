@@ -82,7 +82,7 @@ object ToastUtil {
         it.setGravity(Gravity.CENTER, 0, 0)
         (it.view as LinearLayout).run {
             val textView = getChildAt(0)
-            (textView as TextView).width = dip2px(context, 400f)
+            (textView as TextView).width = dip2px(context, 200f)
             textView.gravity = Gravity.CENTER
             textView.setPadding(dip2px(context, 20f), dip2px(context, 20f), dip2px(context, 20f), dip2px(context, 20f))
             setPadding(0, dip2px(context, 20f), 0, 0)

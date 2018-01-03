@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/drawer_view_width"
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:background="@color/global_white_bg"
+    android:clickable="true"
+    android:focusable="true"
+    android:id="@+id/drawer_item_group"
+    android:orientation="vertical"
+    tools:showIn="@layout/activity_main">
+
+
+    <View
+        android:id="@+id/v_head_bg"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:background="@color/global_minor" />
+
+
+    <ImageView
+        android:id="@+id/iv_user_avatar"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="10dp"
+        android:background="@mipmap/ic_launcher_round"
+        app:layout_constraintBottom_toBottomOf="@id/v_head_bg"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="登陆 | 注册"
+        android:textColor="#fff"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/v_head_bg"
+        app:layout_constraintLeft_toLeftOf="@id/iv_user_avatar"
+        app:layout_constraintTop_toBottomOf="@id/iv_user_avatar" />
+
+
+    <com.coorchice.library.SuperTextView
+        android:id="@+id/stv_shopping_cart"
+        style="@style/drawer_item"
+        android:layout_marginTop="10dp"
+        android:text="购物车"
+        app:layout_constraintTop_toBottomOf="@id/v_head_bg"
+        app:state_drawable="@mipmap/ic_action_category" />
+
+    <!--购物车数量-->
+    <TextView
+        android:id="@+id/tv_goods_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="18dp"
+        android:text="0"
+        android:textColor="@color/global_minor"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/stv_shopping_cart"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/stv_shopping_cart" />
+
+    <com.coorchice.library.SuperTextView
+        android:id="@+id/stv_balance"
+        style="@style/drawer_item"
+        android:text="余额"
+        app:layout_constraintTop_toBottomOf="@id/stv_shopping_cart"
+        app:state_drawable="@mipmap/ic_action_category" />
+
+    <!--余额数量-->
+    <TextView
+        android:id="@+id/tv_balance_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="18dp"
+        android:text="¥0.00"
+        android:textColor="@color/global_minor"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/stv_balance"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/stv_balance" />
+
+
+    <com.coorchice.library.SuperTextView
+        android:id="@+id/stv_coupon"
+        style="@style/drawer_item"
+        android:text="礼券"
+        app:layout_constraintTop_toBottomOf="@id/stv_balance"
+        app:state_drawable="@mipmap/ic_action_category" />
+
+    <!--礼券数量-->
+    <TextView
+        android:id="@+id/tv_coupon_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="18dp"
+        android:text="0"
+        android:textColor="@color/global_minor"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/stv_coupon"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/stv_coupon" />
+
+    <com.coorchice.library.SuperTextView
+        android:id="@+id/stv_gift"
+        style="@style/drawer_item"
+        android:text="礼物"
+        app:layout_constraintTop_toBottomOf="@id/stv_coupon"
+        app:state_drawable="@mipmap/ic_action_category" />
+
+    <!--礼物数量-->
+    <TextView
+        android:id="@+id/tv_gift_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="18dp"
+        android:text="0"
+        android:textColor="@color/global_minor"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/stv_gift"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/stv_gift" />
+
+
+    <com.coorchice.library.SuperTextView
+        android:id="@+id/stv_feedback"
+        style="@style/drawer_item"
+        android:text="用户反馈"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:state_drawable="@mipmap/ic_action_category" />
+
+    <com.coorchice.library.SuperTextView
+        android:id="@+id/stv_setting"
+        style="@style/drawer_item"
+        android:text="设置"
+        app:layout_constraintBottom_toTopOf="@id/stv_feedback"
+        app:state_drawable="@mipmap/ic_action_category" />
+
+    <com.coorchice.library.SuperTextView
+        android:id="@+id/stv_search"
+        style="@style/drawer_item"
+        android:text="搜索"
+        app:layout_constraintBottom_toTopOf="@id/stv_setting"
+        app:state_drawable="@mipmap/ic_action_category" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#f0f0f0"
+        app:layout_constraintBottom_toTopOf="@id/stv_search" />
+
+
+</android.support.constraint.ConstraintLayout>

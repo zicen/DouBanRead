@@ -6,6 +6,32 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        //全局字体
+        <item name="android:textViewStyle">@style/AppTheme.Widget.TextView</item>
     </style>
 
+    <style name="AppTheme.Widget.TextView" parent="android:Widget.Holo.Light.TextView">
+        <item name="fontPath">fonts/Droid Sans Fallback.ttf</item>
+    </style>
+
+
+    <style name="CustomToolBar" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="colorControlNormal">@color/colorPrimary</item>
+        <item name="android:textColorPrimary">@color/colorPrimary</item>
+    </style>
+
+    <style name="drawer_item">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="state_drawable_height">30dp</item>
+        <item name="state_drawable_width">30dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="isShowState">true</item>
+        <item name="state_drawable_padding_left">15dp</item>
+        <item name="state_drawable_mode">left</item>
+        <item name="android:paddingLeft">50dp</item>
+        <item name="pressBgColor">@color/half_white</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">14sp</item>
+    </style>
 </resources>

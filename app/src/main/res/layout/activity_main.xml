@@ -1,54 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/dl_drawerlayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <com.flyco.tablayout.CommonTabLayout
-        android:id="@+id/ctl_bottom_nvg"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/bottom_nvg_height"
-        android:background="@color/global_white_bg"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:tl_iconGravity="TOP"
-        app:tl_iconHeight="@dimen/bottom_nvg_icon_size"
-        app:tl_iconMargin="@dimen/bottom_nvg_icon_margin"
-        app:tl_iconWidth="@dimen/bottom_nvg_icon_size"
-        app:tl_textSelectColor="@color/bottom_nvg_text_selected"
-        app:tl_textUnselectColor="@color/bottom_nvg_text_unselected"
-        app:tl_textsize="@dimen/bottom_nvg_text_size" />
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-
-    <!--以后放 toolBar-->
-    <View
-        android:id="@+id/v_space"
-        android:layout_width="0dp"
-        android:layout_height="56dp"
-        android:background="#ff0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <FrameLayout
-        android:id="@+id/fl_main_content"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@color/global_white_bg"
-        app:layout_constraintBottom_toTopOf="@id/ctl_bottom_nvg"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/v_space" />
+        <com.flyco.tablayout.CommonTabLayout
+            android:id="@+id/ctl_bottom_nvg"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/bottom_nvg_height"
+            android:background="@color/global_white_bg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:tl_iconGravity="TOP"
+            app:tl_iconHeight="@dimen/bottom_nvg_icon_size"
+            app:tl_iconMargin="@dimen/bottom_nvg_icon_margin"
+            app:tl_iconWidth="@dimen/bottom_nvg_icon_size"
+            app:tl_textSelectColor="@color/bottom_nvg_text_selected"
+            app:tl_textUnselectColor="@color/bottom_nvg_text_unselected"
+            app:tl_textsize="@dimen/bottom_nvg_text_size" />
 
 
-    <View
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="#f0f0f0"
-        app:layout_constraintBottom_toTopOf="@id/ctl_bottom_nvg"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        <!--以后放 toolBar-->
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/t_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/global_white_bg"
+            android:elevation="4dp"
+            android:gravity="center_vertical"
+            android:minHeight="?android:actionBarSize"
+            app:contentInsetEnd="0dp"
+            app:contentInsetEndWithActions="0dp"
+            app:contentInsetLeft="0dp"
+            app:contentInsetRight="0dp"
+            app:contentInsetStart="0dp"
+            app:contentInsetStartWithNavigation="0dp"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:theme="@style/CustomToolBar"
+            app:title="豆瓣阅读（练习）">
 
 
-</android.support.constraint.ConstraintLayout>
+            <android.support.v7.widget.ActionMenuView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginLeft="@dimen/action_menu_margin"
+                android:id="@+id/action_search"
+                android:layout_marginRight="10dp"
+                android:background="@mipmap/ic_action_search" />
+
+            <android.support.v7.widget.ActionMenuView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/action_category"
+                android:layout_gravity="right"
+                android:layout_marginLeft="@dimen/action_menu_margin"
+                android:layout_marginRight="@dimen/action_menu_margin"
+                android:background="@mipmap/ic_action_category" />
+
+            <android.support.v7.widget.ActionMenuView
+                android:layout_width="wrap_content"
+                android:id="@+id/action_notification"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginLeft="@dimen/action_menu_margin"
+                android:layout_marginRight="@dimen/action_menu_margin"
+                android:background="@mipmap/ic_action_notification" />
+
+
+
+
+
+        </android.support.v7.widget.Toolbar>
+
+
+        <FrameLayout
+            android:id="@+id/fl_main_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+
+            android:background="@color/global_white_bg"
+            app:layout_constraintBottom_toTopOf="@id/ctl_bottom_nvg"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/t_toolbar" />
+
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="#f0f0f0"
+            app:layout_constraintBottom_toTopOf="@id/ctl_bottom_nvg"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+    <!--menu 位置-->
+    <include layout="@layout/drawer_view" />
+
+</android.support.v4.widget.DrawerLayout>
