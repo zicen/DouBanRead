@@ -1,7 +1,9 @@
 package com.zhenquan.doubanread.moudle
 
+import java.io.Serializable
+
 /**
- * Created by ry on 2018/1/2.
+ * Created by Administrator on 2018/1/2 0002.
  */
 
 data class BookDetail(
@@ -52,22 +54,42 @@ data class Images(
         val small: String, //https://img1.doubanio.com/spic/s10069398.jpg
         val large: String, //https://img1.doubanio.com/lpic/s10069398.jpg
         val medium: String //https://img1.doubanio.com/mpic/s10069398.jpg
-)
+
+) {
+    override fun toString(): String {
+        return "Images(small='$small', large='$large', medium='$medium')"
+    }
+}
+
+data class Rating(
+        val max: Int, //10
+        val numRaters: Int, //4477
+        val average: String, //8.6
+        val min: Int //0
+
+) {
+    override fun toString(): String {
+        return "Rating(max=$max, numRaters=$numRaters, average='$average', min=$min)"
+    }
+}
+
+data class Tag(
+        val count: Int, //2189
+        val name: String, //金瓶梅
+        val title: String //金瓶梅
+
+) {
+    override fun toString(): String {
+        return "Tag(count=$count, name='$name', title='$title')"
+    }
+}
 
 data class Series(
         val id: String, //4279
         val title: String //明代四大奇书
-)
 
-data class Rating(
-        val max: Int, //10
-        val numRaters: Int, //4476
-        val average: String, //8.6
-        val min: Int //0
-)
-
-data class Tag(
-        val count: Int, //2187
-        val name: String, //金瓶梅
-        val title: String //金瓶梅
-)
+) {
+    override fun toString(): String {
+        return "Series(id='$id', title='$title')"
+    }
+}

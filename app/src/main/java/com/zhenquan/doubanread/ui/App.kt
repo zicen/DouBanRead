@@ -1,4 +1,4 @@
-package com.zhenquan.doubanread
+package com.zhenquan.doubanread.ui
 
 import android.app.Application
 
