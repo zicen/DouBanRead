@@ -13,6 +13,10 @@ import com.zhenquan.doubanread.ui.subject.SubjectFragment
 import com.zhenquan.player.base.BaseActivity
 import com.zhenquan.player.base.BaseFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import com.zhenquan.doubanread.R.mipmap.ic_action_search
+import com.flyco.tablayout.listener.OnTabSelectListener
+
+
 
 
 class MainActivity : BaseActivity() {
@@ -78,16 +82,6 @@ class MainActivity : BaseActivity() {
 
 
     override fun initListener() {
-
-        /* btn.setOnClickListener {
-             simpleRequest()
-         }
-         btn2.setOnClickListener {
-             //以后请求就用这个
-             sampleRequest()
-         }
-
- */
     }
 
     private class MyTabEntity(val customTabTitle: String, @DrawableRes val customTabSelectedIcon: Int, @DrawableRes val customTabUnSelectedIcon: Int) : CustomTabEntity {

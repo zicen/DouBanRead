@@ -16,6 +16,6 @@ class HomeFragment : BaseFragment() {
     }
 
     override fun initView(rootView: View?) {
-        (activity as MainActivity).getTabFragment(StatusFragment::class.java)?.haha()
+
     }
 }
