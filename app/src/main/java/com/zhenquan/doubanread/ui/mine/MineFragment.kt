@@ -1,17 +1,17 @@
-package com.zhenquan.doubanread.ui.subject
+package com.zhenquan.doubanread.ui.mine
 
 import android.view.View
 import com.zhenquan.doubanread.R
-import com.zhenquan.player.base.BaseFragment
+import com.zhenquan.doubanread.base.BaseFragment
 
 /**
  * Created by 44162 on 2018/1/3.
- * @描述 书影音
+ * @描述 我的
  */
-class SubjectFragment : BaseFragment() {
+class MineFragment : BaseFragment(){
 
     override fun getLayoutId(): Int {
-        return R.layout.fragment_subject
+        return R.layout.fragment_mine
     }
 
     override fun initView(rootView: View?) {

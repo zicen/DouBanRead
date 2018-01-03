@@ -1,11 +1,11 @@
-package com.zhenquan.player.util
+package com.zhenquan.doubanread.util
 
-import com.zhenquan.doubanread.ui.group.GroupFragment
-import com.zhenquan.doubanread.ui.home.HomeFragment
-import com.zhenquan.doubanread.ui.profile.ProfileFragment
-import com.zhenquan.doubanread.ui.status.StatusFragment
-import com.zhenquan.doubanread.ui.subject.SubjectFragment
-import com.zhenquan.player.base.BaseFragment
+import com.zhenquan.doubanread.base.BaseFragment
+import com.zhenquan.doubanread.ui.mine.MineFragment
+import com.zhenquan.doubanread.ui.recommendation.RecommendationFragment
+import com.zhenquan.doubanread.ui.local.LocalFragment
+import com.zhenquan.doubanread.ui.store.StoreFragment
+import com.zhenquan.doubanread.ui.original.OriginalWorkFragment
 
 
 /**
@@ -14,11 +14,11 @@ import com.zhenquan.player.base.BaseFragment
  */
 class FragmentUtil private constructor() {
     //私有化构造方法
-    val homeFragment by lazy { HomeFragment() }
-    val groupFragment by lazy { GroupFragment() }
-    val profileFragment by lazy { ProfileFragment() }
-    val statusFragment by lazy { StatusFragment() }
-    val subjectFragment by lazy { SubjectFragment() }
+    val homeFragment by lazy { RecommendationFragment() }
+    val groupFragment by lazy { MineFragment() }
+    val profileFragment by lazy { LocalFragment() }
+    val statusFragment by lazy { StoreFragment() }
+    val subjectFragment by lazy { OriginalWorkFragment() }
 
     companion object {
         val fragmentUtil by lazy { FragmentUtil() }

@@ -5,7 +5,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:text="@string/page_group"
+        android:text="@string/page_mine"
         android:gravity="center"
         android:layout_height="match_parent" />
 

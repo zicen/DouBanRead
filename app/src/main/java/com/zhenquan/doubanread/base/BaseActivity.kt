@@ -1,4 +1,4 @@
-package com.zhenquan.player.base
+package com.zhenquan.doubanread.base
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity

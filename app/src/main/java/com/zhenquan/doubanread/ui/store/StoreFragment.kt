@@ -1,18 +1,18 @@
-package com.zhenquan.doubanread.ui.status
+package com.zhenquan.doubanread.ui.store
 
 import android.view.View
 import com.zhenquan.doubanread.R
-import com.zhenquan.player.base.BaseFragment
-import kotlinx.android.synthetic.main.fragment_status.*
+import com.zhenquan.doubanread.base.BaseFragment
+import kotlinx.android.synthetic.main.fragment_store.*
 
 /**
  * Created by 44162 on 2018/1/3.
- * @描述 广播
+ * @描述 书店
  */
-class StatusFragment : BaseFragment() {
+class StoreFragment : BaseFragment() {
 
     override fun getLayoutId(): Int {
-        return R.layout.fragment_status
+        return R.layout.fragment_store
     }
 
     override fun initView(rootView: View?) {

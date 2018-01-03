@@ -1,4 +1,4 @@
-package com.yoofn.nbiot.utils
+package com.zhenquan.doubanread.util
 
 import android.content.Context
 import android.support.annotation.DrawableRes

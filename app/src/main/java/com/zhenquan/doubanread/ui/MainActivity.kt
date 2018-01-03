@@ -5,18 +5,14 @@ import android.support.v4.app.Fragment
 import android.view.View
 import com.flyco.tablayout.listener.CustomTabEntity
 import com.zhenquan.doubanread.R
-import com.zhenquan.doubanread.ui.group.GroupFragment
-import com.zhenquan.doubanread.ui.home.HomeFragment
-import com.zhenquan.doubanread.ui.profile.ProfileFragment
-import com.zhenquan.doubanread.ui.status.StatusFragment
-import com.zhenquan.doubanread.ui.subject.SubjectFragment
-import com.zhenquan.player.base.BaseActivity
-import com.zhenquan.player.base.BaseFragment
+import com.zhenquan.doubanread.base.BaseActivity
+import com.zhenquan.doubanread.base.BaseFragment
+import com.zhenquan.doubanread.ui.local.LocalFragment
+import com.zhenquan.doubanread.ui.mine.MineFragment
+import com.zhenquan.doubanread.ui.original.OriginalWorkFragment
+import com.zhenquan.doubanread.ui.recommendation.RecommendationFragment
+import com.zhenquan.doubanread.ui.store.StoreFragment
 import kotlinx.android.synthetic.main.activity_main.*
-import com.zhenquan.doubanread.R.mipmap.ic_action_search
-import com.flyco.tablayout.listener.OnTabSelectListener
-
-
 
 
 class MainActivity : BaseActivity() {
@@ -38,28 +34,28 @@ class MainActivity : BaseActivity() {
      * 主界面对用功能的fragment
      */
     private val mainFragments: ArrayList<Fragment>
-            = arrayListOf(HomeFragment()
-            , SubjectFragment()
-            , StatusFragment()
-            , GroupFragment()
-            , ProfileFragment())
+            = arrayListOf(RecommendationFragment()
+            , OriginalWorkFragment()
+            , StoreFragment()
+            , MineFragment()
+            , LocalFragment())
 
     /**
      * 初始化 程序页面
      */
     private fun initAllPage() {
-        //首页
-        val homeTab = MyTabEntity(getString(R.string.page_home), R.mipmap.ic_tab_home_active, R.mipmap.ic_tab_home_normal)
-        //书影音
-        val subjectTab = MyTabEntity(getString(R.string.page_subject), R.mipmap.ic_tab_subject_active, R.mipmap.ic_tab_subject_normal)
-        //广播
-        val statusTab = MyTabEntity(getString(R.string.page_status), R.mipmap.ic_tab_status_active, R.mipmap.ic_tab_status_normal)
-        //小组
-        val groupTab = MyTabEntity(getString(R.string.page_group), R.mipmap.ic_tab_group_active, R.mipmap.ic_tab_group_normal)
+        //推荐
+        val recommendationTab = MyTabEntity(getString(R.string.page_recommendation), R.mipmap.ic_tab_recommendation_active, R.mipmap.ic_tab_recommendation_normal)
+        //原创
+        val originalWorkTab = MyTabEntity(getString(R.string.page_original_work), R.mipmap.ic_tab_original_works_active, R.mipmap.ic_tab_original_works_normal)
+        //书店
+        val statusTab = MyTabEntity(getString(R.string.page_store), R.mipmap.ic_tab_store_active, R.mipmap.ic_tab_store_normal)
         //我的
-        val profileTab = MyTabEntity(getString(R.string.page_profile), R.mipmap.ic_tab_profile_active, R.mipmap.ic_tab_profile_normal)
+        val mineTab = MyTabEntity(getString(R.string.page_mine), R.mipmap.ic_tab_mine_active, R.mipmap.ic_tab_mine_normal)
+        //本地
+        val localTab = MyTabEntity(getString(R.string.page_local), R.mipmap.ic_tab_local_active, R.mipmap.ic_tab_local_normal)
 
-        ctl_bottom_nvg.setTabData(arrayListOf(homeTab, subjectTab, statusTab, groupTab, profileTab)
+        ctl_bottom_nvg.setTabData(arrayListOf(recommendationTab, originalWorkTab, statusTab, mineTab, localTab)
                 , this@MainActivity
                 , R.id.fl_main_content
                 , mainFragments)

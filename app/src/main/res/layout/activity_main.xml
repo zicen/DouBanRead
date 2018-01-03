@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
     <com.flyco.tablayout.CommonTabLayout
         android:id="@+id/ctl_bottom_nvg"
@@ -22,16 +20,26 @@
         app:tl_textUnselectColor="@color/bottom_nvg_text_unselected"
         app:tl_textsize="@dimen/bottom_nvg_text_size" />
 
+
+    <!--以后放 toolBar-->
+    <View
+        android:id="@+id/v_space"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:background="#ff0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <FrameLayout
         android:id="@+id/fl_main_content"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@color/global_white_bg"
         app:layout_constraintBottom_toTopOf="@id/ctl_bottom_nvg"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/v_space" />
 
 
     <View
@@ -43,4 +51,4 @@
         app:layout_constraintRight_toRightOf="parent" />
 
 
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

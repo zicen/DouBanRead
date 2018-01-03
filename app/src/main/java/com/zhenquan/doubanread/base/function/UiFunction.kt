@@ -2,7 +2,7 @@ package com.zhenquan.doubanread.base.function
 
 import android.support.annotation.DrawableRes
 import android.view.View
-import com.yoofn.nbiot.utils.ToastUtil
+import com.zhenquan.doubanread.util.ToastUtil
 import com.zhenquan.doubanread.util.Utils
 import org.jetbrains.anko.AnkoLogger
 
