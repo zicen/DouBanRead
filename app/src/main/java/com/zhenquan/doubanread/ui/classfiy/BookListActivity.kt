@@ -2,6 +2,7 @@ package com.zhenquan.doubanread.ui.classfiy
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
@@ -16,6 +17,11 @@ import org.jetbrains.anko.toast
 import rx.Observer
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
+import com.scwang.smartrefresh.layout.api.RefreshLayout
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener
+import com.zhenquan.doubanread.moudle.Book
+
 
 class BookListActivity : BaseActivity() {
     override fun getLayoutId(): Int {
@@ -27,13 +33,27 @@ class BookListActivity : BaseActivity() {
     }
 
     val toolbar: Toolbar by lazy { find<Toolbar>(R.id.toolbar) }
+    var datalist: MutableList<Book> = ArrayList()
+    var start = 0
+    var count = 20
     override fun initListener() {
         val title = initToolBar()
         book_list_recycle.layoutManager = LinearLayoutManager(this)
+        book_list_recycle.adapter = BookListAdapter(datalist) {
+            toast(it.toString())
+        }
         if (title != null) {
-            getData(title)
+            getData(title, 0, 20)
         }
 
+        book_list_refreshLayout.setOnRefreshListener {
+            toast("onRefresh")
+            getData(title!!, 0, 20)
+        }
+        book_list_refreshLayout.setOnLoadmoreListener({ refreshlayout ->
+            toast("onLoadmore")
+            getData(title!!, start, count)
+        })
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -43,24 +63,26 @@ class BookListActivity : BaseActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun initData() {
 
-
-    }
-
-    private fun BookListActivity.getData(title: String) {
-        requestComposite.add(DataManager().getSearchBooks("", title, 0, 10)
+    private fun BookListActivity.getData(title: String, start_getdata: Int, count_getdata: Int) {
+        requestComposite.add(DataManager().getSearchBooks("", title, start, count)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(object : Observer<BookDetail> {
                     override fun onNext(t: BookDetail?) {
                         t?.books?.let {
-                            book_list_recycle.adapter = BookListAdapter(it) {
-                                toast(it.toString())
+                            if (start_getdata == 0) {
+                                datalist.clear()
+                                datalist.addAll(it)
+                                start = 20
+                                count = 40
+                            }else{
+                                datalist.addAll(it)
+                                start += 20
+                                count += 20
                             }
+                            book_list_recycle.adapter.notifyDataSetChanged()
                         }
-
-
                     }
 
                     override fun onCompleted() {
@@ -83,3 +105,4 @@ class BookListActivity : BaseActivity() {
         return title
     }
 }
+

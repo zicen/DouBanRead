@@ -19,7 +19,6 @@ abstract class BaseActivity: AppCompatActivity(), UiFunction {
         setContentView(getLayoutId())
         initListener()
         initData()
-
     }
 
     /**
