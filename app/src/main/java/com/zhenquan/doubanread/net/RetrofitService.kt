@@ -14,4 +14,6 @@ interface RetrofitService {
 
     @GET("book/search")
     fun getSearchBook(@Query("q") name: String, @Query("tag") tag: String, @Query("start") start: Int, @Query("count") count: Int): Observable<BookDetail>
+
+
 }

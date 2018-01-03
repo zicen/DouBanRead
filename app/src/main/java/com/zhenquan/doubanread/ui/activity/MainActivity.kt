@@ -1,4 +1,4 @@
-package com.zhenquan.doubanread.ui
+package com.zhenquan.doubanread.ui.activity
 
 import android.support.annotation.DrawableRes
 import android.support.v4.app.Fragment

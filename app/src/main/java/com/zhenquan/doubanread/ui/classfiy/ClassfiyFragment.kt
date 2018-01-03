@@ -1,17 +1,13 @@
 package com.zhenquan.doubanread.ui.classfiy
 
 import android.content.Intent
-import android.content.res.AssetManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.zhenquan.doubanread.R
 import com.zhenquan.doubanread.base.BaseFragment
-import java.nio.charset.Charset
 import com.zhenquan.doubanread.moudle.TagBean
-import com.zhenquan.doubanread.ui.BookListActivity
 import org.jetbrains.anko.find
-import org.jetbrains.anko.support.v4.find
 
 
 /**
@@ -37,7 +33,7 @@ class ClassfiyFragment : BaseFragment() {
         fragment_classfiy_recycle?.layoutManager = LinearLayoutManager(activity)
         fragment_classfiy_recycle?.adapter = ClassfiyAdapter(tags){
             val intent = Intent()
-            intent.setClass(activity, BookListActivity::class.java)
+            intent.setClass(activity, BookTagListActivity::class.java)
             intent.putExtra("title", it.title)
             startActivity(intent)
 
@@ -45,14 +41,9 @@ class ClassfiyFragment : BaseFragment() {
     }
 
     override fun initData() {
-//        val json = context.assets.fileAsString("json", "doubanreadtag.json")
     }
 
-    fun AssetManager.fileAsString(subdirectory: String, filename: String): String {
-        return open("$subdirectory/$filename").use {
-            it.readBytes().toString(Charset.defaultCharset())
-        }
-    }
+
 
 
 }

@@ -45,11 +45,12 @@ dependencies {
     implementation 'io.reactivex:rxandroid:1.2.0'
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.4-5'
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.4-5'//没有使用特殊Header，可以不加这行
-    implementation 'com.android.support:cardview-v7:24.2.0'
+    implementation 'com.android.support:cardview-v7:26.1.0'
     implementation 'com.github.chenBingX:SuperTextView:v1.4'
     //永不crash，打不死的小强
     implementation 'com.wanjian:cockroach:0.0.5'
     //全局字体替换
     implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
-
+    //picasso
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }

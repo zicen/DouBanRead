@@ -38,12 +38,12 @@ abstract class BaseFragment : Fragment(), UiFunction {
 
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val rootView = inflater?.inflate(getLayoutId(), container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val rootView = inflater.inflate(getLayoutId(), container, false)
         return rootView
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //todo 这里统一处理页面状态
         initView(view)
@@ -53,7 +53,6 @@ abstract class BaseFragment : Fragment(), UiFunction {
         super.onActivityCreated(savedInstanceState)
         initListener()
         initData()
-
     }
 
 
@@ -72,7 +71,7 @@ abstract class BaseFragment : Fragment(), UiFunction {
     }
 
     fun myToast(msg: String) {
-        context.runOnUiThread { toast(msg) }
+        context?.runOnUiThread { toast(msg) }
     }
 
 

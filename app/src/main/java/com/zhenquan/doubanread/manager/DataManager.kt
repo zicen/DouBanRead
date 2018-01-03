@@ -15,4 +15,6 @@ class DataManager {
     fun getSearchBooks(name: String, tag: String, start: Int, count: Int): Observable<BookDetail> {
         return retrofitService!!.getSearchBook(name, tag, start, count)
     }
+
+
 }

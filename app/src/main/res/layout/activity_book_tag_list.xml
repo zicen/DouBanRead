@@ -5,11 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.zhenquan.doubanread.ui.classfiy.BookListActivity">
+    tools:context="com.zhenquan.doubanread.ui.classfiy.BookTagListActivity">
+
     <include layout="@layout/toolbar" />
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:id="@+id/book_list_recycle"
+        android:id="@+id/book_tag_list_recycle"
         android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
 </LinearLayout>
