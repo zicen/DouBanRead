@@ -1,34 +1,24 @@
 package com.zhenquan.doubanread.ui.classfiy
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
-import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import com.zhenquan.doubanread.R
 import com.zhenquan.doubanread.base.BaseActivity
 import com.zhenquan.doubanread.manager.DataManager
-import com.zhenquan.doubanread.moudle.BookDetail
+import com.zhenquan.doubanread.moudle.SearchBookList
 import kotlinx.android.synthetic.main.activity_book_list.*
 import org.jetbrains.anko.find
-import org.jetbrains.anko.toast
 import rx.Observer
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
-import com.scwang.smartrefresh.layout.api.RefreshLayout
-import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener
-import com.scwang.smartrefresh.layout.listener.OnRefreshListener
 import com.squareup.picasso.Picasso
 import com.zhenquan.doubanread.base.adapter.BaseRecyclerAdapter
 import com.zhenquan.doubanread.base.adapter.SmartViewHolder
 import com.zhenquan.doubanread.moudle.Book
-import java.util.*
 
 
 class BookListActivity : BaseActivity() {
@@ -54,6 +44,7 @@ class BookListActivity : BaseActivity() {
                     val intent = Intent()
                     intent.setClass(holder.itemView.context, BookDetailActivity::class.java)
                     intent.putExtra("title", model.title)
+                    intent.putExtra("id", model.id)
                     startActivity(intent)
                 }
             }
@@ -85,8 +76,8 @@ class BookListActivity : BaseActivity() {
         requestComposite.add(DataManager().getSearchBooks("", title, start, 20)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(object : Observer<BookDetail> {
-                    override fun onNext(t: BookDetail?) {
+                .subscribe(object : Observer<SearchBookList> {
+                    override fun onNext(t: SearchBookList?) {
                         t?.books?.let {
                             adapter.loadmore(it)
                             start += it.size
@@ -117,8 +108,8 @@ class BookListActivity : BaseActivity() {
         requestComposite.add(DataManager().getSearchBooks("", title, start_getdata, 20)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(object : Observer<BookDetail> {
-                    override fun onNext(t: BookDetail?) {
+                .subscribe(object : Observer<SearchBookList> {
+                    override fun onNext(t: SearchBookList?) {
                         t?.books?.let {
                             adapter.refresh(it)
                             book_list_refreshLayout.finishRefresh()

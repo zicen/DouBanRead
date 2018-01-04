@@ -8,9 +8,14 @@
     tools:context="com.zhenquan.doubanread.ui.classfiy.BookTagListActivity">
 
     <include layout="@layout/toolbar" />
-
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srlEnablePureScrollMode="true">
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:id="@+id/book_tag_list_recycle"
         android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 </LinearLayout>

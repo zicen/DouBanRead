@@ -176,8 +176,8 @@ class MainActivity : BaseActivity() {
          requestComposite.add(DataManager().getSearchBooks("金瓶梅", "", 0, 1)
                  .subscribeOn(Schedulers.io())
                  .observeOn(AndroidSchedulers.mainThread())
-                 .subscribe(object : Observer<BookDetail> {
-                     override fun onNext(t: BookDetail?) {
+                 .subscribe(object : Observer<SearchBookList> {
+                     override fun onNext(t: SearchBookList?) {
                          tv.text = t.toString()
                      }
 
@@ -205,8 +205,8 @@ class MainActivity : BaseActivity() {
          var observable = service.getSearchBook("金瓶梅", "", 0, 1)
          observable.subscribeOn(Schedulers.io())
                  .observeOn(AndroidSchedulers.mainThread())
-                 .subscribe(object : Observer<BookDetail> {
-                     override fun onNext(t: BookDetail?) {
+                 .subscribe(object : Observer<SearchBookList> {
+                     override fun onNext(t: SearchBookList?) {
                          tv.text = t.toString()
                      }
 
