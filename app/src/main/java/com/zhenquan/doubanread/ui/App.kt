@@ -1,12 +1,19 @@
 package com.zhenquan.doubanread.ui
 
 import android.app.Application
+import android.content.Context
 import android.os.Handler
 import android.os.Looper
+import android.support.annotation.NonNull
+import android.support.v7.app.AppCompatDelegate
 import android.util.Log
 import android.widget.Toast
+import com.scwang.smartrefresh.layout.SmartRefreshLayout
+import com.scwang.smartrefresh.layout.api.*
+import com.scwang.smartrefresh.layout.header.ClassicsHeader
 import com.wanjian.cockroach.Cockroach
 import com.zhenquan.doubanread.R
+import com.zhenquan.doubanread.util.DynamicTimeFormat
 import com.zhenquan.doubanread.util.Utils
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig
 
@@ -17,6 +24,15 @@ import uk.co.chrisjenx.calligraphy.CalligraphyConfig
 class App : Application() {
     //static 代码段可以防止内存泄露
 
+    companion object {
+        init {
+            AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
+            SmartRefreshLayout.setDefaultRefreshHeaderCreater { context, layout ->
+                layout?.setPrimaryColorsId(R.color.colorPrimary, android.R.color.white)
+                ClassicsHeader(context).setTimeFormat(DynamicTimeFormat("更新于 %s"))
+            }
+        }
+    }
     override fun onCreate() {
         super.onCreate()
         //永不crash

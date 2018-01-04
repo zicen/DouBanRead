@@ -32,7 +32,7 @@ class BookTagListActivity : BaseActivity() {
         }
         book_tag_list_recycle.adapter = BookTagListAdapter(filter) {
             val intent = Intent()
-            intent.setClass(this, BookListActivity::class.java)
+            intent.setClass(BookTagListActivity@this, BookListActivity::class.java)
             intent.putExtra("title", it.name)
             startActivity(intent)
         }

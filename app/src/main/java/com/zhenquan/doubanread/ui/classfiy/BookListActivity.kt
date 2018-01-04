@@ -1,5 +1,6 @@
 package com.zhenquan.doubanread.ui.classfiy
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
@@ -7,6 +8,9 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
 import com.zhenquan.doubanread.R
 import com.zhenquan.doubanread.base.BaseActivity
 import com.zhenquan.doubanread.manager.DataManager
@@ -20,7 +24,11 @@ import rx.schedulers.Schedulers
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener
+import com.squareup.picasso.Picasso
+import com.zhenquan.doubanread.base.adapter.BaseRecyclerAdapter
+import com.zhenquan.doubanread.base.adapter.SmartViewHolder
 import com.zhenquan.doubanread.moudle.Book
+import java.util.*
 
 
 class BookListActivity : BaseActivity() {
@@ -33,27 +41,36 @@ class BookListActivity : BaseActivity() {
     }
 
     val toolbar: Toolbar by lazy { find<Toolbar>(R.id.toolbar) }
-    var datalist: MutableList<Book> = ArrayList()
+    val adapter: BaseRecyclerAdapter<Book> by lazy {
+        object : BaseRecyclerAdapter<Book>(R.layout.item_book_list) {
+            override fun onBindViewHolder(holder: SmartViewHolder, model: Book, position: Int) {
+                holder.text(R.id.tv_book_name, model.title)
+                holder.text(R.id.tv_book_author, model.author[0])
+                holder.text(R.id.tv_book_comment, model.rating.average)
+                holder.text(R.id.tv_book_jianjie, model.summary)
+                val image = holder.image(R.id.iv_book_list)
+                Picasso.with(holder.itemView.context).load(model.image).into(image)
+                holder.itemView.setOnClickListener {
+                    val intent = Intent()
+                    intent.setClass(holder.itemView.context, BookDetailActivity::class.java)
+                    intent.putExtra("title", model.title)
+                    startActivity(intent)
+                }
+            }
+        }
+    }
     var start = 0
-    var count = 20
     override fun initListener() {
         val title = initToolBar()
         book_list_recycle.layoutManager = LinearLayoutManager(this)
-        book_list_recycle.adapter = BookListAdapter(datalist) {
-            toast(it.toString())
-        }
-        if (title != null) {
-            getData(title, 0, 20)
-        }
-
+        book_list_recycle.adapter = adapter
         book_list_refreshLayout.setOnRefreshListener {
-            toast("onRefresh")
-            getData(title!!, 0, 20)
+            initData(title!!, 0)
         }
         book_list_refreshLayout.setOnLoadmoreListener({ refreshlayout ->
-            toast("onLoadmore")
-            getData(title!!, start, count)
+            getData(title!!, start)
         })
+        book_list_refreshLayout.autoRefresh()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -64,25 +81,51 @@ class BookListActivity : BaseActivity() {
     }
 
 
-    private fun BookListActivity.getData(title: String, start_getdata: Int, count_getdata: Int) {
-        requestComposite.add(DataManager().getSearchBooks("", title, start, count)
+    private fun getData(title: String, start_getdata: Int) {
+        requestComposite.add(DataManager().getSearchBooks("", title, start, 20)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(object : Observer<BookDetail> {
                     override fun onNext(t: BookDetail?) {
                         t?.books?.let {
-                            if (start_getdata == 0) {
-                                datalist.clear()
-                                datalist.addAll(it)
-                                start = 20
-                                count = 40
-                            }else{
-                                datalist.addAll(it)
-                                start += 20
-                                count += 20
+                            adapter.loadmore(it)
+                            start += it.size
+                            if (it.size < 20) {
+                                Toast.makeText(application, "数据全部加载完毕", Toast.LENGTH_SHORT).show()
+                                book_list_refreshLayout.finishLoadmoreWithNoMoreData()//将不会再次触发加载更多事件
+                            } else {
+                                book_list_refreshLayout.finishLoadmore()
                             }
-                            book_list_recycle.adapter.notifyDataSetChanged()
+
                         }
+
+                    }
+
+                    override fun onCompleted() {
+                    }
+
+                    override fun onError(e: Throwable?) {
+                        e?.printStackTrace()
+                    }
+
+                })
+
+        )
+    }
+
+    private fun initData(title: String, start_getdata: Int) {
+        requestComposite.add(DataManager().getSearchBooks("", title, start_getdata, 20)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(object : Observer<BookDetail> {
+                    override fun onNext(t: BookDetail?) {
+                        t?.books?.let {
+                            adapter.refresh(it)
+                            book_list_refreshLayout.finishRefresh()
+                            book_list_refreshLayout.resetNoMoreData()
+                            start = it.size
+                        }
+
                     }
 
                     override fun onCompleted() {
