@@ -24,15 +24,15 @@ import uk.co.chrisjenx.calligraphy.CalligraphyConfig
 class App : Application() {
     //static 代码段可以防止内存泄露
 
-    companion object {
-        init {
-            AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
-            SmartRefreshLayout.setDefaultRefreshHeaderCreater { context, layout ->
-                layout?.setPrimaryColorsId(R.color.colorPrimary, android.R.color.white)
-                ClassicsHeader(context).setTimeFormat(DynamicTimeFormat("更新于 %s"))
-            }
-        }
-    }
+//    companion object {
+//        init {
+//            AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
+//            SmartRefreshLayout.setDefaultRefreshHeaderCreater { context, layout ->
+//                layout?.setPrimaryColorsId(R.color.colorPrimary, android.R.color.white)
+//                ClassicsHeader(context).setTimeFormat(DynamicTimeFormat("更新于 %s"))
+//            }
+//        }
+//    }
     override fun onCreate() {
         super.onCreate()
         //永不crash

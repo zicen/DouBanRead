@@ -3,6 +3,7 @@ package com.zhenquan.doubanread.ui.classfiy
 import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
@@ -62,6 +63,7 @@ class BookListActivity : BaseActivity() {
             getData(title!!, start)
         })
         book_list_refreshLayout.autoRefresh()
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -100,7 +102,6 @@ class BookListActivity : BaseActivity() {
                     }
 
                 })
-
         )
     }
 
@@ -111,6 +112,8 @@ class BookListActivity : BaseActivity() {
                 .subscribe(object : Observer<SearchBookList> {
                     override fun onNext(t: SearchBookList?) {
                         t?.books?.let {
+                            Log.e("response", "response size:"+it.size)
+
                             adapter.refresh(it)
                             book_list_refreshLayout.finishRefresh()
                             book_list_refreshLayout.resetNoMoreData()

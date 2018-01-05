@@ -9,17 +9,19 @@
 
     <include layout="@layout/toolbar" />
 
-    <com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:id="@+id/book_list_refreshLayout"
         android:layout_width="match_parent"
         app:srlEnableScrollContentWhenLoaded="true"
         app:srlEnableFooterFollowWhenLoadFinished="true"
         android:layout_height="match_parent">
 
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/book_list_recycle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+
         <com.scwang.smartrefresh.layout.footer.ClassicsFooter
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
