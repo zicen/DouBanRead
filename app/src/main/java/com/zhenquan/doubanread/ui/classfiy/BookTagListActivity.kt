@@ -15,6 +15,8 @@ import org.jetbrains.anko.find
 import java.nio.charset.Charset
 
 class BookTagListActivity : BaseActivity() {
+
+
     override fun initView(rootView: View?) {
 
     }

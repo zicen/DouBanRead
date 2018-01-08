@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.coorchice.library.SuperTextView
+        android:id="@+id/stv_go_login"
+        style="@style/entrance_button"
+        android:text="登陆"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:pressBgColor="@color/cyan_shallow"
+        app:solid="@color/cyan_dark" />
+
+    <com.coorchice.library.SuperTextView
+        android:id="@+id/stv_go_register"
+        style="@style/entrance_button"
+        android:layout_marginTop="10dp"
+        android:text="注册"
+        app:layout_constraintTop_toBottomOf="@id/stv_go_login"
+        app:pressBgColor="@color/cyan_shallow2"
+        app:solid="@color/cyan_shallow" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@mipmap/ic_launcher"
+        app:layout_constraintBottom_toTopOf="@id/stv_go_login"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

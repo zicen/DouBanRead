@@ -6,4 +6,5 @@
     <dimen name="bottom_nvg_icon_margin">2dp</dimen>
     <dimen name="drawer_view_width">280dp</dimen>
     <dimen name="action_menu_margin">5dp</dimen>
+    <dimen name="toolbar_elevation">4dp</dimen>
 </resources>

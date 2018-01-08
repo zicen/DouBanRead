@@ -1,14 +1,12 @@
 package com.zhenquan.doubanread.net
 
-import android.content.Context
 import android.util.Log
+import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
-import com.google.gson.GsonBuilder
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.converter.gson.GsonConverterFactory
-import java.lang.Math.log
 import java.util.concurrent.TimeUnit
 
 
@@ -38,8 +36,21 @@ object RetrofitHelper {
                 .build()
     }
 
+    private val retrofitForAliYun by lazy {
+        Retrofit.Builder()
+                .baseUrl("http://112.74.191.1:9000/")
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .build()
+    }
+
     fun getServer(): RetrofitService? {
         return retrofit?.create(RetrofitService::class.java)
+    }
+
+    fun getServerForAliYun(): RetrofitService? {
+        return retrofitForAliYun?.create(RetrofitService::class.java)
     }
 
 }

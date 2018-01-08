@@ -13,7 +13,12 @@
     <color name="white">#ffffff</color>
     <color name="half_white">#88f0f0f0</color>
     <color name="global_minor">#52a384</color>
+    <color name="cyan_dark">#76A3B2</color>
+    <color name="cyan_shallow">#9DBBC6</color>
+    <color name="cyan_shallow2">#abc6cf</color>
+    <color name="cyan_shallow3">#EAEEF2</color>
     <color name="black">#000000</color>
+    <color name="bar_divide">#f0f0f0</color>
     <color name="book_detail_backgroud">#F8FAF9</color>
     <color name="text_minor_dark">#80878f</color><!-- 次要文字颜色 -->
     <color name="text_hint_gray">#bbbbbb</color><!-- 提示文字颜色 -->

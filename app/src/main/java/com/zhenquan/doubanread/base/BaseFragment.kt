@@ -16,8 +16,9 @@ import rx.subscriptions.CompositeSubscription
  * Description:所有fragment的基类
  */
 abstract class BaseFragment : Fragment(), UiFunction {
-    val requestComposite by lazy { CompositeSubscription() }
 
+    override val requestComposite: CompositeSubscription
+        get() = CompositeSubscription()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

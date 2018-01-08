@@ -25,6 +25,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.classfiy.BookTagListActivity" />
+        <activity android:name=".ui.classfiy.BookListActivity"></activity>
+        <activity android:name=".ui.activity.UserEntranceActivity" />
         <activity android:name=".ui.classfiy.BookListActivity" />
         <activity android:name=".ui.classfiy.BookDetailActivity"></activity>
     </application>

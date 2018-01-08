@@ -15,10 +15,12 @@ import com.zhenquan.doubanread.ui.mine.MineFragment
 import com.zhenquan.doubanread.ui.recommendation.RecommendationFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.drawer_view.*
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
 
 class MainActivity : BaseActivity() {
+
 
     override fun getLayoutId(): Int {
         return R.layout.activity_main
@@ -46,39 +48,41 @@ class MainActivity : BaseActivity() {
         dl_drawerlayout.addDrawerListener(
                 ActionBarDrawerToggle(this, dl_drawerlayout, t_toolbar, R.string.open, R.string.close).apply { syncState() }
         )
-        //购物车
+        //登陆注册
+        tv_user_entrance.setOnClickListener {
+            startActivity<UserEntranceActivity>()
+        }
 
-        (0 until  drawer_item_group.childCount).map { drawer_item_group.getChildAt(it) }.filter { it is SuperTextView }.forEach {
-            it.setOnClickListener {
-                v->
+        (0 until drawer_item_group.childCount).map { drawer_item_group.getChildAt(it) }.filter { it is SuperTextView }.forEach {
+            it.setOnClickListener { v ->
                 when (v) {
-                    //购物车
-                    stv_shopping_cart->{
-                        imgToast(R.mipmap.ic_action_category,"购物车")
+                //购物车
+                    stv_shopping_cart -> {
+                        imgToast(R.mipmap.ic_action_category, "购物车")
                     }
-                    //余额
-                    stv_balance->{
-                        imgToast(R.mipmap.ic_action_category,"余额")
+                //余额
+                    stv_balance -> {
+                        imgToast(R.mipmap.ic_action_category, "余额")
                     }
-                    //礼券
-                    stv_coupon->{
-                        imgToast(R.mipmap.ic_action_category,"礼券")
+                //礼券
+                    stv_coupon -> {
+                        imgToast(R.mipmap.ic_action_category, "礼券")
                     }
-                    //礼物
-                    stv_gift->{
-                        imgToast(R.mipmap.ic_action_category,"礼物")
+                //礼物
+                    stv_gift -> {
+                        imgToast(R.mipmap.ic_action_category, "礼物")
                     }
-                    //搜索
-                    stv_search->{
-                        imgToast(R.mipmap.ic_action_category,"搜索")
+                //搜索
+                    stv_search -> {
+                        imgToast(R.mipmap.ic_action_category, "搜索")
                     }
-                    //设置
-                    stv_setting->{
-                        imgToast(R.mipmap.ic_action_category,"设置")
+                //设置
+                    stv_setting -> {
+                        imgToast(R.mipmap.ic_action_category, "设置")
                     }
-                    //反馈
-                    stv_feedback->{
-                        imgToast(R.mipmap.ic_action_category,"反馈")
+                //反馈
+                    stv_feedback -> {
+                        imgToast(R.mipmap.ic_action_category, "反馈")
                     }
                 }
                 dl_drawerlayout.closeDrawers()

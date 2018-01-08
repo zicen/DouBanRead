@@ -34,6 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="登陆 | 注册"
+        android:id="@+id/tv_user_entrance"
         android:textColor="#fff"
         android:textSize="18sp"
         android:textStyle="bold"

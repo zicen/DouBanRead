@@ -27,7 +27,8 @@ object ToastUtil {
     private var oldMsg: String? = null
 
 
-    fun imageToast(context: Context, @DrawableRes imgRes: Int, msg: String? = "auth success") {
+    fun imageToast(@DrawableRes imgRes: Int, msg: String? = "auth success") {
+        val context = Utils.getContext()
         if (imageToast == null) {
             imageToast = Toast.makeText(context, msg, Toast.LENGTH_SHORT)
             imageToast?.let {
@@ -54,7 +55,8 @@ object ToastUtil {
 
     }
 
-    fun systemToast(context: Context, msg: String) {
+    fun systemToast(msg: String) {
+        val context = Utils.getContext()
         if (systemToast == null) {
             systemToast = Toast.makeText(context, msg, Toast.LENGTH_SHORT)
             systemToast?.let {

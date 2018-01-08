@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.coorchice.library.SuperTextView
+        android:id="@+id/stv_username_bg"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        app:corner="1dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:solid="@color/cyan_shallow3" />
+
+    <com.coorchice.library.SuperTextView
+        android:id="@+id/stv_password_bg"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        app:corner="1dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/stv_username_bg"
+        app:solid="@color/cyan_shallow3" />
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:id="@+id/et_auth_username"
+        android:background="@null"
+        android:gravity="center_vertical"
+        android:hint="邮箱/手机号"
+        android:maxLength="26"
+        android:paddingLeft="10dp"
+        android:singleLine="true"
+        android:textColorHint="#A9ABAB"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/stv_username_bg"
+        app:layout_constraintLeft_toLeftOf="@id/stv_username_bg"
+        app:layout_constraintRight_toRightOf="@id/stv_username_bg"
+        app:layout_constraintTop_toTopOf="@id/stv_username_bg" />
+
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginRight="10dp"
+        android:background="@mipmap/ic_launcher"
+        app:layout_constraintBottom_toBottomOf="@id/stv_password_bg"
+        app:layout_constraintRight_toRightOf="@id/stv_password_bg"
+        app:layout_constraintTop_toTopOf="@id/stv_password_bg" />
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@null"
+        android:gravity="center_vertical"
+        android:hint="密码"
+        android:inputType="textPassword"
+        android:maxLength="16"
+        android:paddingLeft="10dp"
+        android:singleLine="true"
+        android:id="@+id/et_auth_password"
+        android:textColorHint="#A9ABAB"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/stv_password_bg"
+        app:layout_constraintLeft_toLeftOf="@id/stv_password_bg"
+        app:layout_constraintRight_toRightOf="@id/stv_password_bg"
+        app:layout_constraintTop_toTopOf="@id/stv_password_bg" />
+
+
+    <com.coorchice.library.SuperTextView
+        android:id="@+id/stv_login"
+        style="@style/entrance_button"
+        android:layout_marginTop="20dp"
+        android:text="登陆"
+        app:layout_constraintTop_toBottomOf="@id/stv_password_bg"
+        app:pressBgColor="@color/cyan_shallow"
+        app:solid="@color/cyan_dark" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="忘记密码"
+        android:textColor="@color/cyan_dark"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/stv_login" />
+
+</android.support.constraint.ConstraintLayout>
