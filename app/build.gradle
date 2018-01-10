@@ -56,4 +56,6 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.5.2'
     //jsoup
     implementation 'org.jsoup:jsoup:1.11.2'
+    //最屌Adapter
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.31'
 }

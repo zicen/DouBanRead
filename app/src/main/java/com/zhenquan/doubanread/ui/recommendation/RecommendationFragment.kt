@@ -18,15 +18,16 @@ import org.jetbrains.anko.support.v4.onUiThread
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 
+
 /**
  * Created by 44162 on 2018/1/2.
  * @描述 推荐
  */
 class RecommendationFragment : BaseFragment() {
     val TAG = "RecommendationFragment"
-    val adapter: BaseRecyclerAdapter<BookInfo> by lazy {
-        object : BaseRecyclerAdapter<BookInfo>(R.layout.item_recommend_book_list) {
-            override fun onBindViewHolder(holder: SmartViewHolder, model: BookInfo, position: Int) {
+    val adapter: BaseRecyclerAdapter<RecommendBookInfo> by lazy {
+        object : BaseRecyclerAdapter<RecommendBookInfo>(R.layout.item_recommend_book_list) {
+            override fun onBindViewHolder(holder: SmartViewHolder, model: RecommendBookInfo, position: Int) {
                 holder.text(R.id.tv_recommend_book_name, model.title)
                 holder.text(R.id.tv_recommend_book_author, model.author)
                 Picasso.with(holder.itemView.context).load(model.image).into(holder.image(R.id.iv_recommend_book_list))
@@ -41,6 +42,8 @@ class RecommendationFragment : BaseFragment() {
         }
     }
 
+
+
     //爬取页面https://book.douban.com/
     override fun getLayoutId(): Int {
         return R.layout.fragment_recommendation
@@ -48,9 +51,6 @@ class RecommendationFragment : BaseFragment() {
 
     val regexNumber by lazy { Regex("[0-9]+") }
     override fun initView(rootView: View?) {
-        val fragment_recommend_recycle = rootView?.find<RecyclerView>(R.id.fragment_recommend_recycle)
-        fragment_recommend_recycle?.layoutManager = GridLayoutManager(activity, 3)
-        fragment_recommend_recycle?.adapter = adapter
         var alldatalist = ArrayList<BookInfo>()
         var dataList_recommend = ArrayList<RecommendBookInfo>()
         var dataList_infomation = ArrayList<InformationBookInfo>()
@@ -58,6 +58,10 @@ class RecommendationFragment : BaseFragment() {
         var dataList_shop = ArrayList<ShopBookInfo>()
         var dataList_elc = ArrayList<ElecBookInfo>()
         var dataList_comment = ArrayList<CommentBookInfo>()
+
+        val fragment_recommend_recycle = rootView?.find<RecyclerView>(R.id.fragment_recommend_recycle)
+        fragment_recommend_recycle?.layoutManager = GridLayoutManager(activity, 3)
+        fragment_recommend_recycle?.adapter = adapter
         doAsync {
             //后台执行代码
             try {
@@ -92,7 +96,7 @@ class RecommendationFragment : BaseFragment() {
                 alldatalist.addAll(dataList_shop)
                 alldatalist.addAll(dataList_elc)
                 alldatalist.addAll(dataList_comment)
-                adapter.refresh(alldatalist)
+                adapter.refresh(dataList_recommend)
             }
 
         }
@@ -275,3 +279,4 @@ class RecommendationFragment : BaseFragment() {
         }
     }
 }
+
