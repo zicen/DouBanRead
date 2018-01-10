@@ -80,6 +80,7 @@ class RecommendationFragment : BaseFragment() {
 
                 //书评
                 setReviewBookData(doc, dataList_comment)
+
             } catch (e: Exception) {
                 Log.e("mytag", e.message)
             }
@@ -90,7 +91,7 @@ class RecommendationFragment : BaseFragment() {
                 alldatalist.addAll(dataList_attention)
                 alldatalist.addAll(dataList_shop)
                 alldatalist.addAll(dataList_elc)
-                alldatalist.addAll(dataList_recommend)
+                alldatalist.addAll(dataList_comment)
                 adapter.refresh(alldatalist)
             }
 
@@ -105,7 +106,7 @@ class RecommendationFragment : BaseFragment() {
         for (content in commentContent) {
             var book = CommentBookInfo()
             val title = content.select("img.lazy").attr("alt")
-            val image = content.select("img.lazy").attr("src")
+            val image = content.select("img.lazy").attr("data-original")
             val detailUrl = content.select("div.review-hd").select("a").attr("href")
             val review_meta = content.select("div.review-meta")
             val author = review_meta.select("a")[0].text()
@@ -124,7 +125,7 @@ class RecommendationFragment : BaseFragment() {
         val commentLastContent = commentBody.select("div.review").select(".last")
         var book_last = CommentBookInfo()
         val title = commentLastContent.select("img.lazy").attr("alt")
-        val image = commentLastContent.select("img.lazy").attr("src")
+        val image = commentLastContent.select("img.lazy").attr("data-original")
         val detailUrl = commentLastContent.select("div.review-hd").select("a").attr("href")
         val review_meta = commentLastContent.select("div.review-meta")
         val author = review_meta.select("a")[0].text()
@@ -138,7 +139,6 @@ class RecommendationFragment : BaseFragment() {
         book_last.review_bookname = review_bookname
         book_last.star = star
         book_last.review_content = review_content
-        Log.e(TAG, "book last:" + book_last.toString())
         dataList_comment.add(book_last)
     }
 
