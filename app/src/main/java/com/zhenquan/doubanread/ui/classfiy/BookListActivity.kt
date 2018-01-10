@@ -28,7 +28,6 @@ class BookListActivity : BaseActivity() {
     }
 
     override fun initView(rootView: View?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     val toolbar: Toolbar by lazy { find<Toolbar>(R.id.toolbar) }
