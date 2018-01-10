@@ -1,4 +1,4 @@
-package com.zhenquan.doubanread.moudle;
+package com.zhenquan.doubanread.moudle.bookinfo;
 
 import java.io.Serializable;
 
@@ -6,20 +6,20 @@ import java.io.Serializable;
  * Created by ry on 2018/1/10.
  */
 
-public class RecommendBookInfo implements Serializable {
+public class BookInfo implements Serializable {
     private String title;
     private String author;
     private String image;
     private String jianjie;
     private String publisher;
     private String detailUrl;
-    private int id;
+    private String id;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
