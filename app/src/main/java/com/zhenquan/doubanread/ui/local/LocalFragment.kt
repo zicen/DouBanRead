@@ -26,7 +26,7 @@ class LocalFragment : BaseFragment() {
     val adapter: BaseRecyclerAdapter<LocalBookInfo> by lazy {
         object : BaseRecyclerAdapter<LocalBookInfo>(R.layout.item_local_book_list) {
             override fun onBindViewHolder(holder: SmartViewHolder, model: LocalBookInfo, position: Int) {
-                holder.text(R.id.iv_local_book_list, model.name)
+                holder.text(R.id.tv_local_book_name, model.name)
                 holder.itemView.setOnClickListener {
 //                    val intent = Intent()
 //                    intent.setClass(holder.itemView.context, BookDetailActivity::class.java)
@@ -47,7 +47,7 @@ class LocalFragment : BaseFragment() {
         var  list = ArrayList<LocalBookInfo>()
         var num = 0
         while (num <20){
-            list.add(LocalBookInfo("bookname" + num,""))
+            list.add(LocalBookInfo("书籍名" + num,""))
             num++
         }
         adapter.refresh(list)

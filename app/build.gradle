@@ -53,5 +53,7 @@ dependencies {
     //全局字体替换
     implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
     //picasso
-    compile 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    //jsoup
+    implementation 'org.jsoup:jsoup:1.11.2'
 }
