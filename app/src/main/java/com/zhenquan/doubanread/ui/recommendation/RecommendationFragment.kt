@@ -150,6 +150,7 @@ class RecommendationFragment : BaseFragment() {
             val cover = content.select("div.cover")
             val title = cover.select("img").attr("alt")
             val image = cover.select("img").attr("src")
+            val detailUrl = cover.select("a").attr("href")
             val price = content.select("div.price").text()
             val author = content.select("span.author").text()
             val year = content.select("span.year").text()
@@ -163,6 +164,7 @@ class RecommendationFragment : BaseFragment() {
             book.publisher = publisher
             book.year = year
             book.price = price
+            book.detailUrl = detailUrl
             dataList_elc.add(BookMultipleItem(BookMultipleItem.ELEC_BOOK, 1, book))
         }
     }

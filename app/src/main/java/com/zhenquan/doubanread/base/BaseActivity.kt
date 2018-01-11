@@ -2,6 +2,7 @@ package com.zhenquan.doubanread.base
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.Toolbar
 import com.zhenquan.doubanread.base.function.UiFunction
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
@@ -25,6 +26,7 @@ abstract class BaseActivity : AppCompatActivity(), UiFunction {
         initListener()
         initData()
     }
+
 
     /**
      * 初始化数据
