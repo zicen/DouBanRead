@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/iv_elec_book_list"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="15dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/book_sample" />
+
+    <TextView
+        android:id="@+id/tv_elec_book_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_elec_book_list"
+        android:gravity="center"
+        android:text="書籍名"
+        android:textColor="@color/black" />
+    <TextView
+        android:layout_below="@+id/tv_elec_book_name"
+        android:id="@+id/tv_elec_book_price"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:text="author" />
+</RelativeLayout>

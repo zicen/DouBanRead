@@ -22,7 +22,9 @@
     <color name="book_detail_backgroud">#F8FAF9</color>
     <color name="text_minor_dark">#80878f</color><!-- 次要文字颜色 -->
     <color name="text_hint_gray">#bbbbbb</color><!-- 提示文字颜色 -->
+    <color name="txt_color">#48495F</color>
     <!-- 分割线颜色 -->
     <color name="divide_gary">#dbdbdb</color>
     <color name="book_tag_color">#65A9AC</color>
+
 </resources>

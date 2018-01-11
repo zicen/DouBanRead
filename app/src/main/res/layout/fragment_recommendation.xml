@@ -10,35 +10,14 @@
         android:id="@+id/refreshLayout_recommend"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/white"
-        app:srlAccentColor="@android:color/white"
-        app:srlEnableHeaderTranslationContent="false"
-        app:srlEnableNestedScrolling="true"
-        app:srlEnablePreviewInEditMode="false"
-        app:srlPrimaryColor="@color/colorPrimary">
+        app:srlEnablePureScrollMode="true">
 
-        <LinearLayout
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/fragment_recommend_recycle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:background="@android:color/white" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="新书推荐"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/fragment_recommend_recycle"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/white"
-                android:clipToPadding="false"
-                android:overScrollMode="never"
-                android:paddingTop="?attr/actionBarSize"
-                tools:listitem="@layout/item_recommend_book_list" />
-        </LinearLayout>
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
 

@@ -32,4 +32,5 @@ class BookTagListAdapter(val items: List<TagItem>, val itemClickListener: (TagIt
             view.setOnClickListener { itemClickListener(item) }
         }
     }
+
 }

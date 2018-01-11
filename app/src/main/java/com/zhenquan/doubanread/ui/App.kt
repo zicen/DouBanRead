@@ -23,7 +23,6 @@ import uk.co.chrisjenx.calligraphy.CalligraphyConfig
  */
 class App : Application() {
     //static 代码段可以防止内存泄露
-
 //    companion object {
 //        init {
 //            AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)

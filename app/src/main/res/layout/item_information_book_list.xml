@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/iv_infotmation_book_list"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:layout_margin="15dp"
+        android:layout_alignParentRight="true"
+        android:scaleType="fitXY"
+        android:src="@mipmap/book_sample" />
+
+    <TextView
+        android:id="@+id/tv_infotmation_book_name"
+        android:layout_toLeftOf="@+id/iv_infotmation_book_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:gravity="center"
+        tools:text="書籍名"
+        android:textColor="@color/black" />
+    <TextView
+        android:layout_below="@+id/tv_infotmation_book_name"
+        android:id="@+id/tv_infotmation_book_author"
+        android:layout_toLeftOf="@+id/iv_infotmation_book_list"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        tools:text="author" />
+    <TextView
+        android:layout_below="@+id/tv_infotmation_book_author"
+        android:id="@+id/tv_infotmation_book_jianjie"
+        android:layout_width="match_parent"
+        android:layout_toLeftOf="@+id/iv_infotmation_book_list"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        tools:text="review" />
+</RelativeLayout>
