@@ -13,10 +13,9 @@
         android:id="@+id/webview_refreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:srlAccentColor="@android:color/white"
-        app:srlEnableHeaderTranslationContent="false"
-        app:srlEnablePreviewInEditMode="false"
-        app:srlPrimaryColor="@color/colorPrimary">
+        app:srlAccentColor="@color/colorPrimary"
+        android:clipChildren="false"
+        >
         <com.scwang.smartrefresh.layout.header.ClassicsHeader
             android:id="@+id/webview_header"
             android:layout_width="match_parent"
