@@ -11,7 +11,6 @@ public class BookInfo implements Serializable {
     private String author;
     private String image;
     private String jianjie;
-    private String publisher;
     private String detailUrl;
     private String id;
 
@@ -63,13 +62,6 @@ public class BookInfo implements Serializable {
         this.jianjie = jianjie;
     }
 
-    public String getPublisher() {
-        return publisher;
-    }
-
-    public void setPublisher(String publisher) {
-        this.publisher = publisher;
-    }
 
     @Override
     public String toString() {
@@ -78,7 +70,6 @@ public class BookInfo implements Serializable {
                 ", author='" + author + '\'' +
                 ", image='" + image + '\'' +
                 ", jianjie='" + jianjie + '\'' +
-                ", publisher='" + publisher + '\'' +
                 '}';
     }
 }

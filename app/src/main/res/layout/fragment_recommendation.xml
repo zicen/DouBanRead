@@ -10,8 +10,14 @@
         android:id="@+id/refreshLayout_recommend"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:srlEnablePureScrollMode="true">
+        android:clipChildren="false"
+        app:srlAccentColor="@color/colorPrimary">
 
+            <com.scwang.smartrefresh.layout.header.ClassicsHeader
+                android:id="@+id/classics"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
         <android.support.v7.widget.RecyclerView
             android:id="@+id/fragment_recommend_recycle"
             android:layout_width="match_parent"

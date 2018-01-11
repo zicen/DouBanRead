@@ -26,6 +26,7 @@
     <TextView
         android:layout_width="match_parent"
         android:text="9.0"
+        android:textSize="10sp"
         android:id="@+id/tv_attention_book_star"
         android:layout_below="@+id/tv_attention_book_name"
         android:layout_toRightOf="@+id/iv_attention_book_list"
@@ -36,6 +37,8 @@
         android:layout_toRightOf="@+id/iv_attention_book_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="10sp"
+        android:maxLines="3"
         android:text="author" />
     <TextView
         android:id="@+id/tv_attention_book_tags"
@@ -43,10 +46,12 @@
         android:layout_toRightOf="@+id/iv_attention_book_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="10sp"
+        android:maxLines="2"
         android:text="tag" />
     <TextView
         android:layout_width="match_parent"
-        android:maxLines="3"
+        android:textSize="10sp"
         android:id="@+id/tv_attention_book_jianjie"
         tools:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
         android:paddingLeft="15dp"

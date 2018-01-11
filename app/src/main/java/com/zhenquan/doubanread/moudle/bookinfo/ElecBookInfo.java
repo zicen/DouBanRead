@@ -7,6 +7,7 @@ package com.zhenquan.doubanread.moudle.bookinfo;
 public class ElecBookInfo extends BookInfo {
     private String price;
     private String year;
+    private String publisher;
 
     public String getPrice() {
         return price;
@@ -22,5 +23,13 @@ public class ElecBookInfo extends BookInfo {
 
     public void setYear(String year) {
         this.year = year;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
     }
 }

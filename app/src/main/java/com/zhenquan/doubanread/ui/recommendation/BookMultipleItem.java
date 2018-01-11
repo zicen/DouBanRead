@@ -24,7 +24,8 @@ public class BookMultipleItem implements MultiItemEntity {
      * 头条目用这个
      * @param itemType
      * @param spanSize
-     * @param content
+     * @param content  标题内容
+     * @param hasMore  是否由更多
      */
     public BookMultipleItem(int itemType, int spanSize, String content,boolean hasMore) {
         this.itemType = itemType;

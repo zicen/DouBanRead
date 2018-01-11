@@ -5,15 +5,11 @@ import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.View
-import android.widget.Toast
-import com.chad.library.adapter.base.BaseQuickAdapter
-import com.squareup.picasso.Picasso
 import com.zhenquan.doubanread.R
 import com.zhenquan.doubanread.base.BaseFragment
-import com.zhenquan.doubanread.base.adapter.BaseRecyclerAdapter
-import com.zhenquan.doubanread.base.adapter.SmartViewHolder
 import com.zhenquan.doubanread.moudle.bookinfo.*
 import com.zhenquan.doubanread.ui.classfiy.BookDetailActivity
+import kotlinx.android.synthetic.main.fragment_recommendation.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.find
 import org.jetbrains.anko.support.v4.onUiThread
@@ -33,26 +29,33 @@ class RecommendationFragment : BaseFragment() {
     }
 
     val regexNumber by lazy { Regex("[0-9]+") }
+    var alldatalist = ArrayList<BookMultipleItem>()
+    var dataList_recommend = ArrayList<BookMultipleItem>()
+    var dataList_infomation = ArrayList<BookMultipleItem>()
+    var dataList_attention = ArrayList<BookMultipleItem>()
+    var dataList_shop = ArrayList<BookMultipleItem>()
+    var dataList_elc = ArrayList<BookMultipleItem>()
+    var dataList_comment = ArrayList<BookMultipleItem>()
+    val multipleAdapter = MultipleItemQuickAdapter(context, alldatalist)
     override fun initView(rootView: View?) {
-        var alldatalist = ArrayList<BookMultipleItem>()
-        var dataList_recommend = ArrayList<BookMultipleItem>()
-        var dataList_infomation = ArrayList<BookMultipleItem>()
-        var dataList_attention = ArrayList<BookMultipleItem>()
-        var dataList_shop = ArrayList<BookMultipleItem>()
-        var dataList_elc = ArrayList<BookMultipleItem>()
-        var dataList_comment = ArrayList<BookMultipleItem>()
-
         val fragment_recommend_recycle = rootView?.find<RecyclerView>(R.id.fragment_recommend_recycle)
+        refreshLayout_recommend.setOnRefreshListener({ refreshlayout ->
+            initData()
+            refreshlayout.finishRefresh()
+        })
         val manager = GridLayoutManager(context, 4)
-        fragment_recommend_recycle?.layoutManager = manager
-        val multipleAdapter = MultipleItemQuickAdapter(context,alldatalist)
+        fragment_recommend_recycle?.layoutManager = manager as RecyclerView.LayoutManager?
         multipleAdapter.setSpanSizeLookup({ _, position -> alldatalist[position].spanSize })
         fragment_recommend_recycle?.adapter = multipleAdapter
+    }
+
+    override fun initData() {
         doAsync {
             //后台执行代码
             try {
                 //从一个URL加载一个Document对象。
                 val doc = Jsoup.connect("https://book.douban.com/").get()
+                Log.e(TAG,"https://book.douban.com/")
                 //选择“新书速递”所在节点
                 setRecommendData(doc, dataList_recommend)
 
@@ -76,24 +79,23 @@ class RecommendationFragment : BaseFragment() {
             }
             onUiThread {
                 //UI线程
-                alldatalist.add(BookMultipleItem(BookMultipleItem.HEAD_BOOK,4,"新书速递",true))
+                alldatalist.add(BookMultipleItem(BookMultipleItem.HEAD_BOOK, 4, "新书速递", true))
                 alldatalist.addAll(dataList_recommend)
-                alldatalist.add(BookMultipleItem(BookMultipleItem.HEAD_BOOK,4, "图书资讯",false))
+                alldatalist.add(BookMultipleItem(BookMultipleItem.HEAD_BOOK, 4, "图书资讯", false))
                 alldatalist.addAll(dataList_infomation)
-                alldatalist.add(BookMultipleItem(BookMultipleItem.HEAD_BOOK,4, "最受关注图书榜",false))
+                alldatalist.add(BookMultipleItem(BookMultipleItem.HEAD_BOOK, 4, "最受关注图书榜", false))
                 alldatalist.addAll(dataList_attention)
-                alldatalist.add(BookMultipleItem(BookMultipleItem.HEAD_BOOK,4, "豆瓣书店",false))
+                alldatalist.add(BookMultipleItem(BookMultipleItem.HEAD_BOOK, 4, "豆瓣书店", false))
                 alldatalist.addAll(dataList_shop)
-                alldatalist.add(BookMultipleItem(BookMultipleItem.HEAD_BOOK,4, "电子图书",false))
+                alldatalist.add(BookMultipleItem(BookMultipleItem.HEAD_BOOK, 4, "电子图书", false))
                 alldatalist.addAll(dataList_elc)
-                alldatalist.add(BookMultipleItem(BookMultipleItem.HEAD_BOOK,4, "最受欢迎的书评",false))
+                alldatalist.add(BookMultipleItem(BookMultipleItem.HEAD_BOOK, 4, "最受欢迎的书评", false))
                 alldatalist.addAll(dataList_comment)
                 multipleAdapter.notifyDataSetChanged()
 
             }
 
         }
-
     }
 
     private fun setReviewBookData(doc: Document, dataList_comment: ArrayList<BookMultipleItem>) {
@@ -117,7 +119,7 @@ class RecommendationFragment : BaseFragment() {
             book.review_bookname = review_bookname
             book.star = star
             book.review_content = review_content
-            dataList_comment.add(BookMultipleItem(BookMultipleItem.COMMENT_BOOK,4,book))
+            dataList_comment.add(BookMultipleItem(BookMultipleItem.COMMENT_BOOK, 4, book))
         }
         val commentLastContent = commentBody.select("div.review").select(".last")
         var book_last = CommentBookInfo()
@@ -136,7 +138,7 @@ class RecommendationFragment : BaseFragment() {
         book_last.review_bookname = review_bookname
         book_last.star = star
         book_last.review_content = review_content
-        dataList_comment.add(BookMultipleItem(BookMultipleItem.COMMENT_BOOK,4,book_last))
+        dataList_comment.add(BookMultipleItem(BookMultipleItem.COMMENT_BOOK, 4, book_last))
     }
 
     private fun setEbookData(doc: Document, dataList_elc: ArrayList<BookMultipleItem>) {
@@ -161,7 +163,7 @@ class RecommendationFragment : BaseFragment() {
             book.publisher = publisher
             book.year = year
             book.price = price
-            dataList_elc.add(BookMultipleItem(BookMultipleItem.ELEC_BOOK,1,book))
+            dataList_elc.add(BookMultipleItem(BookMultipleItem.ELEC_BOOK, 1, book))
         }
     }
 
@@ -186,7 +188,7 @@ class RecommendationFragment : BaseFragment() {
                 book.jianjie = jianjie
                 book.detailUrl = detailUrl
                 book.id = regexNumber.find(detailUrl)?.value
-                dataList_recommend.add(BookMultipleItem(BookMultipleItem.RECOMMEND_BOOK,1,book))
+                dataList_recommend.add(BookMultipleItem(BookMultipleItem.RECOMMEND_BOOK, 1, book))
             }
 
         }
@@ -209,7 +211,7 @@ class RecommendationFragment : BaseFragment() {
             book.jianjie = abstract
             book.detailUrl = detailUrl
             book.id = regexNumber.find(detailUrl)?.value
-            dataList_infomation.add(BookMultipleItem(BookMultipleItem.INFORMATION_BOOK,4,book))
+            dataList_infomation.add(BookMultipleItem(BookMultipleItem.INFORMATION_BOOK, 4, book))
         }
     }
 
@@ -224,7 +226,7 @@ class RecommendationFragment : BaseFragment() {
             val image = cover.select("img").attr("src")
             val detailUrl = cover.select("a").attr("href")
             val author = content.select("p.author").text()
-            val star = content.select("p.average-rating").text()
+            val star = content.select("span.average-rating").text()
             val tag = content.select("p.book-list-classification").text()
             val reviews = content.select("p.reviews").text()
             book.title = title
@@ -235,7 +237,7 @@ class RecommendationFragment : BaseFragment() {
             book.star = star
             book.detailUrl = detailUrl
             book.id = regexNumber.find(detailUrl)?.value
-            dataList_attention.add(BookMultipleItem(BookMultipleItem.ATTENTION_BOOK,2,book))
+            dataList_attention.add(BookMultipleItem(BookMultipleItem.ATTENTION_BOOK, 2, book))
         }
     }
 
@@ -257,7 +259,7 @@ class RecommendationFragment : BaseFragment() {
         bookTop.free_delivery = free_delivery
         bookTop.jianjie = jianjie
         bookTop.detailUrl = detailUrl
-        dataList_shop.add(BookMultipleItem(BookMultipleItem.SHOP_BOOK,1,bookTop))
+        dataList_shop.add(BookMultipleItem(BookMultipleItem.SHOP_BOOK, 1, bookTop))
         val shudianContent = shudianBody.select("li")
         for (content in shudianContent) {
             var book = ShopBookInfo()
@@ -270,7 +272,7 @@ class RecommendationFragment : BaseFragment() {
             book.image = image
             book.price = price
             book.detailUrl = detailUrl
-            dataList_shop.add(BookMultipleItem(BookMultipleItem.SHOP_BOOK,1,book))
+            dataList_shop.add(BookMultipleItem(BookMultipleItem.SHOP_BOOK, 1, book))
         }
     }
 }

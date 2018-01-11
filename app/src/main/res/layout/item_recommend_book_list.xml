@@ -20,12 +20,14 @@
         android:layout_below="@+id/iv_recommend_book_list"
         android:gravity="center"
         android:text="書籍名"
+        android:maxLines="2"
         android:textColor="@color/black" />
     <TextView
         android:layout_below="@+id/tv_recommend_book_name"
         android:id="@+id/tv_recommend_book_author"
         android:layout_width="match_parent"
         android:gravity="center"
+        android:maxLines="2"
         android:layout_height="wrap_content"
         android:text="author" />
 </RelativeLayout>

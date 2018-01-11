@@ -35,12 +35,23 @@ public class MultipleItemQuickAdapter extends BaseMultiItemQuickAdapter<BookMult
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, BookMultipleItem item) {
+    protected void convert(BaseViewHolder helper, final BookMultipleItem item) {
         switch (helper.getItemViewType()) {
             case BookMultipleItem.HEAD_BOOK:
                 helper.setText(R.id.header, item.getContent());
                 if (item.isHasMore()) {
                     helper.getView(R.id.more).setVisibility(View.VISIBLE);
+                    helper.getView(R.id.more).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            //todo  go a web
+                            switch (item.getContent()) {
+                                case "新书速递":
+                                    break;
+
+                            }
+                        }
+                    });
                 }else {
                     helper.getView(R.id.more).setVisibility(View.GONE);
                 }
@@ -50,7 +61,7 @@ public class MultipleItemQuickAdapter extends BaseMultiItemQuickAdapter<BookMult
                 ImageView iv_recommend_book_list = (ImageView) helper.itemView.findViewById(R.id.iv_recommend_book_list);
                 Picasso.with(helper.getConvertView().getContext()).load(bookInfo.getImage()).into(iv_recommend_book_list);
                 helper.setText(R.id.tv_recommend_book_name, bookInfo.getTitle());
-                helper.setText(R.id.tv_recommend_book_author, bookInfo.getTitle());
+                helper.setText(R.id.tv_recommend_book_author, bookInfo.getAuthor());
                 break;
             case BookMultipleItem.ATTENTION_BOOK:
                 AttentionBookInfo bookInfo_attention = (AttentionBookInfo) item.getData();
@@ -82,6 +93,7 @@ public class MultipleItemQuickAdapter extends BaseMultiItemQuickAdapter<BookMult
                 ImageView iv_infotmation_book_list = (ImageView) helper.itemView.findViewById(R.id.iv_infotmation_book_list);
                 Picasso.with(helper.getConvertView().getContext()).load(bookInfo_infomation.getImage()).into(iv_infotmation_book_list);
                 helper.setText(R.id.tv_infotmation_book_name, bookInfo_infomation.getTitle());
+                helper.setText(R.id.tv_infotmation_book_author, bookInfo_infomation.getAuthor());
                 helper.setText(R.id.tv_infotmation_book_jianjie, bookInfo_infomation.getJianjie());
                 break;
 
