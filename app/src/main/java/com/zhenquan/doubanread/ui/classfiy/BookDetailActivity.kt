@@ -1,6 +1,7 @@
 package com.zhenquan.doubanread.ui.classfiy
 
 import android.support.v7.widget.Toolbar
+import android.text.TextUtils
 import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
@@ -20,6 +21,10 @@ import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 
 class BookDetailActivity : BaseActivity() {
+
+    var flag_jianjie = true
+    var flag_mulu = true
+
     val toolbar: Toolbar by lazy { find<Toolbar>(R.id.toolbar) }
     override fun getLayoutId(): Int {
         return R.layout.activity_book_detail
@@ -32,6 +37,28 @@ class BookDetailActivity : BaseActivity() {
         val title = initToolBar()
         val id = intent.getStringExtra("id")
         getData(id)
+        tv_book_detail_jianjie.setOnClickListener{
+            if (flag_jianjie) {
+                flag_jianjie = false
+                tv_book_detail_jianjie.ellipsize = null  //展开
+                tv_book_detail_jianjie.maxLines = 10000
+            }else{
+                flag_jianjie = true
+                tv_book_detail_jianjie.ellipsize = TextUtils.TruncateAt.END //收缩
+                tv_book_detail_jianjie.maxLines = 12
+            }
+        }
+        tv_book_detail_mulu.setOnClickListener {
+            if (flag_mulu) {
+                flag_mulu = false
+                tv_book_detail_mulu.ellipsize = null  //展开
+                tv_book_detail_mulu.maxLines = 10000
+            }else{
+                flag_mulu = true
+                tv_book_detail_mulu.ellipsize = TextUtils.TruncateAt.END //收缩
+                tv_book_detail_mulu.maxLines = 12
+            }
+        }
 
     }
 

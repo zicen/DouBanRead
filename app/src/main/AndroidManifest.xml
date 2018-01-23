@@ -30,7 +30,8 @@
         <activity android:name=".ui.classfiy.BookListActivity" />
         <activity android:name=".ui.classfiy.BookDetailActivity" />
         <activity android:name=".ui.activity.WebViewActivity" />
-        <activity android:name=".ui.activity.UserInfoSettingActivity"></activity>
+        <activity android:name=".ui.activity.UserInfoSettingActivity" />
+        <activity android:name=".ui.activity.SearchBookActivity"></activity>
     </application>
 
 </manifest>

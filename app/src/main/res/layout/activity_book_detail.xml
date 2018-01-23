@@ -80,6 +80,7 @@
                 android:textStyle="bold" />
             <TextView
                 android:layout_width="match_parent"
+                android:maxLines="12"
                 android:id="@+id/tv_book_detail_jianjie"
                 android:layout_height="wrap_content" />
 
@@ -98,6 +99,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:id="@+id/tv_book_detail_mulu"
+                android:maxLines="12"
                 android:layout_height="wrap_content" />
             <TextView
                 android:layout_width="wrap_content"

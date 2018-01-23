@@ -33,7 +33,7 @@
         app:contentInsetStartWithNavigation="0dp"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:theme="@style/CustomToolBar"
-        app:title="豆瓣阅读（练习）"
+        app:title="  易读"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/global_white_bg"

@@ -78,8 +78,9 @@ class RecommendationFragment : BaseFragment() {
                 Log.e("mytag", e.message)
             }
             onUiThread {
+                alldatalist.clear()
                 //UI线程
-                alldatalist.add(BookMultipleItem(BookMultipleItem.HEAD_BOOK, 4, "新书速递", true))
+                alldatalist.add(BookMultipleItem(BookMultipleItem.HEAD_BOOK, 4, "新书速递", false))
                 alldatalist.addAll(dataList_recommend)
 //                alldatalist.add(BookMultipleItem(BookMultipleItem.HEAD_BOOK, 4, "图书资讯", false))
 //                alldatalist.addAll(dataList_infomation)

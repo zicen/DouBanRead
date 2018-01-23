@@ -14,6 +14,7 @@ import com.zhenquan.doubanread.ui.local.CircleFragment
 import com.zhenquan.doubanread.ui.mine.MineFragment
 import com.zhenquan.doubanread.ui.recommendation.RecommendationFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
 
@@ -118,7 +119,7 @@ class MainActivity : BaseActivity() {
 
         //MenuAction 点击事件
         action_search.setOnClickListener {
-            toast("action_search")
+           startActivity<SearchBookActivity>()
         }
         action_category.setOnClickListener {
             toast("action_category")
