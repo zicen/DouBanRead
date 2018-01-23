@@ -43,17 +43,42 @@
         app:layout_constraintTop_toBottomOf="@id/stv_password_bg"
         app:solid="@color/cyan_shallow3" />
 
+    <com.coorchice.library.SuperTextView
+        android:id="@+id/stv_phone_bg"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        app:corner="1dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/stv_nickname_bg"
+        app:solid="@color/cyan_shallow3" />
+
+    <com.coorchice.library.SuperTextView
+        android:id="@+id/stv_email_bg"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        app:corner="1dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/stv_phone_bg"
+        app:solid="@color/cyan_shallow3" />
 
     <EditText
+        android:id="@+id/et_auth_username"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@null"
         android:gravity="center_vertical"
-        android:hint="邮箱/手机号"
+        android:hint="用户名(必填)"
         android:maxLength="26"
         android:paddingLeft="10dp"
         android:singleLine="true"
-        android:id="@+id/et_auth_username"
         android:textColorHint="#A9ABAB"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@id/stv_username_bg"
@@ -62,23 +87,14 @@
         app:layout_constraintTop_toTopOf="@id/stv_username_bg" />
 
 
-    <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginRight="10dp"
-        android:background="@mipmap/ic_launcher"
-        app:layout_constraintBottom_toBottomOf="@id/stv_password_bg"
-        app:layout_constraintRight_toRightOf="@id/stv_password_bg"
-        app:layout_constraintTop_toTopOf="@id/stv_password_bg" />
-
     <EditText
+        android:id="@+id/et_auth_password"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@null"
         android:gravity="center_vertical"
         android:hint="密码(最少6位)"
         android:inputType="textPassword"
-        android:id="@+id/et_auth_password"
         android:maxLength="16"
         android:paddingLeft="10dp"
         android:singleLine="true"
@@ -90,12 +106,12 @@
         app:layout_constraintTop_toTopOf="@id/stv_password_bg" />
 
     <EditText
+        android:id="@+id/et_auth_password2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@null"
         android:gravity="center_vertical"
-        android:id="@+id/et_auth_nickname"
-        android:hint="昵称(登陆后可更改)"
+        android:hint="重复输入密码"
         android:inputType="textPassword"
         android:maxLength="16"
         android:paddingLeft="10dp"
@@ -107,15 +123,49 @@
         app:layout_constraintRight_toRightOf="@id/stv_nickname_bg"
         app:layout_constraintTop_toTopOf="@id/stv_nickname_bg" />
 
+    <EditText
+        android:id="@+id/et_auth_phone"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@null"
+        android:gravity="center_vertical"
+        android:hint="手机号(选填)"
+        android:maxLength="26"
+        android:paddingLeft="10dp"
+        android:singleLine="true"
+        android:textColorHint="#A9ABAB"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/stv_phone_bg"
+        app:layout_constraintLeft_toLeftOf="@id/stv_phone_bg"
+        app:layout_constraintRight_toRightOf="@id/stv_phone_bg"
+        app:layout_constraintTop_toTopOf="@id/stv_phone_bg" />
+
+    <EditText
+        android:id="@+id/et_auth_email"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@null"
+        android:gravity="center_vertical"
+        android:hint="邮箱(选填)"
+        android:maxLength="26"
+        android:paddingLeft="10dp"
+        android:singleLine="true"
+        android:textColorHint="#A9ABAB"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/stv_email_bg"
+        app:layout_constraintLeft_toLeftOf="@id/stv_email_bg"
+        app:layout_constraintRight_toRightOf="@id/stv_email_bg"
+        app:layout_constraintTop_toTopOf="@id/stv_email_bg" />
+
     <com.coorchice.library.SuperTextView
+        android:id="@+id/stv_register"
         style="@style/entrance_button"
         android:layout_width="0dp"
         android:layout_marginLeft="10dp"
-        android:id="@+id/stv_register"
         android:layout_marginRight="10dp"
         android:layout_marginTop="12dp"
         android:text="注册"
-        app:layout_constraintTop_toBottomOf="@id/stv_nickname_bg"
+        app:layout_constraintTop_toBottomOf="@id/stv_email_bg"
         app:pressBgColor="@color/cyan_shallow"
         app:solid="@color/cyan_dark" />
 

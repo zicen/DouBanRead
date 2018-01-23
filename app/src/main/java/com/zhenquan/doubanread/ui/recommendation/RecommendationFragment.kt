@@ -60,19 +60,19 @@ class RecommendationFragment : BaseFragment() {
                 setRecommendData(doc, dataList_recommend)
 
                 //图书资讯
-                setInfoMationData(doc, dataList_infomation)
+//                setInfoMationData(doc, dataList_infomation)
 
                 //最受关注图书榜  class带空格的时候这样来做
                 setAttentionData(doc, dataList_attention)
 
                 //书店
-                setShudianData(doc, dataList_shop)
-
-                //电子书
-                setEbookData(doc, dataList_elc)
-
-                //书评
-                setReviewBookData(doc, dataList_comment)
+//                setShudianData(doc, dataList_shop)
+//
+//                //电子书
+//                setEbookData(doc, dataList_elc)
+//
+//                //书评
+//                setReviewBookData(doc, dataList_comment)
 
             } catch (e: Exception) {
                 Log.e("mytag", e.message)
@@ -81,16 +81,16 @@ class RecommendationFragment : BaseFragment() {
                 //UI线程
                 alldatalist.add(BookMultipleItem(BookMultipleItem.HEAD_BOOK, 4, "新书速递", true))
                 alldatalist.addAll(dataList_recommend)
-                alldatalist.add(BookMultipleItem(BookMultipleItem.HEAD_BOOK, 4, "图书资讯", false))
-                alldatalist.addAll(dataList_infomation)
+//                alldatalist.add(BookMultipleItem(BookMultipleItem.HEAD_BOOK, 4, "图书资讯", false))
+//                alldatalist.addAll(dataList_infomation)
                 alldatalist.add(BookMultipleItem(BookMultipleItem.HEAD_BOOK, 4, "最受关注图书榜", false))
                 alldatalist.addAll(dataList_attention)
-                alldatalist.add(BookMultipleItem(BookMultipleItem.HEAD_BOOK, 4, "豆瓣书店", false))
-                alldatalist.addAll(dataList_shop)
-                alldatalist.add(BookMultipleItem(BookMultipleItem.HEAD_BOOK, 4, "电子图书", false))
-                alldatalist.addAll(dataList_elc)
-                alldatalist.add(BookMultipleItem(BookMultipleItem.HEAD_BOOK, 4, "最受欢迎的书评", false))
-                alldatalist.addAll(dataList_comment)
+//                alldatalist.add(BookMultipleItem(BookMultipleItem.HEAD_BOOK, 4, "豆瓣书店", false))
+//                alldatalist.addAll(dataList_shop)
+//                alldatalist.add(BookMultipleItem(BookMultipleItem.HEAD_BOOK, 4, "电子图书", false))
+//                alldatalist.addAll(dataList_elc)
+//                alldatalist.add(BookMultipleItem(BookMultipleItem.HEAD_BOOK, 4, "最受欢迎的书评", false))
+//                alldatalist.addAll(dataList_comment)
                 multipleAdapter.notifyDataSetChanged()
 
             }

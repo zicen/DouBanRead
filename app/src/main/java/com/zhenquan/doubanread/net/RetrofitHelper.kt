@@ -44,13 +44,22 @@ object RetrofitHelper {
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build()
     }
-
+    private val retrofitForZhenQuanAliYun by lazy {
+        Retrofit.Builder()
+                .baseUrl("http://39.107.84.145:8080/")
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .build()
+    }
     fun getServer(): RetrofitService? {
         return retrofit?.create(RetrofitService::class.java)
     }
 
     fun getServerForAliYun(): RetrofitService? {
-        return retrofitForAliYun?.create(RetrofitService::class.java)
+        return retrofitForZhenQuanAliYun?.create(RetrofitService::class.java)
     }
+
+
 
 }

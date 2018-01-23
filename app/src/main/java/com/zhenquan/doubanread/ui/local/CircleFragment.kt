@@ -22,7 +22,7 @@ import java.lang.reflect.Array
  * Created by 44162 on 2018/1/3.
  * @描述 本地
  */
-class LocalFragment : BaseFragment() {
+class CircleFragment : BaseFragment() {
     val adapter: BaseRecyclerAdapter<LocalBookInfo> by lazy {
         object : BaseRecyclerAdapter<LocalBookInfo>(R.layout.item_local_book_list) {
             override fun onBindViewHolder(holder: SmartViewHolder, model: LocalBookInfo, position: Int) {

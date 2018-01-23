@@ -26,5 +26,6 @@
     <!-- 分割线颜色 -->
     <color name="divide_gary">#dbdbdb</color>
     <color name="book_tag_color">#65A9AC</color>
-
+    <color name="backgroud">#F4F5FE</color>
+    <color name="red">#00ffff</color>
 </resources>

@@ -1,8 +1,6 @@
 package com.zhenquan.doubanread.net
 
-import com.zhenquan.doubanread.moudle.AllOfBean
-import com.zhenquan.doubanread.moudle.BookDetail
-import com.zhenquan.doubanread.moudle.SearchBookList
+import com.zhenquan.doubanread.moudle.*
 import retrofit2.http.*
 import rx.Observable
 
@@ -18,12 +16,21 @@ interface RetrofitService {
     @GET("book/{id}")
     fun getBookDetail(@Path("id") id: String): Observable<BookDetail>
 
-    @FormUrlEncoded
-    @POST("auth/register")
-    fun authRegister(@Field("username") username: String, @Field("password") password: String): Observable<AllOfBean>
+//    @FormUrlEncoded
+//    @POST("auth/register")
+//    fun authRegister(@Field("username") username: String, @Field("password") password: String): Observable<AllOfBean>
+//
+//    @FormUrlEncoded
+//    @POST("auth/login")
+//    fun authLogin(@Field("username") username: String, @Field("password") password: String): Observable<AllOfBean>
+//
+
 
     @FormUrlEncoded
-    @POST("auth/login")
-    fun authLogin(@Field("username") username: String, @Field("password") password: String): Observable<AllOfBean>
+    @POST("user/login.do")
+    fun login(@Field("username") username: String, @Field("password") password: String): Observable<LoginUserInfo>
 
+    @FormUrlEncoded
+    @POST("user/register.do")
+    fun register(@FieldMap params: Map<String, String>): Observable<RegisterInfo>
 }

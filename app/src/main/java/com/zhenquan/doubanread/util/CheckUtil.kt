@@ -133,7 +133,9 @@ object CheckUtil {
 
     }
 
-
+    fun isSame(str: String,str2:String ):Boolean{
+        return str == str2
+    }
     /*判断是否全是数字*/
     fun isNumeric(str: String): Boolean {
 

@@ -12,7 +12,7 @@ import org.jetbrains.anko.find
 
 /**
  * Created by 44162 on 2018/1/3.
- * @描述 原创
+ * @描述 分类
  */
 class ClassfiyFragment : BaseFragment() {
     val tags = listOf<TagBean>(
