@@ -22,12 +22,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="点击查看数据库文件" />
-
-        <TextView
-            android:id="@+id/tv_sql"
+            android:text="查看tag数据库文件" />
+        <Button
+            android:id="@+id/btn_clear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="10dp"
+            android:text="清空tag数据库文件" />
+        <Button
+            android:id="@+id/btn_getBook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="点击获取分类下的书籍并存到sql" />
     </LinearLayout>
 </ScrollView>

@@ -1,5 +1,7 @@
 package com.zhenquan.doubanread.moudle
 
+import org.greenrobot.greendao.annotation.Entity
+import org.greenrobot.greendao.annotation.Id
 import java.io.Serializable
 
 /**
@@ -17,8 +19,12 @@ data class SearchBookList(
         return "SearchBookList(count=$count, start=$start, total=$total, books=$books)"
     }
 }
-
+@Entity
 data class Book(
+
+        @Id
+        val id: Int, //1456692
+        var categoryid: Int,
         val rating: Rating,
         val subtitle: String, //张竹坡批评第一奇书
         val author: List<String>,
@@ -32,7 +38,6 @@ data class Book(
         val pages: String,
         val images: Images,
         val alt: String, //https://book.douban.com/subject/1456692/
-        val id: String, //1456692
         val publisher: String, //齐鲁出版社
         val isbn10: String, //7533300815
         val isbn13: String, //9787533300814
@@ -42,7 +47,10 @@ data class Book(
         val author_intro: String,
         val summary: String, //本书由王汝梅与李昭恂、于凤树校点。
         val series: Series,
-        val price: String //268.00元
+        val price: String, //268.00元
+        val create_time: String,
+        val update_time: String
+
 
 ) {
     override fun toString(): String {

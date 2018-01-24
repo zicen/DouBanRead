@@ -34,7 +34,8 @@ public class GreenDaoContext extends ContextWrapper {
      */
     @Override
     public File getDatabasePath(String dbName) {
-        String dbDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
+        String dbDir = mContext.getFilesDir().getAbsolutePath();
+        Log.e("111", "dbDir:" + dbDir);
         if (TextUtils.isEmpty(dbDir)) {
             Log.e("SD卡管理：", "SD卡不存在，请加载SD卡");
             return null;
@@ -71,10 +72,15 @@ public class GreenDaoContext extends ContextWrapper {
         } else
             isFileCreateSuccess = true;
         // 返回数据库文件对象
-        if (isFileCreateSuccess)
+        if (isFileCreateSuccess){
+            Log.e("111","dbFile"+ dbFile.getAbsolutePath());
             return dbFile;
-        else
+        }else {
             return super.getDatabasePath(dbName);
+        }
+
+
+
     }
 
     /**
