@@ -122,7 +122,7 @@ class MainActivity : BaseActivity() {
            startActivity<SearchBookActivity>()
         }
         action_category.setOnClickListener {
-            toast("action_category")
+           startActivity<Json2SqlActivity>()
         }
         action_notification.setOnClickListener {
             toast("action_notification")

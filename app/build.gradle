@@ -3,6 +3,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'org.greenrobot.greendao'
 
 android {
     compileSdkVersion 26
@@ -60,4 +61,11 @@ dependencies {
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.31'
     implementation 'de.hdodenhof:circleimageview:2.2.0'
     implementation 'org.greenrobot:eventbus:3.1.1'
+    implementation'org.greenrobot:greendao:3.0.1'
+    implementation'org.greenrobot:greendao-generator:3.0.0'
+}
+greendao {
+    schemaVersion 2
+    daoPackage 'com.zhenquan.doubanread.greendao.gen'
+    targetGenDir 'src/main/java'
 }
