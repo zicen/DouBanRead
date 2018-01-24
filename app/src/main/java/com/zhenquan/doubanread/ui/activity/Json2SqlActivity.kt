@@ -18,6 +18,7 @@ import org.jetbrains.anko.toast
 import rx.Observer
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
+import java.io.File
 import java.nio.charset.Charset
 import java.text.SimpleDateFormat
 import java.util.*
@@ -78,6 +79,9 @@ class Json2SqlActivity : BaseActivity() {
             for (item in loadAll) {
                 sb.append(item.name + " ,")
             }
+            val toJson = Gson().toJson(loadAll)
+            val file = File(filesDir.absolutePath,"tag.json")
+            file.writeText(toJson)
             toast(sb.toString())
         }
         /**
@@ -86,12 +90,9 @@ class Json2SqlActivity : BaseActivity() {
         btn_getBook.setOnClickListener {
             val loadAll = tagDao.loadAll()
             pd.show()
-
             getData(loadAll[0].name!!, start, loadAll[0].id!!)
-
             Log.e(TAG, " 获取保存书籍信息完成" + lists.size)
             pd.dismiss()
-
         }
 
     }
