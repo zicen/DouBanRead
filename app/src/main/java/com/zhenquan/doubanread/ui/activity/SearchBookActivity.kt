@@ -10,43 +10,53 @@ import com.zhenquan.doubanread.wight.SearchHistoryItem
 import kotlinx.android.synthetic.main.activity_search_book.*
 
 class SearchBookActivity : BaseActivity() {
-    var history_dataSet = HashSet<String>()
+
     override fun getLayoutId(): Int {
         return R.layout.activity_search_book
     }
 
     override fun initView(rootView: View?) {
         initHistory()
+
+
         tv_search.setOnClickListener {
-            //save
-            saveHistory()
+            //request data
 
+
+            //save history
+            addHistory(edit_search.text.toString())
             initHistory()
-
         }
 
     }
 
     private fun initHistory() {
         val sharedPreferences = getSharedPreferences("search_book_history", Context.MODE_PRIVATE)
-        val stringset = sharedPreferences.getStringSet("history_dataSet", null)
-        stringset?.let {
-            for (item in stringset) {
-                flow_history.addView(SearchHistoryItem(this, {
-                    history_dataSet.remove(item)
-                    flow_history.removeView(it)
+        var history_dataSet = sharedPreferences.getStringSet("history_dataSet", null) as HashSet<String>
+        flexbox_search_book.removeAllViews()
+        history_dataSet?.let { historySet ->
+            for (item in historySet) {
+                flexbox_search_book.addView(SearchHistoryItem(this, item, {
+                    historySet.remove(item)
+                    flexbox_search_book.removeView(it)
+                    saveHistory(historySet)
                 }))
             }
 
         }
     }
 
-    private fun saveHistory() {
-        val searchText = edit_search.text.trim().toString()
-        history_dataSet.add(searchText)
+    private fun saveHistory(history_dataSet: HashSet<String>) {
         val edit = getSharedPreferences("search_book_history", Context.MODE_PRIVATE).edit()
         edit.putStringSet("history_dataSet", history_dataSet)
         edit.commit()
+    }
+
+    private fun addHistory(data: String) {
+        val sharedPreferences = getSharedPreferences("search_book_history", Context.MODE_PRIVATE)
+        var history_dataSet = sharedPreferences.getStringSet("history_dataSet", null) as HashSet<String>
+        history_dataSet.add(data)
+        saveHistory(history_dataSet)
     }
 
 

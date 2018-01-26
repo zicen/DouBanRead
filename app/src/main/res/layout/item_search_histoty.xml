@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="5dp"
     android:background="@drawable/shape_search_histoty"
     android:orientation="horizontal">
@@ -12,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:padding="5dp"
+        tools:text="aaaaaaaaaaaaaaaaaaa"
         android:textColor="#86868E"
         android:layout_marginRight="5dp"
         android:textSize="13sp"/>
