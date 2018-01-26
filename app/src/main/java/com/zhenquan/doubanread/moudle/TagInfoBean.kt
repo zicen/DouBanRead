@@ -6,7 +6,7 @@ import org.greenrobot.greendao.annotation.Generated
 import org.greenrobot.greendao.annotation.Unique
 
 /**
- * Created by ry on 2018/1/24.
+ * Created by ry on 2018/1/24.  做爬虫存数据库的,暂时用不到
  */
 @Entity
 class TagInfoBean {

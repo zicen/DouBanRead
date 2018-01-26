@@ -19,11 +19,8 @@ data class SearchBookList(
         return "SearchBookList(count=$count, start=$start, total=$total, books=$books)"
     }
 }
-@Entity
 data class Book(
-
-        @Id
-        val id: Int, //1456692
+        val id: String, //1456692
         var categoryid: Int,
         val rating: Rating,
         val subtitle: String, //张竹坡批评第一奇书

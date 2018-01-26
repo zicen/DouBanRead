@@ -14,7 +14,7 @@ import rx.subscriptions.CompositeSubscription
  * Description:所有activity的基类
  */
 abstract class BaseActivity : AppCompatActivity(), UiFunction {
-
+    val TAG = this.javaClass.simpleName
     override val requestComposite: CompositeSubscription
         get() = CompositeSubscription()
 

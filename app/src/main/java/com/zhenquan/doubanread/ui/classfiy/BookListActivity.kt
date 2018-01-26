@@ -43,6 +43,7 @@ class BookListActivity : BaseActivity() {
                 holder.itemView.setOnClickListener {
                     val intent = Intent()
                     intent.setClass(holder.itemView.context, BookDetailActivity::class.java)
+                    Log.e(TAG,"id:"+model.id)
                     intent.putExtra("title", model.title)
                     intent.putExtra("id", model.id)
                     startActivity(intent)

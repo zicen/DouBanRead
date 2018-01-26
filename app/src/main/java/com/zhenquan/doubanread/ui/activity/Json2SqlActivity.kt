@@ -28,7 +28,6 @@ import kotlin.collections.ArrayList
  * 保存文件到sql中的程序
  */
 class Json2SqlActivity : BaseActivity() {
-    val TAG = "Json2SqlActivity"
     override fun getLayoutId(): Int {
         return R.layout.activity_json2_sql
     }
