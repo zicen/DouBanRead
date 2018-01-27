@@ -1,8 +1,7 @@
 package com.zhenquan.doubanread.ui.activity
 
-import android.annotation.SuppressLint
 import android.content.Context
-import android.support.v7.widget.GridLayoutManager
+import android.content.Intent
 import android.view.View
 import com.zhenquan.doubanread.R
 import com.zhenquan.doubanread.base.BaseActivity
@@ -20,12 +19,13 @@ class SearchBookActivity : BaseActivity() {
 
 
         tv_search.setOnClickListener {
-            //request data
-
-
             //save history
             addHistory(edit_search.text.toString())
             initHistory()
+            //request data
+            var intent = Intent()
+            intent.putExtra("title", edit_search.text.toString())
+            startActivity(intent)
         }
 
     }
