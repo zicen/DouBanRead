@@ -35,7 +35,7 @@ class BookListActivity : BaseActivity() {
         object : BaseRecyclerAdapter<Book>(R.layout.item_book_list) {
             override fun onBindViewHolder(holder: SmartViewHolder, model: Book, position: Int) {
                 holder.text(R.id.tv_book_name, model.title)
-                holder.text(R.id.tv_book_author, model.author[0])
+                holder.text(R.id.tv_book_author, if(model.author.isNotEmpty()){model.author[0]}else{""})
                 holder.text(R.id.tv_book_comment, model.rating.average)
                 holder.text(R.id.tv_book_jianjie, model.summary)
                 val image = holder.image(R.id.iv_book_list)

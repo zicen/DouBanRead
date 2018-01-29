@@ -21,9 +21,10 @@
     <ImageView
         android:id="@+id/hotel_search_history_image"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:layout_height="match_parent"
         android:layout_gravity="center_vertical"
-        android:layout_marginRight="10dp"
+        android:paddingRight="10dp"
         android:src="@mipmap/icon_clear"/>
 
 

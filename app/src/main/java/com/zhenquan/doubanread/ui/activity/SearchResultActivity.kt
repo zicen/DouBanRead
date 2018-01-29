@@ -24,6 +24,9 @@ import org.jetbrains.anko.find
 import rx.Observer
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
+import android.view.ViewGroup
+
+
 
 class SearchResultActivity : BaseActivity() {
     override fun initView(rootView: View?) {
@@ -34,7 +37,7 @@ class SearchResultActivity : BaseActivity() {
         object : BaseRecyclerAdapter<Book>(R.layout.item_book_list) {
             override fun onBindViewHolder(holder: SmartViewHolder, model: Book, position: Int) {
                 holder.text(R.id.tv_book_name, model.title)
-                holder.text(R.id.tv_book_author, model.author[0])
+                holder.text(R.id.tv_book_author, if(model.author.size >0){model.author[0]}else{""})
                 holder.text(R.id.tv_book_comment, model.rating.average)
                 holder.text(R.id.tv_book_jianjie, model.summary)
                 val image = holder.image(R.id.iv_book_list)
@@ -60,13 +63,13 @@ class SearchResultActivity : BaseActivity() {
         val title = initToolBar()
         recycle_search_result.layoutManager = LinearLayoutManager(this)
         recycle_search_result.adapter = adapter
+        initData(title!!, 0)
         refreshLayout_search_result.setOnRefreshListener {
             initData(title!!, 0)
         }
         refreshLayout_search_result.setOnLoadmoreListener({ refreshlayout ->
-            getData(title!!, start)
+            getData(title!!)
         })
-        refreshLayout_search_result.autoRefresh()
 
     }
 
@@ -78,7 +81,7 @@ class SearchResultActivity : BaseActivity() {
     }
 
 
-    private fun getData(title: String, start_getdata: Int) {
+    private fun getData(title: String) {
         requestComposite.add(DataManager().getSearchBooks(title, "", start, 20)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

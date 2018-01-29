@@ -2,6 +2,7 @@ package com.zhenquan.doubanread.ui.activity
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.View
 import com.zhenquan.doubanread.R
 import com.zhenquan.doubanread.base.BaseActivity
@@ -23,11 +24,16 @@ class SearchBookActivity : BaseActivity() {
             addHistory(edit_search.text.toString())
             initHistory()
             //request data
-            var intent = Intent()
-            intent.putExtra("title", edit_search.text.toString())
-            startActivity(intent)
+            goSearchResult(edit_search.text.toString())
         }
 
+    }
+
+    private fun goSearchResult(title: String) {
+        var intent = Intent()
+        intent.setClass(SearchBookActivity@ this, SearchResultActivity::class.java)
+        intent.putExtra("title", title)
+        startActivity(intent)
     }
 
     private fun initHistory() {
@@ -37,9 +43,15 @@ class SearchBookActivity : BaseActivity() {
         history_dataSet?.let { historySet ->
             for (item in historySet) {
                 flexbox_search_book.addView(SearchHistoryItem(this, item, {
+                    //delete
                     historySet.remove(item)
                     flexbox_search_book.removeView(it)
+                    Log.e(TAG, "savesaveHistory:" + historySet.size)
+
                     saveHistory(historySet)
+                }, {
+                    //itemclick
+                    goSearchResult(item)
                 }))
             }
 
@@ -48,15 +60,17 @@ class SearchBookActivity : BaseActivity() {
 
     private fun saveHistory(history_dataSet: HashSet<String>) {
         val edit = getSharedPreferences("search_book_history", Context.MODE_PRIVATE).edit()
+        edit.clear()
         edit.putStringSet("history_dataSet", history_dataSet)
-        edit.commit()
+        val commit = edit.commit()
+        Log.e(TAG, "isCommit:" + commit)
     }
 
     private fun addHistory(data: String) {
         val sharedPreferences = getSharedPreferences("search_book_history", Context.MODE_PRIVATE)
-        var history_dataSet = sharedPreferences.getStringSet("history_dataSet", null) as HashSet<String>
-        history_dataSet.add(data)
-        saveHistory(history_dataSet)
+        var historyDataSet = sharedPreferences.getStringSet("history_dataSet", null) as HashSet<String>
+        historyDataSet.add(data)
+        saveHistory(historyDataSet)
     }
 
 
