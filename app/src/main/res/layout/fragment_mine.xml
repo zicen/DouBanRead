@@ -112,6 +112,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
+                android:id="@+id/ll_myrelease"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
@@ -129,6 +130,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ll_mywantchange"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"

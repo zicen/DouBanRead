@@ -6,6 +6,8 @@ import com.zhenquan.doubanread.R
 import com.zhenquan.doubanread.base.BaseFragment
 import com.zhenquan.doubanread.moudle.UserInfo
 import com.zhenquan.doubanread.moudle.bookinfo.RecommendBookInfo
+import com.zhenquan.doubanread.ui.activity.MyReleaseActivity
+import com.zhenquan.doubanread.ui.activity.MyWantChangeActivity
 import com.zhenquan.doubanread.ui.activity.UserEntranceActivity
 import com.zhenquan.doubanread.ui.activity.UserInfoSettingActivity
 import com.zhenquan.doubanread.ui.recommendation.BookMultipleItem
@@ -22,7 +24,8 @@ import org.jetbrains.anko.support.v4.startActivity
  * Created by 44162 on 2018/1/3.
  * @描述 我的
  */
-class MineFragment : BaseFragment() {
+class MineFragment : BaseFragment(){
+
 
     override fun getLayoutId(): Int {
         return R.layout.fragment_mine
@@ -36,13 +39,16 @@ class MineFragment : BaseFragment() {
         } else {
             setNotLogin()
         }
-    }
 
+
+    }
     private fun setNotLogin() {
         tv_mine_username.text = "登录/注册"
         tv_mine_username.setOnClickListener {
             startActivity<UserEntranceActivity>()
         }
+        ll_mywantchange.setOnClickListener {  startActivity<UserEntranceActivity>()}
+        ll_myrelease.setOnClickListener {  startActivity<UserEntranceActivity>() }
     }
 
     private fun setLogin(userLoginInfo: UserInfo) {
@@ -50,6 +56,8 @@ class MineFragment : BaseFragment() {
         tv_mine_username.setOnClickListener {
             startActivity<UserInfoSettingActivity>()
         }
+        ll_mywantchange.setOnClickListener { startActivity<MyWantChangeActivity>(Pair("title","想换的书")) }
+        ll_myrelease.setOnClickListener { startActivity<MyReleaseActivity>(Pair("title","我发布的书")) }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

@@ -33,7 +33,9 @@
         <activity android:name=".ui.activity.UserInfoSettingActivity" />
         <activity android:name=".ui.activity.SearchBookActivity" />
         <activity android:name=".ui.activity.Json2SqlActivity" />
-        <activity android:name=".ui.activity.SearchResultActivity"></activity>
+        <activity android:name=".ui.activity.SearchResultActivity" />
+        <activity android:name=".ui.activity.MyReleaseActivity" />
+        <activity android:name=".ui.activity.MyWantChangeActivity"></activity>
     </application>
 
 </manifest>

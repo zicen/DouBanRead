@@ -38,7 +38,7 @@ class SearchBookActivity : BaseActivity() {
 
     private fun initHistory() {
         val sharedPreferences = getSharedPreferences("search_book_history", Context.MODE_PRIVATE)
-        var history_dataSet = sharedPreferences.getStringSet("history_dataSet", null) as HashSet<String>
+        var history_dataSet = sharedPreferences.getStringSet("history_dataSet", null)
         flexbox_search_book.removeAllViews()
         history_dataSet?.let { historySet ->
             for (item in historySet) {
@@ -47,7 +47,6 @@ class SearchBookActivity : BaseActivity() {
                     historySet.remove(item)
                     flexbox_search_book.removeView(it)
                     Log.e(TAG, "savesaveHistory:" + historySet.size)
-
                     saveHistory(historySet)
                 }, {
                     //itemclick
@@ -58,7 +57,7 @@ class SearchBookActivity : BaseActivity() {
         }
     }
 
-    private fun saveHistory(history_dataSet: HashSet<String>) {
+    private fun saveHistory(history_dataSet: Set<String>) {
         val edit = getSharedPreferences("search_book_history", Context.MODE_PRIVATE).edit()
         edit.clear()
         edit.putStringSet("history_dataSet", history_dataSet)
@@ -68,8 +67,8 @@ class SearchBookActivity : BaseActivity() {
 
     private fun addHistory(data: String) {
         val sharedPreferences = getSharedPreferences("search_book_history", Context.MODE_PRIVATE)
-        var historyDataSet = sharedPreferences.getStringSet("history_dataSet", null) as HashSet<String>
-        historyDataSet.add(data)
+        var historyDataSet = sharedPreferences.getStringSet("history_dataSet", HashSet<String>())
+        historyDataSet?.add(data)
         saveHistory(historyDataSet)
     }
 

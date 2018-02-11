@@ -121,12 +121,12 @@ class MainActivity : BaseActivity() {
         action_search.setOnClickListener {
            startActivity<SearchBookActivity>()
         }
-        action_category.setOnClickListener {
-           startActivity<Json2SqlActivity>()
-        }
-        action_notification.setOnClickListener {
-            toast("action_notification")
-        }
+//        action_category.setOnClickListener {
+//           startActivity<Json2SqlActivity>()
+//        }
+//        action_notification.setOnClickListener {
+//            toast("action_notification")
+//        }
     }
 
     /**
@@ -149,9 +149,9 @@ class MainActivity : BaseActivity() {
         //我的
         val mineTab = MyTabEntity(getString(R.string.page_mine), R.mipmap.ic_tab_mine_active, R.mipmap.ic_tab_mine_normal)
         //
-        val localTab = MyTabEntity(getString(R.string.page_circle), R.mipmap.ic_tab_local_active, R.mipmap.ic_tab_local_normal)
+//        val localTab = MyTabEntity(getString(R.string.page_circle), R.mipmap.ic_tab_local_active, R.mipmap.ic_tab_local_normal)
 
-        ctl_bottom_nvg.setTabData(arrayListOf(recommendationTab, originalWorkTab, mineTab, localTab)
+        ctl_bottom_nvg.setTabData(arrayListOf(recommendationTab, originalWorkTab, mineTab)
                 , this@MainActivity
                 , R.id.fl_main_content
                 , mainFragments)

@@ -9,22 +9,22 @@ import com.zhenquan.doubanread.R
 import com.zhenquan.doubanread.base.BaseActivity
 import org.jetbrains.anko.find
 
-class UserInfoSettingActivity : BaseActivity() {
+class MyWantChangeActivity : BaseActivity() {
     val toolbar: Toolbar by lazy { find<Toolbar>(R.id.toolbar) }
-    override fun getLayoutId(): Int {
-        return R.layout.activity_user_info_setting
-    }
-
     override fun initView(rootView: View?) {
         initToolBar()
-//        获取个人信息详情
-        //todo
     }
 
-    private fun initToolBar() {
+    override fun getLayoutId(): Int {
+        return R.layout.activity_my_want_change
+    }
+
+    private fun initToolBar(): String? {
+        val title = intent.extras.getString("title")
         setSupportActionBar(toolbar)
-        supportActionBar?.title = "个人信息修改"
+        supportActionBar?.title = title
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        return title
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -33,4 +33,6 @@ class UserInfoSettingActivity : BaseActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+
 }
