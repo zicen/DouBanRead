@@ -21,4 +21,6 @@ class DataManager {
     fun getBookDetail(id: String): Observable<BookDetail> {
         return retrofitService!!.getBookDetail(id)
     }
+
+
 }

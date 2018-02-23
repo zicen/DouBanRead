@@ -170,6 +170,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ll_exit"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
@@ -181,7 +182,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="交易记录" />
+                    android:text="退出登录" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

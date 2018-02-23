@@ -3,18 +3,13 @@ package com.zhenquan.doubanread.ui.fragment
 import android.view.View
 import com.zhenquan.doubanread.R
 import com.zhenquan.doubanread.base.BaseFragment
-import com.zhenquan.doubanread.moudle.AllOfBean
-import com.zhenquan.doubanread.moudle.RegisterInfo
+import com.zhenquan.doubanread.moudle.BasicResponseInfo
 import com.zhenquan.doubanread.moudle.checkSuccess
 import com.zhenquan.doubanread.net.RetrofitHelper
 import com.zhenquan.doubanread.util.CheckUtil
 import kotlinx.android.synthetic.main.fragment_user_register.*
-import org.greenrobot.eventbus.EventBus
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
-import org.greenrobot.eventbus.ThreadMode
-import org.greenrobot.eventbus.Subscribe
-
 
 
 /**
@@ -50,7 +45,7 @@ class UserRegisterFragment : BaseFragment() {
                     ?.register(getParams(username,password,email,phone))
                     ?.subscribeOn(Schedulers.io())
                     ?.observeOn(AndroidSchedulers.mainThread())
-                    ?.subscribe { t: RegisterInfo? ->
+                    ?.subscribe { t: BasicResponseInfo? ->
                         t?.checkSuccess {
                             imgToast(R.mipmap.ic_success, "注册成功")
                             activity.finish()

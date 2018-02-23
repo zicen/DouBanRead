@@ -31,6 +31,24 @@ interface RetrofitService {
     fun login(@Field("username") username: String, @Field("password") password: String): Observable<LoginUserInfo>
 
     @FormUrlEncoded
+    @POST("user/logout.do")
+    fun logout(): Observable<BasicResponseInfo>
+
+    @FormUrlEncoded
     @POST("user/register.do")
-    fun register(@FieldMap params: Map<String, String>): Observable<RegisterInfo>
+    fun register(@FieldMap params: Map<String, String>): Observable<BasicResponseInfo>
+
+    /**
+     * 添加或删除已读
+     */
+    @FormUrlEncoded
+    @POST("haveread/add.do")
+    fun addOrRemoveHaveRead(@FieldMap params: Map<String, String>): Observable<BasicResponseInfo>
+
+    /**
+     * 添加或删除想读
+     */
+    @FormUrlEncoded
+    @POST("wantread/add.do")
+    fun addOrRemoveWantRead(@FieldMap params: Map<String, String>): Observable<BasicResponseInfo>
 }

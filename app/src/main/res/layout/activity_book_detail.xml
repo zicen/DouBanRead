@@ -111,14 +111,30 @@
                 android:layout_width="match_parent"
                 android:id="@+id/book_main_flowlayout"
                 android:layout_height="wrap_content"></com.zhenquan.doubanread.wight.FlowLayout>
-            <TextView
-                android:layout_marginTop="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="喜欢本作品的人也喜欢"
-                android:textSize="14sp"
-                android:textStyle="bold" />
 
+            <View
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:background="@color/divide_gary"
+                android:layout_height="1dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/btn_i_have_read"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="我有这本书"
+                    android:layout_height="wrap_content" />
+                <Button
+                    android:id="@+id/btn_i_want_read"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="我想读"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>

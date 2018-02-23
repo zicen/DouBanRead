@@ -1,7 +1,6 @@
 package com.zhenquan.doubanread.moudle
 
 import android.content.Context
-import android.util.Log
 import com.zhenquan.doubanread.R
 import com.zhenquan.doubanread.util.ToastUtil
 
@@ -79,12 +78,12 @@ inline fun LoginUserInfo.checkSuccess(successAction: (bean: LoginUserInfo) -> Un
 }
 
 
-data class RegisterInfo(
+data class BasicResponseInfo(
         val status: Int, //0
         val msg: String
 )
 
-inline fun RegisterInfo.checkSuccess(successAction: (bean: RegisterInfo) -> Unit) {
+inline fun BasicResponseInfo.checkSuccess(successAction: (bean: BasicResponseInfo) -> Unit) {
     if (status == 0) {
         successAction.invoke(this)
     } else {
