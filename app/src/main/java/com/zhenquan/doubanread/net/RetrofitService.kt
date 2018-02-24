@@ -1,6 +1,8 @@
 package com.zhenquan.doubanread.net
 
 import com.zhenquan.doubanread.moudle.*
+import okhttp3.RequestBody
+import org.json.JSONObject
 import retrofit2.http.*
 import rx.Observable
 
@@ -41,14 +43,21 @@ interface RetrofitService {
     /**
      * 添加或删除已读
      */
-    @FormUrlEncoded
     @POST("haveread/add.do")
-    fun addOrRemoveHaveRead(@FieldMap params: Map<String, String>): Observable<BasicResponseInfo>
+    fun addOrRemoveHaveRead(@Body params: RequestBody): Observable<BasicResponseInfo>
+
 
     /**
      * 添加或删除想读
      */
-    @FormUrlEncoded
     @POST("wantread/add.do")
-    fun addOrRemoveWantRead(@FieldMap params: Map<String, String>): Observable<BasicResponseInfo>
+    fun addOrRemoveWantRead(@Body params: RequestBody): Observable<BasicResponseInfo>
+
+    @FormUrlEncoded
+    @POST
+    fun getHaveReadList(@Field("pageNum") pageNum: Int,@Field("pageSize") pageSize: Int): Observable<ReadListBean>
+
+    @FormUrlEncoded
+    @POST
+    fun getWantReadList(@Field("pageNum") pageNum: Int,@Field("pageSize") pageSize: Int): Observable<ReadListBean>
 }

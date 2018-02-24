@@ -19,11 +19,15 @@ import com.zhenquan.doubanread.wight.TagView
 import kotlinx.android.synthetic.main.activity_book_detail.*
 import kotlinx.android.synthetic.main.activity_book_list.*
 import kotlinx.android.synthetic.main.fragment_user_login.*
+import okhttp3.MediaType
+import okhttp3.RequestBody
 import org.greenrobot.eventbus.EventBus
 import org.jetbrains.anko.find
+import org.json.JSONObject
 import rx.Observer
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
+import java.util.*
 
 class BookDetailActivity : BaseActivity() {
 
@@ -121,7 +125,7 @@ class BookDetailActivity : BaseActivity() {
         bookDetail.let {
             var params = getParams(it)
             request(RetrofitHelper
-                    .getServerForAliYun()?.addOrRemoveHaveRead(params)
+                    .getServerForAliYun()?.addOrRemoveHaveRead(RequestBody.create(MediaType.parse("application/json"), params.toString()))
                     ?.subscribeOn(Schedulers.io())
                     ?.observeOn(AndroidSchedulers.mainThread())
                     ?.subscribe { t: BasicResponseInfo? ->
@@ -139,7 +143,7 @@ class BookDetailActivity : BaseActivity() {
         bookDetail.let {
             var params = getParams(it)
             request(RetrofitHelper
-                    .getServerForAliYun()?.addOrRemoveWantRead(params)
+                    .getServerForAliYun()?.addOrRemoveWantRead(RequestBody.create(MediaType.parse("application/json"), params.toString()))
                     ?.subscribeOn(Schedulers.io())
                     ?.observeOn(AndroidSchedulers.mainThread())
                     ?.subscribe { t: BasicResponseInfo? ->
@@ -153,8 +157,8 @@ class BookDetailActivity : BaseActivity() {
         }
     }
 
-    private fun getParams(it: BookDetail): HashMap<String, String> {
-        var params = HashMap<String, String>()
+    private fun getParams(it: BookDetail): JSONObject {
+        val params = JSONObject()
         params.put("id", it.id)
         params.put("title", it.title)
         params.put("rating", it.rating.average)
@@ -169,17 +173,17 @@ class BookDetailActivity : BaseActivity() {
             params.put("translator", it.translator[0])
         }
         params.put("catelog", it.catalog)
-        params.put("pages", it.pages)
+        params.put("pages", it.pages.toInt())
         params.put("imageLarge", it.images.large)
         params.put("publisher", it.publisher)
         params.put("isbn10", it.isbn10)
         params.put("isbn13", it.isbn13)
         params.put("authorIntro", it.author_intro)
         params.put("summary", it.summary)
-        params.put("price", it.price)
-        //            params.put("categotyid", it.catalog)
+        params.put("price", it.price.toDouble())
+//        params.put("categotyid", it.catalog)
         val userLoginInfo = UserInfo.getUserLoginInfo(this)
-        params.put("userId", "" + userLoginInfo.id)
+        params.put("userId", userLoginInfo.id)
         return params
     }
 
