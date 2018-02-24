@@ -8,5 +8,26 @@
     tools:context="com.zhenquan.doubanread.ui.activity.WebViewActivity">
 
     <include layout="@layout/toolbar" />
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/my_release_refreshLayout"
+        android:layout_width="match_parent"
+        app:srlEnableScrollContentWhenLoaded="true"
+        app:srlEnableFooterFollowWhenLoadFinished="true"
+        android:layout_height="match_parent">
 
+        <com.scwang.smartrefresh.layout.header.ClassicsHeader
+            android:id="@+id/classics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/my_release_recycle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+
+        <com.scwang.smartrefresh.layout.footer.ClassicsFooter
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srlClassicsSpinnerStyle="Translate"/>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 </LinearLayout>

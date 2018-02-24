@@ -150,7 +150,7 @@ data class Item7(
         val isbn13: String, //9787544244077
         val authorIntro: String, //维多利亚·希斯洛普，英国著名作家，《岛》为其长篇处女作。
         val summary: String, //多年来，阿丽克西斯发觉母亲总是过分守护着自己的过去，不仅掩埋了自己的根，还把上面的泥土踩得结结实实。
-        val price: Int, //28
+        val price: Double, //28
         val categotyid: Int, //10000
         val createTime: Long, //1516956611000
         val updateTime: Long, //1516956611000

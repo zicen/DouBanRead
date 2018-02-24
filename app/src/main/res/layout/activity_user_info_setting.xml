@@ -31,22 +31,14 @@
                 android:id="@+id/tv_userinfo_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
                 android:layout_toRightOf="@+id/civ_userinfo_avatar"
                 android:maxLines="1"
+                android:layout_centerVertical="true"
                 android:text="username"
-                android:textSize="14sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_userinfo_username"
-                android:layout_toRightOf="@+id/civ_userinfo_avatar"
-                android:maxLines="2"
-                android:text="个人简介.个人简介个人简介.个人简介个人简介.个人简介个人简介.个人简介"
-                android:textSize="10sp"
-                android:textStyle="bold" />
+
         </RelativeLayout>
 
         <LinearLayout
@@ -67,7 +59,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="10dp"
-                    android:text="邮箱" />
+                    android:text="邮箱:" />
 
                 <EditText
                     android:layout_width="0dp"
@@ -97,7 +89,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="10dp"
-                    android:text="手机" />
+                    android:text="手机:" />
 
                 <EditText
                     android:layout_width="0dp"
@@ -127,7 +119,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="10dp"
-                    android:text="性别" />
+                    android:text="性别:" />
 
                 <EditText
                     android:layout_width="0dp"
@@ -157,7 +149,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="10dp"
-                    android:text="生日" />
+                    android:text="生日:" />
 
                 <EditText
                     android:layout_width="0dp"
@@ -174,6 +166,36 @@
                 android:layout_marginRight="15dp"
                 android:background="@color/divide_gary" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@color/white"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="个性签名:" />
+
+                <EditText
+                    android:id="@+id/edit_userinfo_intro"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:gravity="right" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@color/divide_gary" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -240,22 +262,7 @@
                 android:layout_marginRight="15dp"
                 android:background="@color/divide_gary" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:background="@color/white"
-                android:orientation="horizontal">
 
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:background="@color/divide_gary" />
 
 
         </LinearLayout>

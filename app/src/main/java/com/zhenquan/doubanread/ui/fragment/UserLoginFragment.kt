@@ -13,9 +13,15 @@ import android.R.id.edit
 import android.content.Context
 import android.content.SharedPreferences
 import android.util.Log
+import android.widget.Toast
+import com.zhenquan.doubanread.manager.DataManager
 import com.zhenquan.doubanread.moudle.*
+import kotlinx.android.synthetic.main.activity_book_list.*
 import org.greenrobot.eventbus.EventBus
+import retrofit2.Response
+import rx.Observer
 import java.util.prefs.Preferences
+import javax.security.auth.callback.Callback
 
 
 /**
@@ -38,7 +44,6 @@ class UserLoginFragment : BaseFragment() {
 
             val username = et_auth_username.text.trim().toString()
             val password = et_auth_password.text.trim().toString()
-
             request(RetrofitHelper
                     .takeIf {
                         CheckUtil.isNotEmpty(et_auth_username)
@@ -48,20 +53,30 @@ class UserLoginFragment : BaseFragment() {
                     ?.getServerForAliYun()?.login(username, password)
                     ?.subscribeOn(Schedulers.io())
                     ?.observeOn(AndroidSchedulers.mainThread())
-                    ?.subscribe { t: LoginUserInfo? ->
-                        t?.checkSuccess{//登录成功,保存登录信息到Sp
+                    ?.subscribe { t: Response<LoginUserInfo>? ->
+                        val header = t?.headers().toString()
+                        val get = t?.headers()?.get("Set-Cookie")
+                        val split = get?.split(";")
+                        val head = split?.get(0)
+                        Log.e(TAG, "header:" + header)
+                        Log.e(TAG, "get:" + get)
+                        Log.e(TAG, "head:" + head)
+                        //todo  截取header
+                        t?.body()?.checkSuccess {
+                            //登录成功,保存登录信息到Sp
                             imgToast(R.mipmap.ic_success, "登陆成功")
-                            UserInfo.saveUserLogin(context,t.data,true)
-                            EventBus.getDefault().post(t.data)
+                            UserInfo.saveUserLogin(context, t.body().data, true)
+                            UserInfo.saveHeader(context,head!!)
+                            EventBus.getDefault().post(t.body().data)
                             activity.finish()
                         }
+
+
                     }
             )
 
         }
     }
-
-
 
 
 }

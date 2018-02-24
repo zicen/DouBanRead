@@ -180,7 +180,7 @@ class BookDetailActivity : BaseActivity() {
         params.put("isbn13", it.isbn13)
         params.put("authorIntro", it.author_intro)
         params.put("summary", it.summary)
-        params.put("price", it.price.toDouble())
+//        params.put("price", it.price.toDouble())
 //        params.put("categotyid", it.catalog)
         val userLoginInfo = UserInfo.getUserLoginInfo(this)
         params.put("userId", userLoginInfo.id)

@@ -2,8 +2,14 @@ package com.zhenquan.doubanread.net
 
 import android.util.Log
 import com.google.gson.GsonBuilder
+import com.zhenquan.doubanread.moudle.UserInfo
+import com.zhenquan.doubanread.ui.App
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
+import org.jsoup.helper.StringUtil
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -17,10 +23,29 @@ object RetrofitHelper {
     private val loggingInterceptor by lazy {
         HttpLoggingInterceptor(HttpLoggingInterceptor.Logger { message -> Log.e("RetrofitHelper", "retrofitBack =" + message) })
     }
+    private val headInterceptor by lazy {
+        Interceptor { chain ->
+            if (StringUtil.isBlank(UserInfo.getHeader(App.instance()))) {
+                var request = chain?.request()?.newBuilder()
+                        ?.build()
+                Log.e("RetrofitHelper","UserInfo.getHeader is blank")
+                chain?.proceed(request)!!
+            } else {
+                Log.e("RetrofitHelper","UserInfo.getHeader not blank")
+                var request = chain?.request()?.newBuilder()
+                        ?.addHeader("cookie", UserInfo.getHeader(App.instance()))
+                        ?.build()
+                chain?.proceed(request)!!
+            }
+
+        }
+    }
+
     //var retrofit: Retrofit? = null
     private val client by lazy {
         OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)
+                .addInterceptor(headInterceptor)
                 .connectTimeout(10, TimeUnit.SECONDS)
                 .readTimeout(5, TimeUnit.SECONDS)
                 .writeTimeout(5, TimeUnit.SECONDS)
@@ -52,6 +77,7 @@ object RetrofitHelper {
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build()
     }
+
     fun getServer(): RetrofitService? {
         return retrofit?.create(RetrofitService::class.java)
     }
@@ -59,7 +85,6 @@ object RetrofitHelper {
     fun getServerForAliYun(): RetrofitService? {
         return retrofitForZhenQuanAliYun?.create(RetrofitService::class.java)
     }
-
 
 
 }

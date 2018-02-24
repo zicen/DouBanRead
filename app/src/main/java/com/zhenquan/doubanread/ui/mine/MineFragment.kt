@@ -52,6 +52,7 @@ class MineFragment : BaseFragment(){
     }
     private fun setNotLogin() {
         tv_mine_username.text = "登录/注册"
+        UserInfo.clearUserInfo(context)
         tv_mine_username.setOnClickListener {
             startActivity<UserEntranceActivity>()
         }
@@ -79,7 +80,6 @@ class MineFragment : BaseFragment(){
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe { t: BasicResponseInfo? ->
                     t?.checkSuccess {
-                        //登录成功,保存登录信息到Sp
                         imgToast(R.mipmap.ic_success, "退出登录成功!")
                         setNotLogin()
                     }

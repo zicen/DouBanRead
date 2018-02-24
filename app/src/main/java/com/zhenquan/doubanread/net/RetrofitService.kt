@@ -2,7 +2,9 @@ package com.zhenquan.doubanread.net
 
 import com.zhenquan.doubanread.moudle.*
 import okhttp3.RequestBody
+import okhttp3.Response
 import org.json.JSONObject
+import retrofit2.Call
 import retrofit2.http.*
 import rx.Observable
 
@@ -30,9 +32,11 @@ interface RetrofitService {
 
     @FormUrlEncoded
     @POST("user/login.do")
-    fun login(@Field("username") username: String, @Field("password") password: String): Observable<LoginUserInfo>
+    fun login(@Field("username") username: String, @Field("password") password: String): Observable<retrofit2.Response<LoginUserInfo>>
 
-    @FormUrlEncoded
+    @POST("user/get_user_info.do")
+    fun getUserInfo(): Observable<retrofit2.Response<LoginUserInfo>>
+
     @POST("user/logout.do")
     fun logout(): Observable<BasicResponseInfo>
 
@@ -54,10 +58,12 @@ interface RetrofitService {
     fun addOrRemoveWantRead(@Body params: RequestBody): Observable<BasicResponseInfo>
 
     @FormUrlEncoded
-    @POST
+    @POST("haveread/list.do")
     fun getHaveReadList(@Field("pageNum") pageNum: Int,@Field("pageSize") pageSize: Int): Observable<ReadListBean>
 
     @FormUrlEncoded
-    @POST
+    @POST("wantread/list.do")
     fun getWantReadList(@Field("pageNum") pageNum: Int,@Field("pageSize") pageSize: Int): Observable<ReadListBean>
+
+
 }

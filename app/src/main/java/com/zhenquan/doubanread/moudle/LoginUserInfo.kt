@@ -1,6 +1,8 @@
 package com.zhenquan.doubanread.moudle
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.util.Log
 import com.zhenquan.doubanread.R
 import com.zhenquan.doubanread.util.ToastUtil
 
@@ -18,7 +20,14 @@ data class UserInfo(
         val phone: String, //null
         val role: Int, //0
         val createTime: Long, //1479048325000
-        val updateTime: Long //1479048325000
+        val updateTime: Long, //1479048325000
+
+        val question: String,
+        val answer: String,
+        val sex: Int,
+        val intro: String,
+        val birthday: String,
+        val avatar: String
 ) {
     companion object {
 
@@ -27,10 +36,12 @@ data class UserInfo(
          * 获取用户信息
          */
         fun getUserLoginInfo(context: Context): UserInfo {
-            val userLogin = context.getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
+            val userLogin = context.getSharedPreferences("UserInfo", Context.MODE_PRIVATE)
             var loginInfo = UserInfo(userLogin.getInt("id", -1), userLogin.getString("username", ""),
                     userLogin.getString("email", ""), userLogin.getString("phone", ""), userLogin.getInt("role", -1)
-                    , userLogin.getLong("createTime", -1), userLogin.getLong("updateTime", -1))
+                    , userLogin.getLong("createTime", -1), userLogin.getLong("updateTime", -1), userLogin.getString("question", "")
+                    , userLogin.getString("answer", ""), userLogin.getInt("sex", 0), userLogin.getString("intro", "")
+                    , userLogin.getString("birthday", ""), userLogin.getString("avatar", ""))
             return loginInfo
 
         }
@@ -38,10 +49,21 @@ data class UserInfo(
         /**
          * 获取是否登录
          */
-        fun getUserIsLogin(context: Context):Boolean{
+        fun getUserIsLogin(context: Context): Boolean {
             val userLogin = context.getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
-            return userLogin.getBoolean("isLogin",false)
+            return userLogin.getBoolean("isLogin", false)
         }
+
+        /**
+         * 清除用户信息和登录信息
+         */
+        fun clearUserInfo(context: Context){
+            val userLogin = context.getSharedPreferences("UserInfo", Context.MODE_PRIVATE).edit()
+            val head = context.getSharedPreferences("Header", Context.MODE_PRIVATE).edit()
+            userLogin.clear()
+            head.clear()
+        }
+
         /**
          * 保存用户的登录信息
          * @param context  上下文
@@ -61,7 +83,25 @@ data class UserInfo(
             userInfo.putLong("createTime", login.createTime)
             userInfo.putLong("updateTime", login.updateTime)
             userInfo.putBoolean("isLogin", isLogin)
+            userInfo.putInt("sex", login.sex)
+            userInfo.putString("question", login.question)
+            userInfo.putString("answer", login.answer)
+            userInfo.putString("intro", login.intro)
+            userInfo.putString("birthday", login.birthday)
+            userInfo.putString("avatar", login.avatar)
             userInfo.commit()
+        }
+
+        @SuppressLint("ApplySharedPref")
+        fun saveHeader(context: Context, header: String) {
+            val head = context.getSharedPreferences("Header", Context.MODE_PRIVATE).edit()
+            head.putString("JSESSIONID", header)
+            head.commit()
+        }
+
+        fun getHeader(context: Context):String {
+            val head = context.getSharedPreferences("Header", Context.MODE_PRIVATE)
+            return head.getString("JSESSIONID", "")
         }
     }
 }
