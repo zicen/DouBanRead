@@ -63,6 +63,7 @@
 
                 <EditText
                     android:layout_width="0dp"
+                    android:id="@+id/edit_userinfo_email"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
@@ -93,6 +94,7 @@
 
                 <EditText
                     android:layout_width="0dp"
+                    android:id="@+id/edit_userinfo_cell"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
@@ -126,6 +128,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
+                    android:id="@+id/edit_userinfo_sex"
                     android:background="@null" />
             </LinearLayout>
 
@@ -136,35 +139,36 @@
                 android:layout_marginRight="15dp"
                 android:background="@color/divide_gary" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:background="@color/white"
-                android:orientation="horizontal">
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="40dp"-->
+                <!--android:layout_marginLeft="15dp"-->
+                <!--android:layout_marginRight="15dp"-->
+                <!--android:background="@color/white"-->
+                <!--android:orientation="horizontal">-->
 
-                <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="10dp"
-                    android:text="生日:" />
+                <!--<TextView-->
+                    <!--android:layout_width="50dp"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:layout_marginLeft="10dp"-->
+                    <!--android:text="生日:" />-->
 
-                <EditText
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:background="@null" />
-            </LinearLayout>
+                <!--<EditText-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:id="@+id/edit_userinfo_birth"-->
+                    <!--android:background="@null" />-->
+            <!--</LinearLayout>-->
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:background="@color/divide_gary" />
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="0.5dp"-->
+                <!--android:layout_marginLeft="15dp"-->
+                <!--android:layout_marginRight="15dp"-->
+                <!--android:background="@color/divide_gary" />-->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -187,7 +191,8 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
-                    android:gravity="right" />
+                    android:background="@null"
+                    />
             </LinearLayout>
 
             <View
@@ -220,6 +225,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
+                    android:paddingRight="20dp"
                     android:gravity="right" />
             </LinearLayout>
 
@@ -252,6 +258,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
+                    android:paddingRight="20dp"
                     android:gravity="right" />
             </LinearLayout>
 

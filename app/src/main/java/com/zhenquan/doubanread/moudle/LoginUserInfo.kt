@@ -60,6 +60,7 @@ data class UserInfo(
         fun clearUserInfo(context: Context){
             val userLogin = context.getSharedPreferences("UserInfo", Context.MODE_PRIVATE).edit()
             val head = context.getSharedPreferences("Header", Context.MODE_PRIVATE).edit()
+            head.putString("JSESSIONID", "")
             userLogin.clear()
             head.clear()
         }
@@ -92,8 +93,7 @@ data class UserInfo(
             userInfo.commit()
         }
 
-        @SuppressLint("ApplySharedPref")
-        fun saveHeader(context: Context, header: String) {
+        fun saveHeader(context: Context, header: String?) {
             val head = context.getSharedPreferences("Header", Context.MODE_PRIVATE).edit()
             head.putString("JSESSIONID", header)
             head.commit()

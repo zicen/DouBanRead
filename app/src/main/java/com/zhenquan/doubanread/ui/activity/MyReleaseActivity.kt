@@ -56,7 +56,7 @@ class MyReleaseActivity : BaseActivity() {
                 holder.itemView.setOnClickListener {
                     val intent = Intent()
                     intent.setClass(holder.itemView.context, BookDetailActivity::class.java)
-                    Log.e(TAG, "id:" + model.id)
+                    Log.e(TAG, "id" + model.id)
                     intent.putExtra("title", model.title)
                     intent.putExtra("id", model.id)
                     startActivity(intent)
@@ -80,7 +80,7 @@ class MyReleaseActivity : BaseActivity() {
 
     private fun initData(start_getdata: Int) {
         request(RetrofitHelper
-                .getServerForAliYun()?.getWantReadList(start_getdata, 10)
+                .getServerForAliYun()?.getHaveReadList(start_getdata, 10)
                 ?.subscribeOn(Schedulers.io())
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe { t: ReadListBean? ->

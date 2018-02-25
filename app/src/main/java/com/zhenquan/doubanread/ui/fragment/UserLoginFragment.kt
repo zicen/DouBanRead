@@ -66,7 +66,9 @@ class UserLoginFragment : BaseFragment() {
                             //登录成功,保存登录信息到Sp
                             imgToast(R.mipmap.ic_success, "登陆成功")
                             UserInfo.saveUserLogin(context, t.body().data, true)
-                            UserInfo.saveHeader(context,head!!)
+                            if (head != null) {
+                                UserInfo.saveHeader(context,head)
+                            }
                             EventBus.getDefault().post(t.body().data)
                             activity.finish()
                         }

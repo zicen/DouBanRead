@@ -30,7 +30,10 @@
         <activity android:name=".ui.activity.UserEntranceActivity" />
         <activity android:name=".ui.classfiy.BookDetailActivity" />
         <activity android:name=".ui.activity.WebViewActivity" />
-        <activity android:name=".ui.activity.UserInfoSettingActivity" />
+        <activity
+            android:name=".ui.activity.UserInfoSettingActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
         <activity android:name=".ui.activity.SearchBookActivity" />
         <activity android:name=".ui.activity.Json2SqlActivity" />
         <activity android:name=".ui.activity.SearchResultActivity" />

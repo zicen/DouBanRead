@@ -37,6 +37,10 @@ interface RetrofitService {
     @POST("user/get_user_info.do")
     fun getUserInfo(): Observable<retrofit2.Response<LoginUserInfo>>
 
+    @FormUrlEncoded
+    @POST("user/update_information.do")
+    fun updateUserInfo(@FieldMap params: Map<String, String>):Observable<BasicResponseInfo>
+
     @POST("user/logout.do")
     fun logout(): Observable<BasicResponseInfo>
 

@@ -53,7 +53,7 @@ class MineFragment : BaseFragment(){
     private fun setNotLogin() {
         tv_mine_username.text = "登录/注册"
         UserInfo.clearUserInfo(context)
-        tv_mine_username.setOnClickListener {
+        ll_mine.setOnClickListener {
             startActivity<UserEntranceActivity>()
         }
         ll_mywantchange.setOnClickListener {  startActivity<UserEntranceActivity>()}
@@ -63,7 +63,8 @@ class MineFragment : BaseFragment(){
 
     private fun setLogin(userLoginInfo: UserInfo) {
         tv_mine_username.text = userLoginInfo.username
-        tv_mine_username.setOnClickListener {
+        tv_mine_intro.text = userLoginInfo.intro
+        ll_mine.setOnClickListener {
             startActivity<UserInfoSettingActivity>()
         }
         ll_mywantchange.setOnClickListener { startActivity<MyWantChangeActivity>(Pair("title","想换的书")) }

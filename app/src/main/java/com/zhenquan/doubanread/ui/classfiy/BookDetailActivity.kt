@@ -28,6 +28,7 @@ import rx.Observer
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 import java.util.*
+import kotlin.collections.HashMap
 
 class BookDetailActivity : BaseActivity() {
 
@@ -123,7 +124,7 @@ class BookDetailActivity : BaseActivity() {
 
     private fun haveRead() {
         bookDetail.let {
-            var params = getParams(it)
+            var params = getParams2(it)
             request(RetrofitHelper
                     .getServerForAliYun()?.addOrRemoveHaveRead(RequestBody.create(MediaType.parse("application/json"), params.toString()))
                     ?.subscribeOn(Schedulers.io())
@@ -141,7 +142,7 @@ class BookDetailActivity : BaseActivity() {
 
     private fun wantRead() {
         bookDetail.let {
-            var params = getParams(it)
+            var params = getParams2(it)
             request(RetrofitHelper
                     .getServerForAliYun()?.addOrRemoveWantRead(RequestBody.create(MediaType.parse("application/json"), params.toString()))
                     ?.subscribeOn(Schedulers.io())
@@ -186,7 +187,35 @@ class BookDetailActivity : BaseActivity() {
         params.put("userId", userLoginInfo.id)
         return params
     }
-
+    private fun getParams2(it: BookDetail): HashMap<String,String> {
+        val params = HashMap<String,String>()
+        params.put("id", it.id)
+        params.put("title", it.title)
+        params.put("rating", it.rating.average)
+        if (it.author.isNotEmpty()) {
+            params.put("author", it.author[0])
+        }
+        params.put("pubdate", it.pubdate)
+        params.put("originTitle", it.origin_title)
+        params.put("image", it.image)
+        params.put("binding", it.binding)
+        if (it.translator.isNotEmpty()) {
+            params.put("translator", it.translator[0])
+        }
+        params.put("catelog", it.catalog)
+        params.put("pages", it.pages)
+        params.put("imageLarge", it.images.large)
+        params.put("publisher", it.publisher)
+        params.put("isbn10", it.isbn10)
+        params.put("isbn13", it.isbn13)
+        params.put("authorIntro", it.author_intro)
+        params.put("summary", it.summary)
+//        params.put("price", it.price.toDouble())
+//        params.put("categotyid", it.catalog)
+        val userLoginInfo = UserInfo.getUserLoginInfo(this)
+        params.put("userId", ""+userLoginInfo.id)
+        return params
+    }
     private fun initToolBar(): String? {
         val title = intent.extras.getString("title")
         setSupportActionBar(toolbar)
