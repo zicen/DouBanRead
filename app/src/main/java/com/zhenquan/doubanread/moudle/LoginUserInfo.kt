@@ -16,18 +16,18 @@ data class LoginUserInfo(
 data class UserInfo(
         val id: Int, //12
         val username: String, //aaa
-        val email: String, //aaa@163.com
-        val phone: String, //null
-        val role: Int, //0
+        var email: String, //aaa@163.com
+        var phone: String, //null
+        var role: Int, //0
         val createTime: Long, //1479048325000
         val updateTime: Long, //1479048325000
 
-        val question: String,
-        val answer: String,
-        val sex: Int,
-        val intro: String,
-        val birthday: String,
-        val avatar: String
+        var question: String,
+        var answer: String,
+        var sex: Int,
+        var intro: String,
+        var birthday: String,
+        var avatar: String
 ) {
     companion object {
 
@@ -57,7 +57,7 @@ data class UserInfo(
         /**
          * 清除用户信息和登录信息
          */
-        fun clearUserInfo(context: Context){
+        fun clearUserInfo(context: Context) {
             val userLogin = context.getSharedPreferences("UserInfo", Context.MODE_PRIVATE).edit()
             val head = context.getSharedPreferences("Header", Context.MODE_PRIVATE).edit()
             head.putString("JSESSIONID", "")
@@ -99,7 +99,7 @@ data class UserInfo(
             head.commit()
         }
 
-        fun getHeader(context: Context):String {
+        fun getHeader(context: Context): String {
             val head = context.getSharedPreferences("Header", Context.MODE_PRIVATE)
             return head.getString("JSESSIONID", "")
         }
@@ -123,11 +123,24 @@ data class BasicResponseInfo(
         val msg: String
 )
 
+data class BasicResponseInfo2(
+        val status: Int, //0
+        val data: String
+)
+
 inline fun BasicResponseInfo.checkSuccess(successAction: (bean: BasicResponseInfo) -> Unit) {
     if (status == 0) {
         successAction.invoke(this)
     } else {
         ToastUtil.imageToast(R.mipmap.ic_error, if (msg is String) msg.toString() else "errorCode: $status")
+    }
+}
+
+inline fun BasicResponseInfo2.checkSuccess(successAction: (bean: BasicResponseInfo2) -> Unit) {
+    if (status == 0) {
+        successAction.invoke(this)
+    } else {
+        ToastUtil.imageToast(R.mipmap.ic_error, if (data is String) data.toString() else "errorCode: $status")
     }
 }
 

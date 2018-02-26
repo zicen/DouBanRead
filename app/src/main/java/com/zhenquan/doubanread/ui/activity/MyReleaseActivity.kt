@@ -109,7 +109,6 @@ class MyReleaseActivity : BaseActivity() {
                             adapter.loadmore(it)
                             start += 1
                             if (it.size < 20) {
-                                Toast.makeText(application, "数据全部加载完毕", Toast.LENGTH_SHORT).show()
                                 my_release_refreshLayout.finishLoadmoreWithNoMoreData()//将不会再次触发加载更多事件
                             } else {
                                 my_release_refreshLayout.finishLoadmore()

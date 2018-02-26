@@ -157,10 +157,55 @@ data class Item7(
         val userId: Int //25
 )
 
+data class MatchesBean(
+		val status: Int, //0
+		val data: List<MatchesBeanItem>
+)
+
+data class MatchesBeanItem(
+		val wantRead: WantRead,
+		val haveReadList: List<Any>
+)
+
+data class WantRead(
+		val id: Int, //24934182
+		val title: String, //一个人的朝圣
+		val rating: String, //8.1
+		val author: String, //【英】蕾秋·乔伊斯
+		val pubdate: String, //2013-9-1
+		val originTitle: String, //The Unlikely Pilgrimage of Harold Fry
+		val image: String, //https://img3.doubanio.com/mpic/s26936721.jpg
+		val binding: String, //平装
+		val translator: String, //黄妙瑜
+		val catelog: String, //1、哈罗德与信
+		val pages: Int, //320
+		val imageLarge: String, //https://img3.doubanio.com/lpic/s26936721.jpg
+		val publisher: String, //北京联合出版公司
+		val isbn10: String, //7550213526
+		val isbn13: String, //9787550213524
+		val authorIntro: String, //乔伊斯·蕾秋，英国资深剧作家。写了二十年的广播剧本，也曾活跃于舞台剧界，拿过无数剧本奖。《一个人的朝圣》是她的处女作，目前已畅销三四十个国家，入围2012年“布克奖”。
+		val summary: String, //★2013年欧洲首席畅销小说，入围2012年布克文学奖，同名电影拍摄中
+		val price: Double, //32.8
+		val categotyid: Int, //10000
+		val createTime: Long, //1516956611000
+		val updateTime: Long, //1516956611000
+		val userId: Int //25
+)
 /**
  * 检测请求是否 success（该success 并非表示请求成功失败，仅表示后台处理成功）
  */
 inline fun ReadListBean.checkSuccess(successAction: (bean: ReadListBean) -> Unit) {
+    if (status == 0) {
+        successAction.invoke(this)
+    } else {
+        ToastUtil.imageToast(R.mipmap.ic_error, "errorCode: $status")
+    }
+}
+
+/**
+ * 检测请求是否 success（该success 并非表示请求成功失败，仅表示后台处理成功）
+ */
+inline fun MatchesBean.checkSuccess(successAction: (bean: MatchesBean) -> Unit) {
     if (status == 0) {
         successAction.invoke(this)
     } else {

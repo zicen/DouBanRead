@@ -3,6 +3,7 @@ package com.zhenquan.doubanread.ui.classfiy
 import android.content.Context
 import android.support.v7.widget.Toolbar
 import android.text.TextUtils
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
@@ -124,15 +125,15 @@ class BookDetailActivity : BaseActivity() {
 
     private fun haveRead() {
         bookDetail.let {
-            var params = getParams2(it)
+            var params = getParams(it)
             request(RetrofitHelper
-                    .getServerForAliYun()?.addOrRemoveHaveRead(RequestBody.create(MediaType.parse("application/json"), params.toString()))
+                    .getServerForAliYun()?.addOrRemoveHaveRead(params)
                     ?.subscribeOn(Schedulers.io())
                     ?.observeOn(AndroidSchedulers.mainThread())
-                    ?.subscribe { t: BasicResponseInfo? ->
+                    ?.subscribe { t: BasicResponseInfo2? ->
                         t?.checkSuccess {
                             //成功
-                            ToastUtil.systemToast(t.msg)
+                            ToastUtil.imageToast(R.mipmap.ic_success,t.data)
                         }
                     }
             )
@@ -142,15 +143,15 @@ class BookDetailActivity : BaseActivity() {
 
     private fun wantRead() {
         bookDetail.let {
-            var params = getParams2(it)
+            var params = getParams(it)
             request(RetrofitHelper
-                    .getServerForAliYun()?.addOrRemoveWantRead(RequestBody.create(MediaType.parse("application/json"), params.toString()))
+                    .getServerForAliYun()?.addOrRemoveWantRead(params)
                     ?.subscribeOn(Schedulers.io())
                     ?.observeOn(AndroidSchedulers.mainThread())
-                    ?.subscribe { t: BasicResponseInfo? ->
+                    ?.subscribe { t: BasicResponseInfo2? ->
                         t?.checkSuccess {
                             //成功
-                            ToastUtil.systemToast(t.msg)
+                            ToastUtil.imageToast(R.mipmap.ic_success,t.data)
                         }
                     }
             )
@@ -158,37 +159,9 @@ class BookDetailActivity : BaseActivity() {
         }
     }
 
-    private fun getParams(it: BookDetail): JSONObject {
-        val params = JSONObject()
-        params.put("id", it.id)
-        params.put("title", it.title)
-        params.put("rating", it.rating.average)
-        if (it.author.isNotEmpty()) {
-            params.put("author", it.author[0])
-        }
-        params.put("pubdate", it.pubdate)
-        params.put("originTitle", it.origin_title)
-        params.put("image", it.image)
-        params.put("binding", it.binding)
-        if (it.translator.isNotEmpty()) {
-            params.put("translator", it.translator[0])
-        }
-        params.put("catelog", it.catalog)
-        params.put("pages", it.pages.toInt())
-        params.put("imageLarge", it.images.large)
-        params.put("publisher", it.publisher)
-        params.put("isbn10", it.isbn10)
-        params.put("isbn13", it.isbn13)
-        params.put("authorIntro", it.author_intro)
-        params.put("summary", it.summary)
-//        params.put("price", it.price.toDouble())
-//        params.put("categotyid", it.catalog)
-        val userLoginInfo = UserInfo.getUserLoginInfo(this)
-        params.put("userId", userLoginInfo.id)
-        return params
-    }
-    private fun getParams2(it: BookDetail): HashMap<String,String> {
-        val params = HashMap<String,String>()
+
+    private fun getParams(it: BookDetail): HashMap<String, String> {
+        val params = HashMap<String, String>()
         params.put("id", it.id)
         params.put("title", it.title)
         params.put("rating", it.rating.average)
@@ -210,12 +183,13 @@ class BookDetailActivity : BaseActivity() {
         params.put("isbn13", it.isbn13)
         params.put("authorIntro", it.author_intro)
         params.put("summary", it.summary)
-//        params.put("price", it.price.toDouble())
-//        params.put("categotyid", it.catalog)
+        params.put("price", it.price)
+        params.put("categotyid", it.catalog)
         val userLoginInfo = UserInfo.getUserLoginInfo(this)
-        params.put("userId", ""+userLoginInfo.id)
+        params.put("userId", "" + userLoginInfo.id)
         return params
     }
+
     private fun initToolBar(): String? {
         val title = intent.extras.getString("title")
         setSupportActionBar(toolbar)

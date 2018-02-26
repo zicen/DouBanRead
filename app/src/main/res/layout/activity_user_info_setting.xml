@@ -191,8 +191,15 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:gravity="top"
+                    android:inputType="textMultiLine"
+                    android:maxLength="30"
+                    android:padding="5dp"
                     android:background="@null"
+                    android:textSize="14sp"
                     />
+
             </LinearLayout>
 
             <View

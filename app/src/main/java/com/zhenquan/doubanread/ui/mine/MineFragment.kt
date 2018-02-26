@@ -10,10 +10,7 @@ import com.zhenquan.doubanread.moudle.UserInfo
 import com.zhenquan.doubanread.moudle.bookinfo.RecommendBookInfo
 import com.zhenquan.doubanread.moudle.checkSuccess
 import com.zhenquan.doubanread.net.RetrofitHelper
-import com.zhenquan.doubanread.ui.activity.MyReleaseActivity
-import com.zhenquan.doubanread.ui.activity.MyWantChangeActivity
-import com.zhenquan.doubanread.ui.activity.UserEntranceActivity
-import com.zhenquan.doubanread.ui.activity.UserInfoSettingActivity
+import com.zhenquan.doubanread.ui.activity.*
 import com.zhenquan.doubanread.ui.recommendation.BookMultipleItem
 import com.zhenquan.doubanread.util.CheckUtil
 import kotlinx.android.synthetic.main.fragment_mine.*
@@ -58,6 +55,7 @@ class MineFragment : BaseFragment(){
         }
         ll_mywantchange.setOnClickListener {  startActivity<UserEntranceActivity>()}
         ll_myrelease.setOnClickListener {  startActivity<UserEntranceActivity>() }
+        ll_matches.setOnClickListener {  startActivity<UserEntranceActivity>() }
         ll_exit.setOnClickListener { imgToast(R.mipmap.ic_success, "请先登录!") }
     }
 
@@ -69,6 +67,7 @@ class MineFragment : BaseFragment(){
         }
         ll_mywantchange.setOnClickListener { startActivity<MyWantChangeActivity>(Pair("title","想换的书")) }
         ll_myrelease.setOnClickListener { startActivity<MyReleaseActivity>(Pair("title","我发布的书")) }
+        ll_matches.setOnClickListener { startActivity<MatchesActivity>(Pair("title","匹配列表")) }
         ll_exit.setOnClickListener {
             logout()
         }

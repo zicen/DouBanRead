@@ -29,13 +29,14 @@ import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 
 class MyWantChangeActivity : BaseActivity() {
-    val toolbar: Toolbar by lazy { find<Toolbar>(R.id.toolbar) }
-    override fun initView(rootView: View?) {
-        initToolBar()
-    }
 
     override fun getLayoutId(): Int {
         return R.layout.activity_my_want_change
+    }
+
+    val toolbar: Toolbar by lazy { find<Toolbar>(R.id.toolbar) }
+    override fun initView(rootView: View?) {
+        initToolBar()
     }
 
     private fun initToolBar(): String? {
@@ -111,7 +112,6 @@ class MyWantChangeActivity : BaseActivity() {
                             adapter.loadmore(it)
                             start += 1
                             if (it.size < 20) {
-                                Toast.makeText(application, "数据全部加载完毕", Toast.LENGTH_SHORT).show()
                                 my_want_refreshLayout.finishLoadmoreWithNoMoreData()//将不会再次触发加载更多事件
                             } else {
                                 my_want_refreshLayout.finishLoadmore()

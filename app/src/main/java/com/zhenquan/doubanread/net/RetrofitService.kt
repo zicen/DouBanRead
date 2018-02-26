@@ -51,15 +51,17 @@ interface RetrofitService {
     /**
      * 添加或删除已读
      */
+    @FormUrlEncoded
     @POST("haveread/add.do")
-    fun addOrRemoveHaveRead(@Body params: RequestBody): Observable<BasicResponseInfo>
+    fun addOrRemoveHaveRead(@FieldMap params: Map<String, String>): Observable<BasicResponseInfo2>
 
 
     /**
      * 添加或删除想读
      */
+    @FormUrlEncoded
     @POST("wantread/add.do")
-    fun addOrRemoveWantRead(@Body params: RequestBody): Observable<BasicResponseInfo>
+    fun addOrRemoveWantRead(@FieldMap params: Map<String, String>): Observable<BasicResponseInfo2>
 
     @FormUrlEncoded
     @POST("haveread/list.do")
@@ -69,5 +71,8 @@ interface RetrofitService {
     @POST("wantread/list.do")
     fun getWantReadList(@Field("pageNum") pageNum: Int,@Field("pageSize") pageSize: Int): Observable<ReadListBean>
 
+
+    @POST("wantread/matchlist.do")
+    fun getMatchesList(): Observable<MatchesBean>
 
 }

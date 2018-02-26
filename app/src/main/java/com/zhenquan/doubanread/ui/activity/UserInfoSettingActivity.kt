@@ -13,6 +13,7 @@ import com.zhenquan.doubanread.net.RetrofitHelper
 import com.zhenquan.doubanread.util.TimeUtil
 import com.zhenquan.doubanread.util.ToastUtil
 import kotlinx.android.synthetic.main.activity_user_info_setting.*
+import org.greenrobot.eventbus.EventBus
 import org.jetbrains.anko.find
 import org.jsoup.helper.StringUtil
 import rx.android.schedulers.AndroidSchedulers
@@ -45,28 +46,41 @@ class UserInfoSettingActivity : BaseActivity() {
     }
 
     private fun saveUserInfo() {
-        var params = HashMap<String, String>()
-        if (!StringUtil.isBlank(edit_userinfo_email.text.toString())) {
-            params.put("email", edit_userinfo_email.text.toString())
-        }
-        if (!StringUtil.isBlank(edit_userinfo_cell.text.toString())) {
-            params.put("phone", edit_userinfo_cell.text.toString())
-        }
-        if (!StringUtil.isBlank(edit_userinfo_intro.text.toString())) {
-            params.put("intro", edit_userinfo_intro.text.toString())
-        }
-        request(RetrofitHelper
-                .getServerForAliYun()?.updateUserInfo(params)
-                ?.subscribeOn(Schedulers.io())
-                ?.observeOn(AndroidSchedulers.mainThread())
-                ?.subscribe { t: BasicResponseInfo ->
-                    t?.checkSuccess {
-                        //更新成功
-                        ToastUtil.imageToast(R.mipmap.ic_success,"更新成功！")
-                        finish()
+        userInfo?.let {
+            var params = HashMap<String, String>()
+            if (!StringUtil.isBlank(edit_userinfo_email.text.toString())) {
+                params.put("email", edit_userinfo_email.text.toString())
+                userInfo!!.email = edit_userinfo_email.text.toString()
+            } else {
+                params.put("email", userInfo!!.email)
+            }
+            if (!StringUtil.isBlank(edit_userinfo_cell.text.toString())) {
+                params.put("phone", edit_userinfo_cell.text.toString())
+                userInfo!!.phone = edit_userinfo_cell.text.toString()
+            } else {
+                params.put("phone", userInfo!!.phone)
+            }
+            if (!StringUtil.isBlank(edit_userinfo_intro.text.toString())) {
+                params.put("intro", edit_userinfo_intro.text.toString())
+                userInfo!!.intro = edit_userinfo_intro.text.toString()
+            } else {
+                params.put("intro", userInfo!!.intro)
+            }
+            request(RetrofitHelper
+                    .getServerForAliYun()?.updateUserInfo(params)
+                    ?.subscribeOn(Schedulers.io())
+                    ?.observeOn(AndroidSchedulers.mainThread())
+                    ?.subscribe { t: BasicResponseInfo ->
+                        t?.checkSuccess {
+                            //更新成功
+                            EventBus.getDefault().post(userInfo)
+                            ToastUtil.imageToast(R.mipmap.ic_success, "更新成功！")
+                            finish()
+                        }
                     }
-                }
-        )
+            )
+        }
+
     }
 
     private fun initToolBar() {
@@ -111,4 +125,5 @@ class UserInfoSettingActivity : BaseActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
 }
