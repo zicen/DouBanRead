@@ -26,6 +26,9 @@ class SearchBookActivity : BaseActivity() {
             //request data
             goSearchResult(edit_search.text.toString())
         }
+        iv_search_back.setOnClickListener{
+            finish()
+        }
 
     }
 

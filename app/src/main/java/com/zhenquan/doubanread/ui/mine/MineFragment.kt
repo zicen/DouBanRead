@@ -1,5 +1,6 @@
 package com.zhenquan.doubanread.ui.mine
 
+import android.content.DialogInterface
 import android.util.Log
 import android.view.View
 import com.zhenquan.doubanread.R
@@ -13,6 +14,7 @@ import com.zhenquan.doubanread.net.RetrofitHelper
 import com.zhenquan.doubanread.ui.activity.*
 import com.zhenquan.doubanread.ui.recommendation.BookMultipleItem
 import com.zhenquan.doubanread.util.CheckUtil
+import com.zhenquan.doubanread.util.DialogUtil
 import kotlinx.android.synthetic.main.fragment_mine.*
 import kotlinx.android.synthetic.main.fragment_user_login.*
 import org.greenrobot.eventbus.EventBus
@@ -49,6 +51,7 @@ class MineFragment : BaseFragment(){
     }
     private fun setNotLogin() {
         tv_mine_username.text = "登录/注册"
+        tv_mine_intro.text="个性签名"
         UserInfo.clearUserInfo(context)
         ll_mine.setOnClickListener {
             startActivity<UserEntranceActivity>()
@@ -56,7 +59,7 @@ class MineFragment : BaseFragment(){
         ll_mywantchange.setOnClickListener {  startActivity<UserEntranceActivity>()}
         ll_myrelease.setOnClickListener {  startActivity<UserEntranceActivity>() }
         ll_matches.setOnClickListener {  startActivity<UserEntranceActivity>() }
-        ll_exit.setOnClickListener { imgToast(R.mipmap.ic_success, "请先登录!") }
+        ll_exit.setOnClickListener { imgToast(R.mipmap.ic_action_info, "请先登录!") }
     }
 
     private fun setLogin(userLoginInfo: UserInfo) {
@@ -74,17 +77,21 @@ class MineFragment : BaseFragment(){
     }
 
     private fun logout() {
-        request(RetrofitHelper
-                .getServerForAliYun()?.logout()
-                ?.subscribeOn(Schedulers.io())
-                ?.observeOn(AndroidSchedulers.mainThread())
-                ?.subscribe { t: BasicResponseInfo? ->
-                    t?.checkSuccess {
-                        imgToast(R.mipmap.ic_success, "退出登录成功!")
-                        setNotLogin()
+        //showdialog
+        DialogUtil.showSureAndCancelDialog(context,"确定要退出登录吗?",DialogInterface.OnClickListener { _, _ ->
+            request(RetrofitHelper
+                    .getServerForAliYun()?.logout()
+                    ?.subscribeOn(Schedulers.io())
+                    ?.observeOn(AndroidSchedulers.mainThread())
+                    ?.subscribe { t: BasicResponseInfo? ->
+                        t?.checkSuccess {
+                            imgToast(R.mipmap.ic_success, "退出登录成功!")
+                            setNotLogin()
+                        }
                     }
-                }
-        )
+            )
+        })
+
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

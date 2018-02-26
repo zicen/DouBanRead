@@ -62,7 +62,7 @@ class MatchesActivity : BaseActivity() {
                     val intent = Intent()
                     intent.setClass(holder.itemView.context, BookDetailActivity::class.java)
                     intent.putExtra("title", model.wantRead.title)
-                    intent.putExtra("id", ""+model.wantRead.id)
+                    intent.putExtra("id", "" + model.wantRead.id)
                     startActivity(intent)
                 }
             }
@@ -72,11 +72,10 @@ class MatchesActivity : BaseActivity() {
     override fun initListener() {
         my_matches_recycle.layoutManager = LinearLayoutManager(this)
         my_matches_recycle.adapter = adapter
+        getData()
         my_matches_refreshLayout.setOnRefreshListener {
             getData()
         }
-        my_matches_refreshLayout.autoRefresh()
-
     }
 
 

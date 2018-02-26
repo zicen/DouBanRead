@@ -58,7 +58,7 @@ class MyReleaseActivity : BaseActivity() {
                     intent.setClass(holder.itemView.context, BookDetailActivity::class.java)
                     Log.e(TAG, "id" + model.id)
                     intent.putExtra("title", model.title)
-                    intent.putExtra("id", model.id)
+                    intent.putExtra("id", ""+model.id)
                     startActivity(intent)
                 }
             }
@@ -68,13 +68,13 @@ class MyReleaseActivity : BaseActivity() {
     override fun initListener() {
         my_release_recycle.layoutManager = LinearLayoutManager(this)
         my_release_recycle.adapter = adapter
+        initData(start)
         my_release_refreshLayout.setOnRefreshListener {
             initData(start)
         }
         my_release_refreshLayout.setOnLoadmoreListener({ refreshlayout ->
             getData(start)
         })
-        my_release_refreshLayout.autoRefresh()
 
     }
 

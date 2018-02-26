@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -150,12 +151,14 @@
         android:maxLength="26"
         android:paddingLeft="10dp"
         android:singleLine="true"
-        android:textColorHint="#A9ABAB"
+        android:textColorHint="@color/textcolor_hint"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@id/stv_email_bg"
         app:layout_constraintLeft_toLeftOf="@id/stv_email_bg"
         app:layout_constraintRight_toRightOf="@id/stv_email_bg"
         app:layout_constraintTop_toTopOf="@id/stv_email_bg" />
+
+
 
     <com.coorchice.library.SuperTextView
         android:id="@+id/stv_register"
@@ -168,6 +171,8 @@
         app:layout_constraintTop_toBottomOf="@id/stv_email_bg"
         app:pressBgColor="@color/cyan_shallow"
         app:solid="@color/cyan_dark" />
+
+
 
 
 </android.support.constraint.ConstraintLayout>

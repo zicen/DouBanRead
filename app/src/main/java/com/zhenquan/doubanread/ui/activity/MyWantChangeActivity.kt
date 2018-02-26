@@ -61,7 +61,7 @@ class MyWantChangeActivity : BaseActivity() {
                     intent.setClass(holder.itemView.context, BookDetailActivity::class.java)
                     Log.e(TAG, "id" + model.id)
                     intent.putExtra("title", model.title)
-                    intent.putExtra("id", model.id)
+                    intent.putExtra("id", ""+model.id)
                     startActivity(intent)
                 }
             }
@@ -71,14 +71,13 @@ class MyWantChangeActivity : BaseActivity() {
     override fun initListener() {
         my_want_recycle.layoutManager = LinearLayoutManager(this)
         my_want_recycle.adapter = adapter
+        initData(start)
         my_want_refreshLayout.setOnRefreshListener {
             initData(start)
         }
         my_want_refreshLayout.setOnLoadmoreListener({ refreshlayout ->
             getData(start)
         })
-        my_want_refreshLayout.autoRefresh()
-
     }
 
     private fun initData(start_getdata: Int) {

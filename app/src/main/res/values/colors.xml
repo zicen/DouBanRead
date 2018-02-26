@@ -29,4 +29,7 @@
     <color name="book_tag_color">#65A9AC</color>
     <color name="backgroud">#F4F5FE</color>
     <color name="red">#00ffff</color>
+    <color name="transparent">#00000000</color>
+    <color name="text_main_black">#333333</color>
+    <color name="textcolor_hint">#A9ABAB</color>
 </resources>

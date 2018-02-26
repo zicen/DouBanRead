@@ -18,7 +18,6 @@ import rx.schedulers.Schedulers
  */
 class UserRegisterFragment : BaseFragment() {
     override fun getLayoutId(): Int {
-
         return R.layout.fragment_user_register
     }
 
