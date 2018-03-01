@@ -14,6 +14,9 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import com.google.gson.Gson
+
+
 
 
 /**
@@ -71,8 +74,8 @@ object RetrofitHelper {
     }
     private val retrofitForZhenQuanAliYun by lazy {
         Retrofit.Builder()
-//                .baseUrl("http://39.107.84.145:8080/")
-                .baseUrl("http://192.168.253.203:8080/")
+                .baseUrl("http://39.107.84.145:8080/")
+//                .baseUrl("http://192.168.253.203:8080/")
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())

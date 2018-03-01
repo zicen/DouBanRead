@@ -70,7 +70,7 @@ class MyReleaseActivity : BaseActivity() {
         my_release_recycle.adapter = adapter
         initData(start)
         my_release_refreshLayout.setOnRefreshListener {
-            initData(start)
+            initData(1)
         }
         my_release_refreshLayout.setOnLoadmoreListener({ refreshlayout ->
             getData(start)

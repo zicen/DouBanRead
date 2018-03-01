@@ -19,11 +19,6 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".ui.classfiy.BookTagListActivity" />
         <activity android:name=".ui.classfiy.BookListActivity" />
@@ -39,7 +34,19 @@
         <activity android:name=".ui.activity.SearchResultActivity" />
         <activity android:name=".ui.activity.MyReleaseActivity" />
         <activity android:name=".ui.activity.MyWantChangeActivity" />
-        <activity android:name=".ui.activity.MatchesActivity"></activity>
+        <activity android:name=".ui.activity.MatchesActivity" />
+        <activity
+            android:name=".ui.activity.SplashActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
     </application>
 
 </manifest>

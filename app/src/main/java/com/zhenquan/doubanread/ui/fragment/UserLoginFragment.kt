@@ -16,8 +16,10 @@ import android.util.Log
 import android.widget.Toast
 import com.zhenquan.doubanread.manager.DataManager
 import com.zhenquan.doubanread.moudle.*
+import com.zhenquan.doubanread.ui.activity.MainActivity
 import kotlinx.android.synthetic.main.activity_book_list.*
 import org.greenrobot.eventbus.EventBus
+import org.jetbrains.anko.support.v4.startActivity
 import retrofit2.Response
 import rx.Observer
 import java.util.prefs.Preferences
@@ -65,11 +67,13 @@ class UserLoginFragment : BaseFragment() {
                         t?.body()?.checkSuccess {
                             //登录成功,保存登录信息到Sp
                             imgToast(R.mipmap.ic_success, "登陆成功")
+                            t.body().data.password = password
                             UserInfo.saveUserLogin(context, t.body().data, true)
                             if (head != null) {
                                 UserInfo.saveHeader(context,head)
                             }
                             EventBus.getDefault().post(t.body().data)
+                            startActivity<MainActivity>()
                             activity.finish()
                         }
 

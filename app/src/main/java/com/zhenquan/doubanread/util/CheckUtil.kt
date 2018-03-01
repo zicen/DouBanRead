@@ -164,6 +164,9 @@ object CheckUtil {
             return true
         }
     }
-
+    fun isNotEmpty(editText: String): Boolean {
+        val trim = editText.trim { it <= ' ' }
+        return !TextUtils.isEmpty(trim)
+    }
 
 }

@@ -16,6 +16,7 @@ data class LoginUserInfo(
 data class UserInfo(
         val id: Int, //12
         val username: String, //aaa
+        var password: String, //aaa
         var email: String, //aaa@163.com
         var phone: String, //null
         var role: Int, //0
@@ -37,8 +38,8 @@ data class UserInfo(
          */
         fun getUserLoginInfo(context: Context): UserInfo {
             val userLogin = context.getSharedPreferences("UserInfo", Context.MODE_PRIVATE)
-            var loginInfo = UserInfo(userLogin.getInt("id", -1), userLogin.getString("username", ""),
-                    userLogin.getString("email", ""), userLogin.getString("phone", ""), userLogin.getInt("role", -1)
+            var loginInfo = UserInfo(userLogin.getInt("id", -1), userLogin.getString("username", ""),userLogin.getString("password","")
+                    ,userLogin.getString("email", ""), userLogin.getString("phone", ""), userLogin.getInt("role", -1)
                     , userLogin.getLong("createTime", -1), userLogin.getLong("updateTime", -1), userLogin.getString("question", "")
                     , userLogin.getString("answer", ""), userLogin.getInt("sex", 0), userLogin.getString("intro", "")
                     , userLogin.getString("birthday", ""), userLogin.getString("avatar", ""))
@@ -71,25 +72,26 @@ data class UserInfo(
          * @param login  用户登录信息
          * @param isLogin  是否是登录操作
          */
-        fun saveUserLogin(context: Context, login: UserInfo?, isLogin: Boolean) {
+        fun saveUserLogin(context: Context, login: UserInfo?,isLogin: Boolean) {
             if (login == null) {
                 return
             }
             val userInfo = context.getSharedPreferences("UserInfo", Context.MODE_PRIVATE).edit()
             userInfo.putInt("id", login.id)
             userInfo.putString("username", login.username)
+            userInfo.putString("password", login.password)
             userInfo.putString("email", login.email)
             userInfo.putString("phone", login.phone)
             userInfo.putInt("role", login.role)
             userInfo.putLong("createTime", login.createTime)
             userInfo.putLong("updateTime", login.updateTime)
-            userInfo.putBoolean("isLogin", isLogin)
             userInfo.putInt("sex", login.sex)
             userInfo.putString("question", login.question)
             userInfo.putString("answer", login.answer)
             userInfo.putString("intro", login.intro)
             userInfo.putString("birthday", login.birthday)
             userInfo.putString("avatar", login.avatar)
+            userInfo.putBoolean("isLogin", isLogin)
             userInfo.commit()
         }
 

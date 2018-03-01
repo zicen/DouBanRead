@@ -73,7 +73,7 @@ class MyWantChangeActivity : BaseActivity() {
         my_want_recycle.adapter = adapter
         initData(start)
         my_want_refreshLayout.setOnRefreshListener {
-            initData(start)
+            initData(1)
         }
         my_want_refreshLayout.setOnLoadmoreListener({ refreshlayout ->
             getData(start)
