@@ -65,7 +65,7 @@ class SearchResultActivity : BaseActivity() {
         recycle_search_result.adapter = adapter
         initData(title!!, 0)
         refreshLayout_search_result.setOnRefreshListener {
-            initData(title!!, 0)
+            initData(title!!, 1)
         }
         refreshLayout_search_result.setOnLoadmoreListener({ refreshlayout ->
             getData(title!!)
@@ -120,7 +120,6 @@ class SearchResultActivity : BaseActivity() {
                     override fun onNext(t: SearchBookList?) {
                         t?.books?.let {
                             Log.e("response", "response size:" + it.size)
-
                             adapter.refresh(it)
                             refreshLayout_search_result.finishRefresh()
                             refreshLayout_search_result.resetNoMoreData()

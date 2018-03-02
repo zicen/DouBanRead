@@ -25,6 +25,7 @@ import okhttp3.RequestBody
 import org.greenrobot.eventbus.EventBus
 import org.jetbrains.anko.find
 import org.json.JSONObject
+import org.jsoup.helper.StringUtil
 import rx.Observer
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
@@ -133,7 +134,7 @@ class BookDetailActivity : BaseActivity() {
                     ?.subscribe { t: BasicResponseInfo2? ->
                         t?.checkSuccess {
                             //成功
-                            ToastUtil.imageToast(R.mipmap.ic_success,t.data)
+                            ToastUtil.imageToast(R.mipmap.ic_success, t.data)
                         }
                     }
             )
@@ -151,7 +152,7 @@ class BookDetailActivity : BaseActivity() {
                     ?.subscribe { t: BasicResponseInfo2? ->
                         t?.checkSuccess {
                             //成功
-                            ToastUtil.imageToast(R.mipmap.ic_success,t.data)
+                            ToastUtil.imageToast(R.mipmap.ic_success, t.data)
                         }
                     }
             )
@@ -168,25 +169,25 @@ class BookDetailActivity : BaseActivity() {
         if (it.author.isNotEmpty()) {
             params.put("author", it.author[0])
         }
-        params.put("pubdate", it.pubdate)
-        params.put("originTitle", it.origin_title)
+//        params.put("pubdate", it.pubdate)
+//        params.put("origin_title", it.origin_title)
         params.put("image", it.image)
-        params.put("binding", it.binding)
-        if (it.translator.isNotEmpty()) {
-            params.put("translator", it.translator[0])
-        }
-        params.put("catelog", it.catalog)
-        params.put("pages", it.pages)
-        params.put("imageLarge", it.images.large)
-        params.put("publisher", it.publisher)
-        params.put("isbn10", it.isbn10)
-        params.put("isbn13", it.isbn13)
-        params.put("authorIntro", it.author_intro)
+//        params.put("binding", it.binding)
+//        if (it.translator.isNotEmpty()) {
+//            params.put("translator", it.translator[0])
+//        }
+//        params.put("catelog", it.catalog)
+//        params.put("pages", it.pages)
+        params.put("image_large", it.images.large)
+//        params.put("publisher", it.publisher)
+//        params.put("isbn10", it.isbn10)
+//        params.put("isbn13", it.isbn13)
+//        params.put("author_intro", it.author_intro)
         params.put("summary", it.summary)
-        params.put("price", it.price)
-        params.put("categotyid", it.catalog)
-        val userLoginInfo = UserInfo.getUserLoginInfo(this)
-        params.put("userId", "" + userLoginInfo.id)
+//        params.put("price", it.price)
+//        params.put("categotyid", it.catalog)
+//        val userLoginInfo = UserInfo.getUserLoginInfo(this)
+//        params.put("userId", "" + userLoginInfo.id)
         return params
     }
 
