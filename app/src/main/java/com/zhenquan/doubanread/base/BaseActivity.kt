@@ -3,7 +3,9 @@ package com.zhenquan.doubanread.base
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
+import com.zhenquan.doubanread.R
 import com.zhenquan.doubanread.base.function.UiFunction
+import com.zhenquan.doubanread.wight.MyProgressDialog
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 import rx.subscriptions.CompositeSubscription
@@ -17,7 +19,7 @@ abstract class BaseActivity : AppCompatActivity(), UiFunction {
     val TAG = this.javaClass.simpleName
     override val requestComposite: CompositeSubscription
         get() = CompositeSubscription()
-
+    private var progressDialog: MyProgressDialog? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getLayoutId())
@@ -27,7 +29,26 @@ abstract class BaseActivity : AppCompatActivity(), UiFunction {
         initData()
     }
 
+    fun hideWaitDialog() {
+        if ( progressDialog != null && isDialogShowing()) {
+            progressDialog?.dismiss()
+            progressDialog = null
+        }
+    }
 
+    fun showWaitDialog() {
+        if (!isDialogShowing()) {
+            if (progressDialog == null) {
+                progressDialog = MyProgressDialog(this)
+            }
+            progressDialog?.show()
+        }
+    }
+
+
+    fun isDialogShowing(): Boolean {
+        return if (progressDialog == null) false else progressDialog!!.isShowing
+    }
     /**
      * 初始化数据
      */
@@ -48,6 +69,7 @@ abstract class BaseActivity : AppCompatActivity(), UiFunction {
         requestComposite.let {
             it.unsubscribe()
         }
+        hideWaitDialog()
     }
 
 

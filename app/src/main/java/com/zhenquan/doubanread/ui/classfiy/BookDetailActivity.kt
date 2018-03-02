@@ -88,6 +88,7 @@ class BookDetailActivity : BaseActivity() {
     }
 
     private fun getData(id: String) {
+        showWaitDialog()
         requestComposite.add(DataManager().getBookDetail(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -97,9 +98,11 @@ class BookDetailActivity : BaseActivity() {
 
                     override fun onError(e: Throwable?) {
                         e?.printStackTrace()
+                        hideWaitDialog()
                     }
 
                     override fun onNext(t: BookDetail?) {
+                        hideWaitDialog()
                         t?.let {
                             bookDetail = it
                             Picasso.with(this@BookDetailActivity).load(it.image).into(iv_book_detail);

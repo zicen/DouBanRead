@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.view.MenuItem
@@ -65,7 +66,7 @@ class SearchResultActivity : BaseActivity() {
         recycle_search_result.adapter = adapter
         initData(title!!, 0)
         refreshLayout_search_result.setOnRefreshListener {
-            initData(title!!, 1)
+            initData(title!!, 0)
         }
         refreshLayout_search_result.setOnLoadmoreListener({ refreshlayout ->
             getData(title!!)
@@ -113,11 +114,13 @@ class SearchResultActivity : BaseActivity() {
     }
 
     private fun initData(title: String, start_getdata: Int) {
-        requestComposite.add(DataManager().getSearchBooks("", title, start_getdata, 20)
+        showWaitDialog()
+        requestComposite.add(DataManager().getSearchBooks(title, "", start_getdata, 20)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(object : Observer<SearchBookList> {
                     override fun onNext(t: SearchBookList?) {
+                        hideWaitDialog()
                         t?.books?.let {
                             Log.e("response", "response size:" + it.size)
                             adapter.refresh(it)
@@ -133,6 +136,7 @@ class SearchResultActivity : BaseActivity() {
 
                     override fun onError(e: Throwable?) {
                         e?.printStackTrace()
+                        hideWaitDialog()
                     }
 
                 })

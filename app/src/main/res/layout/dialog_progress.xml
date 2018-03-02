@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/custom_progress_root_view"
+    android:layout_width="160dp"
+    android:layout_height="120dp"
+    android:gravity="center"
+    android:background="@drawable/backgrond_dialog">
+
+    <!--<ImageView-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:layout_width="120px"-->
+        <!--android:layout_height="120px"-->
+        <!--android:id="@+id/iv_progress"-->
+        <!--android:src="@mipmap/refresh_loading"/>-->
+
+    <com.zhenquan.doubanread.wight.GifView
+        android:id="@+id/iv_progress"
+        android:src="@mipmap/refresh_loading"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerInParent="true"
+        android:enabled="false" />
+
+    <TextView
+        android:layout_below="@+id/iv_progress"
+        android:id="@+id/custom_imageview_progress_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:text="加载中..."
+        android:maxLines="1"
+        android:textSize="14dp"
+        android:textColor="@color/text_main_black" />
+
+</RelativeLayout>

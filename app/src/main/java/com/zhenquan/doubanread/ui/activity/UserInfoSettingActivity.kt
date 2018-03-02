@@ -90,11 +90,13 @@ class UserInfoSettingActivity : BaseActivity() {
     }
 
     override fun initData() {
+        showWaitDialog()
         request(RetrofitHelper
                 .getServerForAliYun()?.getUserInfo()
                 ?.subscribeOn(Schedulers.io())
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe { t: retrofit2.Response<LoginUserInfo> ->
+                    hideWaitDialog()
                     t?.body()?.checkSuccess {
                         //成功
                         userInfo = t.body().data

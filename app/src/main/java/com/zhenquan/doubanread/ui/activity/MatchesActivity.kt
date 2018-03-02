@@ -80,12 +80,14 @@ class MatchesActivity : BaseActivity() {
 
 
     private fun getData() {
+        showWaitDialog()
         request(RetrofitHelper
                 .getServerForAliYun()?.getMatchesList()
                 ?.subscribeOn(Schedulers.io())
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe { t: MatchesBean? ->
                     t?.checkSuccess {
+                        hideWaitDialog()
                         //成功
                         t.data.let {
                             adapter.refresh(t.data)

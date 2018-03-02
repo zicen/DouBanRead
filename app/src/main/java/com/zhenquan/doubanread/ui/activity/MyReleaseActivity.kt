@@ -79,12 +79,14 @@ class MyReleaseActivity : BaseActivity() {
     }
 
     private fun initData(start_getdata: Int) {
+        showWaitDialog()
         request(RetrofitHelper
                 .getServerForAliYun()?.getHaveReadList(start_getdata, 10)
                 ?.subscribeOn(Schedulers.io())
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe { t: ReadListBean? ->
                     t?.checkSuccess {
+                        hideWaitDialog()
                         //成功
                         t.data.list.let {
                             adapter.refresh(t.data.list)
