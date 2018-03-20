@@ -36,7 +36,7 @@
         android:id="@+id/et_auth_username"
         android:background="@null"
         android:gravity="center_vertical"
-        android:hint="邮箱/手机号"
+        android:hint="用户名"
         android:maxLength="26"
         android:paddingLeft="10dp"
         android:singleLine="true"

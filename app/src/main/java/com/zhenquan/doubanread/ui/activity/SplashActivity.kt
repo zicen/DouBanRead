@@ -28,11 +28,15 @@ class SplashActivity : BaseActivity() {
     }
 
     override fun initView(rootView: View?) {
+        startAnima(rootView)
+        initUserInfo()
+    }
+
+    private fun startAnima(rootView: View?) {
         val ani = AlphaAnimation(0.2f, 1f)
         ani.duration = 3000
-        iv_splash.animation = ani
+        rootView?.animation = ani
         ani.start()
-        initUserInfo()
     }
 
     private fun initUserInfo() {

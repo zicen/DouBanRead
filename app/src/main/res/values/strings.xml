@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DouBanRead</string>
+    <string name="app_name">易读</string>
     <string name="page_recommendation">推荐</string>
     <string name="page_store">书店</string>
     <string name="page_mine">我的</string>

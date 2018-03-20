@@ -1,5 +1,6 @@
 package com.zhenquan.doubanread.base
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
@@ -80,7 +81,7 @@ abstract class BaseActivity : AppCompatActivity(), UiFunction {
     /**
      * 开启activity并且finish当前界面
      */
-    inline fun <reified T : BaseActivity> startActivityAndFinish() {
+    inline fun <reified T : BaseActivity>  startActivityAndFinish() {
         startActivity<T>()
         finish()
     }

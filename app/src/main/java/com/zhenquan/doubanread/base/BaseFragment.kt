@@ -48,10 +48,6 @@ abstract class BaseFragment : Fragment(), UiFunction {
         super.onViewCreated(view, savedInstanceState)
         //todo 这里统一处理页面状态
         initView(view)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
         initListener()
         initData()
     }
@@ -71,9 +67,6 @@ abstract class BaseFragment : Fragment(), UiFunction {
 
     }
 
-    fun myToast(msg: String) {
-        context?.runOnUiThread { toast(msg) }
-    }
 
 
 }
