@@ -3,11 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DouBanRead.iml" filepath="$PROJECT_DIR$/DouBanRead.iml" />
-      <module fileurl="file://C:\Users\Administrator\Documents\douban\DouBanRead.iml" filepath="C:\Users\Administrator\Documents\douban\DouBanRead.iml" />
-      <module fileurl="file://C:\Users\Administrator\Documents\douban\m_flycoTabLayout\FlycoTabLayout_Lib.iml" filepath="C:\Users\Administrator\Documents\douban\m_flycoTabLayout\FlycoTabLayout_Lib.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\44162\AndroidStudioProjects\DouBanRead\douban.iml" filepath="C:\Users\44162\AndroidStudioProjects\DouBanRead\douban.iml" />
-      <module fileurl="file://C:\Users\ry\Desktop\androidCode\DouBanRead\douban.iml" filepath="C:\Users\ry\Desktop\androidCode\DouBanRead\douban.iml" />
       <module fileurl="file://$PROJECT_DIR$/m_flycoTabLayout/m_flycoTabLayout.iml" filepath="$PROJECT_DIR$/m_flycoTabLayout/m_flycoTabLayout.iml" />
     </modules>
   </component>

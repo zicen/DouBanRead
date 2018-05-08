@@ -15,6 +15,8 @@ import com.zhenquan.doubanread.util.ToastUtil
 import kotlinx.android.synthetic.main.activity_user_info_setting.*
 import org.greenrobot.eventbus.EventBus
 import org.jetbrains.anko.find
+import org.jetbrains.anko.image
+import org.jetbrains.anko.imageResource
 import org.jsoup.helper.StringUtil
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
@@ -109,10 +111,13 @@ class UserInfoSettingActivity : BaseActivity() {
     private fun setView(userInfo: UserInfo?) {
         edit_userinfo_email.hint = userInfo?.email
         edit_userinfo_cell.hint = userInfo?.phone
+        tv_userinfo_username.text = userInfo?.username
         if (userInfo?.sex == 0) {
             edit_userinfo_sex.hint = "男"
+            civ_userinfo_avatar.imageResource = R.mipmap.avatar1
         } else {
             edit_userinfo_sex.hint = "女"
+            civ_userinfo_avatar.imageResource = R.mipmap.avatar3
         }
 //        edit_userinfo_birth.hint = userInfo?.birthday
         edit_userinfo_intro.hint = userInfo?.intro

@@ -25,15 +25,15 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_margin="10dp"
-                android:src="@drawable/ic_launcher" />
+                android:src="@mipmap/avatar1" />
 
             <TextView
                 android:id="@+id/tv_userinfo_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/civ_userinfo_avatar"
                 android:maxLines="1"
-                android:layout_centerVertical="true"
                 android:text="username"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -62,8 +62,8 @@
                     android:text="邮箱:" />
 
                 <EditText
-                    android:layout_width="0dp"
                     android:id="@+id/edit_userinfo_email"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
@@ -93,8 +93,8 @@
                     android:text="手机:" />
 
                 <EditText
-                    android:layout_width="0dp"
                     android:id="@+id/edit_userinfo_cell"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
@@ -124,11 +124,11 @@
                     android:text="性别:" />
 
                 <EditText
+                    android:id="@+id/edit_userinfo_sex"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:id="@+id/edit_userinfo_sex"
                     android:background="@null" />
             </LinearLayout>
 
@@ -140,35 +140,35 @@
                 android:background="@color/divide_gary" />
 
             <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="40dp"-->
-                <!--android:layout_marginLeft="15dp"-->
-                <!--android:layout_marginRight="15dp"-->
-                <!--android:background="@color/white"-->
-                <!--android:orientation="horizontal">-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:layout_marginLeft="15dp"-->
+            <!--android:layout_marginRight="15dp"-->
+            <!--android:background="@color/white"-->
+            <!--android:orientation="horizontal">-->
 
-                <!--<TextView-->
-                    <!--android:layout_width="50dp"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_gravity="center_vertical"-->
-                    <!--android:layout_marginLeft="10dp"-->
-                    <!--android:text="生日:" />-->
+            <!--<TextView-->
+            <!--android:layout_width="50dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center_vertical"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:text="生日:" />-->
 
-                <!--<EditText-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_gravity="center_vertical"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:id="@+id/edit_userinfo_birth"-->
-                    <!--android:background="@null" />-->
+            <!--<EditText-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center_vertical"-->
+            <!--android:layout_weight="1"-->
+            <!--android:id="@+id/edit_userinfo_birth"-->
+            <!--android:background="@null" />-->
             <!--</LinearLayout>-->
 
             <!--<View-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="0.5dp"-->
-                <!--android:layout_marginLeft="15dp"-->
-                <!--android:layout_marginRight="15dp"-->
-                <!--android:background="@color/divide_gary" />-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0.5dp"-->
+            <!--android:layout_marginLeft="15dp"-->
+            <!--android:layout_marginRight="15dp"-->
+            <!--android:background="@color/divide_gary" />-->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -177,11 +177,12 @@
                 android:layout_marginRight="15dp"
                 android:background="@color/white"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
                     android:text="个性签名:" />
 
                 <EditText
@@ -189,16 +190,15 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_vertical"
+                    android:layout_margin="5dp"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
-                    android:layout_margin="5dp"
+                    android:background="@null"
                     android:gravity="top"
                     android:inputType="textMultiLine"
                     android:maxLength="30"
                     android:padding="5dp"
-                    android:background="@null"
-                    android:textSize="14sp"
-                    />
+                    android:textSize="14sp" />
 
             </LinearLayout>
 
@@ -232,8 +232,8 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
-                    android:paddingRight="20dp"
-                    android:gravity="right" />
+                    android:gravity="right"
+                    android:paddingRight="20dp" />
             </LinearLayout>
 
             <View
@@ -265,8 +265,8 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
-                    android:paddingRight="20dp"
-                    android:gravity="right" />
+                    android:gravity="right"
+                    android:paddingRight="20dp" />
             </LinearLayout>
 
             <View
@@ -275,8 +275,6 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:background="@color/divide_gary" />
-
-
 
 
         </LinearLayout>

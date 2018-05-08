@@ -18,18 +18,10 @@ import com.zhenquan.doubanread.util.CheckUtil
 import com.zhenquan.doubanread.util.ToastUtil
 import com.zhenquan.doubanread.wight.TagView
 import kotlinx.android.synthetic.main.activity_book_detail.*
-import kotlinx.android.synthetic.main.activity_book_list.*
-import kotlinx.android.synthetic.main.fragment_user_login.*
-import okhttp3.MediaType
-import okhttp3.RequestBody
-import org.greenrobot.eventbus.EventBus
 import org.jetbrains.anko.find
-import org.json.JSONObject
-import org.jsoup.helper.StringUtil
 import rx.Observer
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
-import java.util.*
 import kotlin.collections.HashMap
 
 class BookDetailActivity : BaseActivity() {

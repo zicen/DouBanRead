@@ -26,7 +26,6 @@ class MainActivity : BaseActivity() {
     }
 
     override fun initView(rootView: View?) {
-//        EventBus.getDefault().register(this)
     }
 
     override fun initData() {
@@ -35,98 +34,16 @@ class MainActivity : BaseActivity() {
         initAllPage()
         //初始化 toolbar
         initToolBar()
-        //初始化 drawer
-//        initDrawer()
     }
-//    @Subscribe(threadMode = ThreadMode.MAIN)
-//    fun handleEventBus(userInfo: UserInfo) {
-//        tv_user_entrance.text = userInfo.username
-//        tv_user_entrance.setOnClickListener {
-//            startActivity<UserInfoSettingActivity>()
-//        }
-//    }
-//    /**
-//     * 初始化 并设置 drawerLayout
-//     */
-//    private fun initDrawer() {
-//        //设置drawer 滑动同步
-//        dl_drawerlayout.addDrawerListener(
-//                ActionBarDrawerToggle(this, dl_drawerlayout, t_toolbar, R.string.open, R.string.close).apply { syncState() }
-//        )
-//        //登陆注册
-//
-//        if (UserInfo.getUserIsLogin(this) ) {
-//            val userLoginInfo = UserInfo.getUserLoginInfo(this)
-//            tv_user_entrance.text = userLoginInfo.username
-//            tv_user_entrance.setOnClickListener{
-//                startActivity<UserInfoSettingActivity>()
-//            }
-//        }else{
-//            tv_user_entrance.setOnClickListener {
-//                startActivity<UserEntranceActivity>()
-//            }
-//        }
-//
-//
-//        (0 until drawer_item_group.childCount).map { drawer_item_group.getChildAt(it) }.filter { it is SuperTextView }.forEach {
-//            it.setOnClickListener { v ->
-//                when (v) {
-//                //购物车
-//                    stv_shopping_cart -> {
-//                        imgToast(R.mipmap.ic_action_category, "购物车")
-//                    }
-//                //余额
-//                    stv_balance -> {
-//                        imgToast(R.mipmap.ic_action_category, "余额")
-//                    }
-//                //礼券
-//                    stv_coupon -> {
-//                        imgToast(R.mipmap.ic_action_category, "礼券")
-//                    }
-//                //礼物
-//                    stv_gift -> {
-//                        imgToast(R.mipmap.ic_action_category, "礼物")
-//                    }
-//                //搜索
-//                    stv_search -> {
-//                        imgToast(R.mipmap.ic_action_category, "搜索")
-//                    }
-//                //设置
-//                    stv_setting -> {
-//                        imgToast(R.mipmap.ic_action_category, "设置")
-//                    }
-//                //反馈
-//                    stv_feedback -> {
-//                        imgToast(R.mipmap.ic_action_category, "反馈")
-//                    }
-//                }
-//                dl_drawerlayout.closeDrawers()
-//            }
-//
-//        }
-//
-//    }
 
     /**
      * 初始化 并配置 toolbar
      */
     private fun initToolBar() {
         setSupportActionBar(t_toolbar)
-//        supportActionBar?.apply {
-//            setHomeButtonEnabled(true)
-//            setDisplayHomeAsUpEnabled(true)
-//        }
-
-        //MenuAction 点击事件
         action_search.setOnClickListener {
-           startActivity<SearchBookActivity>()
+            startActivity<SearchBookActivity>()
         }
-//        action_category.setOnClickListener {
-//           startActivity<Json2SqlActivity>()
-//        }
-//        action_notification.setOnClickListener {
-//            toast("action_notification")
-//        }
     }
 
     /**
@@ -148,8 +65,6 @@ class MainActivity : BaseActivity() {
         val originalWorkTab = MyTabEntity(getString(R.string.page_classfiy_work), R.mipmap.ic_tab_original_works_active, R.mipmap.ic_tab_original_works_normal)
         //我的
         val mineTab = MyTabEntity(getString(R.string.page_mine), R.mipmap.ic_tab_mine_active, R.mipmap.ic_tab_mine_normal)
-        //
-//        val localTab = MyTabEntity(getString(R.string.page_circle), R.mipmap.ic_tab_local_active, R.mipmap.ic_tab_local_normal)
 
         ctl_bottom_nvg.setTabData(arrayListOf(recommendationTab, originalWorkTab, mineTab)
                 , this@MainActivity
@@ -190,8 +105,4 @@ class MainActivity : BaseActivity() {
         }
     }
 
-//    override fun onDestroy() {
-//        super.onDestroy()
-//        EventBus.getDefault().unregister(this)
-//    }
 }
